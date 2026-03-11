@@ -1,5 +1,5 @@
-.callout {
-	
+.callout { border: darkblue 2px solid; padding: 1em;
+     margin: 1em; background-color: lightblue;	
 }
 
 .callout img {
