@@ -1,0 +1,55 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+   line-height: 1.5;
+}
+
+header {
+    font-family: 'century';
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+main { 
+    width: 400px;
+    margin: 0 auto;
+}
+
+hi {
+    margin: 10px;
+    text-align: center;
+}
+
+
+h2 {
+    border-bottom: 1px solid black;
+    margin: 10px 0;
+}
+img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    box-shadow: 20px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+section {
+    margin: 20px 0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    background-color: lightgray;
+    font-size: .9rem;
+}
+
+section p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
