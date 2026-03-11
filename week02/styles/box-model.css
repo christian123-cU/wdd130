@@ -1,8 +1,10 @@
-.callout { border: darkblue 2px solid; padding: 1em;
-     margin: 1em; background-color: lightblue;	
+.callout {  background: #2f4f7f;
+  color: white;
+  padding: 20px;
+  position: relative	
 }
 
-.callout img {
+.callout img { margin: 0.5em; width: 100px; height: auto;
 	
 }
 
