@@ -6,7 +6,7 @@ main {
 
 aside {
     width: 320px;
-    border: 1px solid rgb(0 0 0 /0.2);
+    border: 1px solid rgb(0 0 0 /0.2); /* 1 */
     background-color: #eee;
     padding: 16px;
     margin: 16px;
@@ -16,10 +16,14 @@ aside {
 main img {
     width: 150px;
     height: auto;
+    border: 1px solid black;
+    padding: 2px;
+        box-shadow: 0 0 30px gray;
 }
 aside img {
     width: 200px;
     height: auto;
+    border: 1px solid black;
 }
 nav {
     background-color: darkblue;
@@ -28,6 +32,8 @@ nav {
 
 nav a {
     color: white;
+    padding: auto;
+    display: inline-block;
     text-decoration: none;
     margin: 0 10px;
 }
