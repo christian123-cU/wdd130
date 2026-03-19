@@ -1,54 +1,76 @@
+:root {
+    --primary-color: darkblue;
+    --secondary-color: #333;
+    --light-bg: #eee;
+    --border-color: black;
+    --footer-border: #000;
+
+    --main-width: 800px;
+    --aside-width: 320px;
+
+    --padding-small: 10px;
+    --padding-medium: 16px;
+
+    --margin-small: 10px;
+    --margin-medium: 16px;
+
+    --image-width-small: 150px;
+    --image-width-large: 200px;
+
+    --box-shadow: 0 0 30px gray;
+}
 
 main {
-    max-width: 800px;
+    max-width: var(--main-width);
     margin: 0 auto;
 }
 
 aside {
-    width: 320px;
-    border: 1px solid rgb(0 0 0 /0.2); /* 1 */
-    background-color: #eee;
-    padding: 16px;
-    margin: 16px;
-    color: #333;
+    width: var(--aside-width);
+    border: 1px solid rgb(0 0 0 /0.2);
+    background-color: var(--light-bg);
+    padding: var(--padding-medium);
+    margin: var(--margin-medium);
+    color: var(--secondary-color);
 }
 
 main img {
-    width: 150px;
+    width: var(--image-width-small);
     height: auto;
-    border: 1px solid black;
+    border: 1px solid var(--border-color);
     padding: 2px;
-        box-shadow: 0 0 30px gray;
+    box-shadow: var(--box-shadow);
 }
+
 aside img {
-    width: 200px;
+    width: var(--image-width-large);
     height: auto;
-    border: 1px solid black;
+    border: 1px solid var(--border-color);
 }
+
 nav {
-    background-color: darkblue;
-    padding: 10px;
+    background-color: var(--primary-color);
+    padding: var(--padding-small);
 }
 
 nav a {
     color: white;
-    padding: 10px;
+    padding: var(--padding-small);
     display: block;
     text-decoration: none;
-    margin: 0 10px;
+    margin: 0 var(--margin-small);
 }
 
 h1 {
-    color: darkblue;  
+    color: var(--primary-color);
 }
 
-
 img {
-    width: 150px;
+    width: var(--image-width-small);
     height: auto;
-    border: 1px solid black;
+    border: 1px solid var(--border-color);
     padding: 2px;
-    box-shadow: 0 0 30px gray;
+    box-shadow: var(--box-shadow);
 }
 
 p {
@@ -57,6 +79,6 @@ p {
 
 footer {
     margin-top: 15px;
-    border-top: 1px solid #000;
+    border-top: 1px solid var(--footer-border);
     text-align: center;
 }
