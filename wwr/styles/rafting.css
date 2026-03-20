@@ -16,8 +16,8 @@
     --accent2-color: #5ebdf4;
     /* golden yellow */
 
-    --heading-font: "Times New Roman", "Georgia", serif;
-    --body-font: Arial, Helvetica, sans-serif;
+    --heading-font: "Times New Roman";
+    --body-font: Arial;
 }
 
 /* BODY */
