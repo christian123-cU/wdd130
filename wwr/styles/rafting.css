@@ -1,0 +1,161 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ROOT VARIABLES */
+:root {
+    --primary-color: #0b3c5d;
+    /* deep blue */
+    --secondary-color: #328cc1;
+    /* lighter blue */
+    --accent1-color: #1d2731;
+    /* dark navy */
+    --accent2-color: #5ebdf4;
+    /* golden yellow */
+
+    --heading-font: "Times New Roman", "Georgia", serif;
+    --body-font: Arial, Helvetica, sans-serif;
+}
+
+/* BODY */
+body {
+    font-family: var(--body-font);
+    color: var(--accent1-color);
+}
+
+/* PAGE WIDTH */
+header,
+main,
+footer {
+    width: 840px;
+    margin: 0 auto;
+}
+
+/* HEADER */
+header {
+    background-color: var(--primary-color);
+    color: var(--accent2-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+header img {
+    width: 100px;
+}
+
+/* NAVIGATION */
+nav ul {
+    list-style: none;
+    display: block;
+}
+
+nav li {
+    margin: 0 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--accent2-color);
+    font-weight: bold;
+}
+
+/* HEADINGS */
+h1 {
+    font-family: var(--heading-font);
+    color: var(--primary-color);
+}
+
+h2 {
+    box-sizing: border-box;
+    font-family: var(--heading-font);
+    color: var(--primary-color);
+    text-align: center;
+    /* centers the text */
+    background-color: var(--accent2-color);
+    /* highlight background */
+    padding: 10px;
+    /* space around text */
+}
+
+/* GENERAL SPACING */
+nav,
+p,
+section,
+article {
+    margin: 16px;
+    padding: 8px;
+}
+
+/* HERO SECTION */
+.hero {
+    position: relative;
+}
+
+.hero img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* HERO HEADING */
+.hero h1 {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    padding: 16px;
+    text-align: center;
+    opacity: 0.8;
+    background-color: var(--accent1-color);
+    color: white;
+}
+
+/* HERO ARTICLE */
+.hero article {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background-color: rgb(255 255 255 / 80%);
+    padding: 16px;
+}
+
+/* IMAGE INSIDE HERO ARTICLE */
+.hero article img {
+    float: right;
+    width: 125px;
+    margin-left: 10px;
+    border: 2px solid var(--primary-color);
+}
+
+/* SECTIONS */
+section {
+    background-color: #f9f9f9;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 20px;
+    border-top: 1px solid var(--accent1-color);
+    text-align: center;
+    padding: 10px;
+}
+
+/* SOCIAL MEDIA */
+.socialmedia {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.socialmedia a {
+    text-decoration: none;
+}
+
+.socialmedia img {
+    width: 30px;
+}
