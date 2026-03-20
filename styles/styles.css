@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 :root {
     --primary-color: darkblue;
     --secondary-color: #333;
@@ -22,10 +28,11 @@
 
 main {
     max-width: var(--main-width);
-    margin: 0 auto;
+    margin: 0 20px;
 }
 
 aside {
+    position: relative;
     width: var(--aside-width);
     border: 1px solid rgb(0 0 0 /0.2);
     background-color: var(--light-bg);
@@ -35,6 +42,7 @@ aside {
 }
 
 main img {
+    float: right;
     width: var(--image-width-small);
     height: auto;
     border: 1px solid var(--border-color);
@@ -63,6 +71,13 @@ nav a {
 
 h1 {
     color: var(--primary-color);
+    position: relative;
+}
+
+aside h2 {
+    position: absolute;
+    top: 24px;
+    left: 86px;
 }
 
 img {
@@ -81,4 +96,25 @@ footer {
     margin-top: 15px;
     border-top: 1px solid var(--footer-border);
     text-align: center;
+}
+
+/* Class Selectors */
+.box {
+    margin: var(--margin-medium);
+    /* consistent spacing */
+    padding: calc(var(--padding-medium)* 1.5);
+    /* consistent padding */
+    border: 1px solid var(--border-color);
+    /* matches other borders */
+    background-color: var(--light-bg);
+    /* matches main/aside bg */
+    color: var(--secondary-color);
+    /* text color matches aside */
+    border-radius: 5px;
+    /* soft rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* subtle shadow for depth */
+    overflow: hidden;
+    max-width: 100%;
+    /* ensures it doesn’t exceed the container width */
 }
