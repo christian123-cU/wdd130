@@ -147,7 +147,7 @@ section {
 
 .left-text,
 .right-text {
-    text-align: justify;
+    text-align: start;
 }
 
 /* ADVENTURES SECTION */
