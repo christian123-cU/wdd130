@@ -11,7 +11,6 @@
     --secondary-color: #328cc1;
     --accent1-color: #1d2731;
     --accent2-color: #5ebdf4;
-
     --heading-font: "Times New Roman";
     --body-font: Arial;
 }
@@ -129,6 +128,7 @@ article {
 /* SECTIONS */
 section {
     background-color: #f9f9f9;
+    
 }
 
 /* HISTORY SECTION */
