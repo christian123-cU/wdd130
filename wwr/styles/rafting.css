@@ -62,16 +62,19 @@ nav a {
     text-decoration: none;
     color: var(--accent2-color);
     font-weight: bold;
+    font-size: 1.2rem;
+    display: block;
 }
 
 /* HEADINGS */
-h1,
-h2 {
+h1 {
     font-family: var(--heading-font);
     color: var(--primary-color);
 }
 
 h2 {
+    font-family: var(--heading-font);
+    color: var(--primary-color);
     text-align: center;
     background-color: var(--accent2-color);
     padding: 10px;
