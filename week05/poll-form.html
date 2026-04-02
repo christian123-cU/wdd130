@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poll Form</title>
+    <link rel="stylesheet" href="styles/poll-form.css">
+
+    <style>
+        /* Hide pet details by default */
+        #pet-details {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Website Poll</h1>
+        <p class="tagline">User Survey</p>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+
+        <form action="#" method="post">
+
+            <fieldset> <!--fieldset groups related form elements together and provides a visual box around them, while legend provides a caption for the fieldset, enhancing accessibility and organization of the form. -->
+                <legend>Contact Information</legend>
+
+                <!-- Full Name -->
+                <div class="form-item column2">
+                    <label for="fullname">Full Name:</label>
+                    <input type="text" id="fullname" name="fullname" required>
+                </div>
+
+                <!-- Email -->
+                <div class="form-item column2">
+                    <label for="useremail">Email:</label>
+                    <input type="email" id="useremail" name="useremail" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Questions</legend>
+
+                <!-- Favorite Browser -->
+                <div class="form-item column1">
+                    <label for="browser">What is your favorite browser?</label>
+                    <select id="browser" name="browser">
+                        <option value="chrome">Chrome</option>
+                        <option value="safari">Safari</option>
+                        <option value="edge">Edge</option>
+                        <option value="brave">Brave</option>
+                        <option value="google">Google</option>
+                        <option value="mozilla">Mozilla</option>
+                        <option value="firefox">Firefox</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Pet Question -->
+                <div class="form-item column1">
+                    <label for="pet">Do you have a household pet?</label>
+                    <input type="checkbox" id="pet" name="pet" onclick="togglePetDetails()">
+                </div>
+
+                <!-- Pet Details (optional - not part of the 5 required but kept structured) -->
+                <div id="pet-details">
+                    <div class="form-item">
+                        <label for="petname">Pet Name:</label>
+                        <input type="text" id="petname" name="petname">
+                    </div>
+
+                    <div class="form-item">
+                        <label for="petdesc">One word to describe your pet:</label>
+                        <input type="text" id="petdesc" name="petdesc">
+                    </div>
+                </div>
+
+                <!-- Places Lived -->
+                <div class="form-item">
+                    <label for="feedback">List the places you have lived:</label>
+                    <textarea id="feedback" name="feedback" rows="4"
+                        placeholder="Stillwater Florida, Amsterdam Netherlands, Timbuktu Mali"></textarea>
+                </div>
+            </fieldset>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit Poll</button>
+
+        </form>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 | Poll Form Page</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        function togglePetDetails() {
+            const petCheckbox = document.getElementById("pet");
+            const petDetails = document.getElementById("pet-details");
+
+            petDetails.style.display = petCheckbox.checked ? "block" : "none";
+        }
+    </script>
+
+</body>
+</html>
