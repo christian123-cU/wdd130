@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Safeguarding and Child Protection Report">
+    <meta name="author" content="David Oduor">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safeguarding Report</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        h2, h3 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 6px;
+            margin-top: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0b3c5d;
+            color: white;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px;
+            width: 100%;
+            background-color: #0b3c5d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #328cc1;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Safeguarding and Child Protection Report</h2>
+
+<form action="https://formspree.io/f/mlgownrl" method="POST">
+
+    <input type="hidden" name="_subject" value="New Safeguarding Report Submission">
+
+    <!-- ANONYMOUS OPTION -->
+    <h3>Reporting Preference</h3>
+
+    <label>
+        <input type="checkbox" id="anonymousCheck" name="anonymous">
+        I want to submit this report anonymously
+    </label>
+
+    <p><strong>Note:</strong> You may leave personal details blank if reporting anonymously.</p>
+
+    <!-- Reporter Info -->
+    <h3>Reporter Details</h3>
+
+    <div id="personalInfo">
+        <label>Your Name:</label>
+        <input type="text" name="name">
+
+        <label>Email Address:</label>
+        <input type="email" name="email">
+    </div>
+
+    <label>SOH Location:</label>
+    <input type="text" name="location">
+
+    <!-- DATE FIELD -->
+    <label>Date of Report:</label>
+    <input type="date" name="report_date" required>
+
+    <!-- TABLE SECTION -->
+    <h3>Safeguarding Incidents (This Month)</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Incident Type</th>
+                <th>Occurred?</th>
+                <th>No. of Cases</th>
+                <th>Actions Taken</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Suicide and self-harm</td>
+                <td><input type="checkbox" name="suicide"></td>
+                <td><input type="number" name="suicide_cases"></td>
+                <td><textarea name="suicide_actions"></textarea></td>
+            </tr>
+
+            <tr>
+                <td>Violence & disruptive behaviour</td>
+                <td><input type="checkbox" name="violence"></td>
+                <td><input type="number" name="violence_cases"></td>
+                <td><textarea name="violence_actions"></textarea></td>
+            </tr>
+
+            <tr>
+                <td>Gang involvement / mob justice</td>
+                <td><input type="checkbox" name="gang"></td>
+                <td><input type="number" name="gang_cases"></td>
+                <td><textarea name="gang_actions"></textarea></td>
+            </tr>
+
+            <tr>
+                <td>Drug abuse & misuse</td>
+                <td><input type="checkbox" name="drug"></td>
+                <td><input type="number" name="drug_cases"></td>
+                <td><textarea name="drug_actions"></textarea></td>
+            </tr>
+
+            <tr>
+                <td>Domestic abuse</td>
+                <td><input type="checkbox" name="domestic"></td>
+                <td><input type="number" name="domestic_cases"></td>
+                <td><textarea name="domestic_actions"></textarea></td>
+            </tr>
+
+            <tr>
+                <td>Teenage pregnancy</td>
+                <td><input type="checkbox" name="pregnancy"></td>
+                <td><input type="number" name="pregnancy_cases"></td>
+                <td><textarea name="pregnancy_actions"></textarea></td>
+            </tr>
+
+            <tr>
+                <td>Child marriage</td>
+                <td><input type="checkbox" name="marriage"></td>
+                <td><input type="number" name="marriage_cases"></td>
+                <td><textarea name="marriage_actions"></textarea></td>
+            </tr>
+
+            <tr>
+                <td>Sexual abuse cases</td>
+                <td><input type="checkbox" name="sexual"></td>
+                <td><input type="number" name="sexual_cases"></td>
+                <td><textarea name="sexual_actions"></textarea></td>
+            </tr>
+
+            <tr>
+                <td>Mental health issues</td>
+                <td><input type="checkbox" name="mental"></td>
+                <td><input type="number" name="mental_cases"></td>
+                <td><textarea name="mental_actions"></textarea></td>
+            </tr>
+
+            <tr>
+                <td>Other (e.g. gambling)</td>
+                <td><input type="checkbox" name="other"></td>
+                <td><input type="number" name="other_cases"></td>
+                <td><textarea name="other_actions"></textarea></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <!-- CONFIRMATION -->
+    <h3>Confirmation</h3>
+
+    <label>
+        <input type="radio" name="record_confirmed" value="Yes" required> Yes
+    </label>
+    <label>
+        <input type="radio" name="record_confirmed" value="No"> No
+    </label>
+
+    <!-- SUBMIT -->
+    <button type="submit">Submit Report</button>
+
+</form>
+
+<!-- ANONYMOUS SCRIPT -->
+<script>
+const anonymousCheck = document.getElementById("anonymousCheck");
+const personalInfo = document.getElementById("personalInfo");
+const inputs = personalInfo.querySelectorAll("input");
+
+anonymousCheck.addEventListener("change", function() {
+    if (this.checked) {
+        personalInfo.style.display = "none";
+        inputs.forEach(input => input.value = "");
+    } else {
+        personalInfo.style.display = "block";
+    }
+});
+</script>
+
+</body>
+</html>

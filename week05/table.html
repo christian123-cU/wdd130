@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="HTML Table Structure Exercise">
+    <meta name="author" content="David Oduor">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Exercise</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+        }
+
+        th, td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        thead {
+            background-color: #333;
+            color: white;
+        }
+
+        tfoot {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align:center;">Weekly Expenses Table</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Transport (KSh)</th>
+                <th>Food (KSh)</th>
+                <th>Other (KSh)</th>
+                <th>Total (KSh)</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Monday</td>
+                <td>100</td>
+                <td>250</td>
+                <td>50</td>
+                <td>400</td>
+            </tr>
+            <tr>
+                <td>Tuesday</td>
+                <td>100</td>
+                <td>200</td>
+                <td>100</td>
+                <td>400</td>
+            </tr>
+            <tr>
+                <td>Wednesday</td>
+                <td>120</td>
+                <td>220</td>
+                <td>60</td>
+                <td>400</td>
+            </tr>
+            <tr>
+                <td>Thursday</td>
+                <td>100</td>
+                <td>250</td>
+                <td>50</td>
+                <td>400</td>
+            </tr>
+            <tr>
+                <td>Friday</td>
+                <td>150</td>
+                <td>200</td>
+                <td>50</td>
+                <td>400</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="4">Grand Total</td>
+                <td>2000</td>
+            </tr>
+        </tfoot>
+    </table>
+
+</body>
+</html>
