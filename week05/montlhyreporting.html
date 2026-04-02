@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOH Monthly Reporting Tool</title>
+
+<style>
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 20px;
+}
+
+form {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #f9f9f9;
+}
+
+h2, h3 {
+    text-align: center;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 6px;
+    margin-top: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #333;
+    padding: 8px;
+}
+
+th {
+    background: #0b3c5d;
+    color: white;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px;
+    width: 100%;
+    background: #0b3c5d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>SCHOOLS OF HOPE (SOH) MONTHLY REPORT</h2>
+
+<form action="https://formspree.io/f/mlgownrl" method="POST">
+
+<input type="hidden" name="_subject" value="SOH Monthly Report Submission">
+
+<!-- BASIC INFO -->
+<label>Schools of Hope Name:</label>
+<input type="text" name="soh_name">
+
+<label>Month & Year:</label>
+<input type="month" name="month_year" required>
+
+<!-- ATTENDANCE -->
+<h3>1. Attendance</h3>
+Girls: <input type="number" name="girls_attendance">
+Boys: <input type="number" name="boys_attendance">
+Total: <input type="number" name="total_attendance">
+
+<!-- GRADES -->
+<h3>2. Improved Grades</h3>
+Boys: <input type="number" name="boys_grades">
+Girls: <input type="number" name="girls_grades">
+Total: <input type="number" name="total_grades">
+
+<!-- BOOKS -->
+<h3>3. Books Lost/Damaged</h3>
+Primary: <input type="number" name="books_primary">
+Secondary: <input type="number" name="books_secondary">
+Total: <input type="number" name="books_total">
+
+<!-- LIFE SKILLS -->
+<h3>4. Life Skills</h3>
+Sessions Held: <input type="number" name="life_sessions">
+
+<label>Topics Covered:</label>
+<textarea name="topics"></textarea>
+
+Boys Attended: <input type="number" name="boys_life">
+Girls Attended: <input type="number" name="girls_life">
+
+Girls Clubs: <input type="number" name="girls_club">
+Boys Clubs: <input type="number" name="boys_club">
+
+Meetings Held: <input type="number" name="club_meetings">
+
+<!-- SPORTS -->
+<h3>5. Sports</h3>
+<table>
+<tr><th>Sport</th><th>Sessions</th><th>Participants</th></tr>
+<tr><td>Rugby</td><td><input type="number" name="rugby_sessions"></td><td><input type="number" name="rugby_participants"></td></tr>
+<tr><td>Football</td><td><input type="number" name="football_sessions"></td><td><input type="number" name="football_participants"></td></tr>
+<tr><td>Chess</td><td><input type="number" name="chess_sessions"></td><td><input type="number" name="chess_participants"></td></tr>
+</table>
+
+<!-- TALENTS -->
+<h3>6. Talent Development</h3>
+<table>
+<tr><th>Activity</th><th>Sessions</th><th>Participants</th></tr>
+<tr><td>Drama</td><td><input type="number" name="drama_sessions"></td><td><input type="number" name="drama_participants"></td></tr>
+<tr><td>Music</td><td><input type="number" name="music_sessions"></td><td><input type="number" name="music_participants"></td></tr>
+</table>
+
+<!-- SANITARY -->
+<h3>7. Sanitary Pads</h3>
+<input type="number" name="pads">
+
+<!-- MEETINGS -->
+<h3>8. Committee Meetings</h3>
+Meetings: <input type="number" name="meetings">
+Members Attended: <input type="number" name="members">
+
+<!-- VISITORS -->
+<h3>9. Visitors</h3>
+<textarea name="visitors"></textarea>
+
+<!-- ACTIVITIES -->
+<h3>10. Special Activities</h3>
+<textarea name="activities"></textarea>
+
+<!-- DONATIONS -->
+<h3>11. Donations</h3>
+<textarea name="donations"></textarea>
+
+<!-- SAFEGUARDING -->
+<h3>Safeguarding & Child Protection</h3>
+
+<table>
+<tr><th>Incident</th><th>Occurred</th><th>Cases</th><th>Actions</th></tr>
+
+<tr><td>Suicide/Self-harm</td>
+<td><input type="checkbox" name="suicide"></td>
+<td><input type="number" name="suicide_cases"></td>
+<td><textarea name="suicide_actions"></textarea></td></tr>
+
+<tr><td>Violence</td>
+<td><input type="checkbox" name="violence"></td>
+<td><input type="number" name="violence_cases"></td>
+<td><textarea name="violence_actions"></textarea></td></tr>
+
+<tr><td>Drug Abuse</td>
+<td><input type="checkbox" name="drug"></td>
+<td><input type="number" name="drug_cases"></td>
+<td><textarea name="drug_actions"></textarea></td></tr>
+
+<tr><td>Mental Health</td>
+<td><input type="checkbox" name="mental"></td>
+<td><input type="number" name="mental_cases"></td>
+<td><textarea name="mental_actions"></textarea></td></tr>
+
+</table>
+
+<label>Record Confirmed:</label>
+<input type="radio" name="confirm" value="Yes" required> Yes
+<input type="radio" name="confirm" value="No"> No
+
+<!-- SIGNATURE -->
+<h3>Submission</h3>
+
+<label>Submitted By:</label>
+<input type="text" name="submitted_by">
+
+<label>Date:</label>
+<input type="date" name="submission_date">
+
+<label>Approved By:</label>
+<input type="text" name="approved_by">
+
+<label>Approval Date:</label>
+<input type="date" name="approval_date">
+
+<button type="submit">Submit Report</button>
+
+</form>
+
+</body>
+</html>
