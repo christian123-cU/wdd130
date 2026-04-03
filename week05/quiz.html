@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML & CSS Quiz</title>
+
+    <!-- Linking external CSS file -->
+    <link rel="stylesheet" href="styles/quiz.css">
+</head>
+
+<body>
+
+    <!-- MAIN CONTAINER -->
+    <main>
+        <h1>HTML & CSS Knowledge Quiz</h1>
+
+        <form action="#" method="post">
+
+            <!-- NOTE: Using <fieldset> to group related form elements for better accessibility -->
+            <fieldset>
+                <legend>Question 1</legend>
+
+                <!-- NOTE: Text input used for short fill-in-the-blank answers -->
+                <label for="q1">What does HTML stand for?</label>
+                <input type="text" id="q1" name="q1" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Question 2</legend>
+
+                <!-- NOTE: textarea allows multi-line answers for short essay responses -->
+                <label for="q2">Explain what CSS is used for:</label>
+                <textarea id="q2" name="q2" rows="4" required></textarea>
+            </fieldset>
+
+            <fieldset>
+                <legend>Question 3</legend>
+
+                <!-- NOTE: select element creates a dropdown menu -->
+                <label for="q3">Which CSS property changes text color?</label>
+                <select id="q3" name="q3" required>
+                    <option value="" selected disabled>Choose One...</option>
+                    <option value="font-size">font-size</option>
+                    <option value="color">color</option>
+                    <option value="background">background</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>Question 4</legend>
+
+                <!-- NOTE: number input ensures only numeric answers are accepted -->
+                <label for="q4">How many HTML heading levels are there?</label>
+                <input type="number" id="q4" name="q4" min="1" max="10" required>
+            </fieldset>
+
+            <!-- SUBMIT BUTTON -->
+            <button type="submit">Submit Quiz</button>
+
+        </form>
+    </main>
+
+</body>
+</html>
