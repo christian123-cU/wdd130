@@ -69,14 +69,14 @@ nav a {
 /* HEADINGS */
 h1 {
     font-family: var(--heading-font);
-    color: var(--primary-color);
+    color: white;
 }
 
 h2 {
     font-family: var(--heading-font);
-    color: var(--primary-color);
+    color: white;
     text-align: center;
-    background-color: var(--accent2-color);
+    background-color: var(--primary-color);
     padding: 10px;
     border-left: 4px solid var(--secondary-color);
 }
@@ -386,7 +386,7 @@ input[type="checkbox"] {
 .cta {
     text-align: center;
     padding: 20px;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     color: white;
 }
 
@@ -509,7 +509,7 @@ input[type="checkbox"] {
 }
 
 .trips-table th {
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     color: white;
 }
 
