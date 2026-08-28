@@ -1,0 +1,179 @@
+:root {
+  /* Color — a ledger-book palette: cool paper, ink navy, and three
+     "stamp ink" colors that carry the same meaning everywhere in the
+     app (approved / pending / rejected). Deliberately not the warm
+     cream-and-terracotta or near-black-and-neon defaults. */
+  --paper: #EAEAE2;
+  --paper-raised: #F5F4EE;
+  --surface: #FFFFFF;
+  --ink: #1C2B33;
+  --ink-soft: #4A5A61;
+  --line: #D4D0C4;
+  --line-strong: #B7B2A2;
+
+  --stamp-teal: #2B6E62;
+  --stamp-teal-soft: #E3ECE9;
+  --stamp-amber: #B9812E;
+  --stamp-amber-soft: #F3E8D6;
+  --stamp-brick: #A23F2E;
+  --stamp-brick-soft: #F2E1DC;
+
+  --focus-ring: #2B6E62;
+
+  /* Type */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+
+  --radius-sm: 3px;
+  --radius-md: 6px;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--ink);
+}
+
+h1 { font-size: 1.9rem; font-weight: 500; }
+h2 { font-size: 1.3rem; }
+h3 { font-size: 1.05rem; }
+
+p { margin: 0 0 0.75rem; }
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+a {
+  color: var(--stamp-teal);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.9rem;
+  font-weight: 500;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+button:hover { background: var(--paper-raised); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+button.primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper-raised);
+}
+button.primary:hover { background: #29383F; }
+
+button.stamp-teal {
+  background: var(--stamp-teal);
+  border-color: var(--stamp-teal);
+  color: white;
+}
+button.stamp-teal:hover { background: #235A50; }
+
+button.stamp-brick {
+  background: transparent;
+  border-color: var(--stamp-brick);
+  color: var(--stamp-brick);
+}
+button.stamp-brick:hover { background: var(--stamp-brick-soft); }
+
+button.stamp-amber {
+  background: transparent;
+  border-color: var(--stamp-amber);
+  color: var(--stamp-amber);
+}
+button.stamp-amber:hover { background: var(--stamp-amber-soft); }
+
+input, select, textarea {
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.65rem;
+  background: var(--surface);
+  width: 100%;
+}
+
+label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.field { margin-bottom: 1rem; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+}
+
+.hairline {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 1.25rem 0;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.error-banner {
+  background: var(--stamp-brick-soft);
+  border: 1px solid var(--stamp-brick);
+  color: var(--stamp-brick);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--ink-soft);
+}

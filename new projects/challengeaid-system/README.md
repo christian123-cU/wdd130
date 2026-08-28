@@ -1,133 +1,103 @@
 # ChallengeAid Africa — Disbursement & Reconciliation System
 
-Phase 1 MVP backend API, built from `ChallengeAid_Disbursement_System_Design.docx` (System Design Document, Draft v2).
-
-## What this is
-
-A Node.js/Express + PostgreSQL API implementing the core workflow from the design doc:
+Everything in one place: the API backend and the web frontend, organized so the whole
+system comes up with one setup pass.
 
 ```
-Draft → Submitted → Finance Approved → Director Approved →
-Trustee Approved (1 of 4 → 4 of 4) → Disbursed → Reconciled
+challengeaid-system/
+├── backend/     Node.js/Express API + PostgreSQL schema (the workflow engine)
+├── frontend/    React (Vite) app your boss clicks through
+├── package.json Root convenience scripts (install/run both together)
+├── setup.sh     One-shot setup — Mac/Linux
+└── setup.ps1    One-shot setup — Windows PowerShell
 ```
 
-with Rejected / More Info Requested as branch states at any approval stage.
+Each folder also has its own detailed README (`backend/README.md`, `frontend/README.md`)
+covering exactly what's implemented and what isn't yet — read those for the full picture.
+This file is just the fastest path to "it's running."
 
-## What's implemented
+## Prerequisites
 
-- **Data model** (`schema.sql`) — all entities from Section 9.1: Users, Centres, BudgetLines,
-  PaymentRequests, Approvals (one row per individual approver decision), PaymentExecutions,
-  ReconciliationDocs, plus an AuditLog table. Foreign keys, uniqueness constraints (one decision
-  per approver per stage per request; one execution per request; one reconciliation doc per type
-  per request), and check constraints (positive amounts, non-negative budgets) are enforced at
-  the database level, not just in application code.
-- **Auth** — JWT-based login (`POST /api/auth/login`). Users are provisioned by an admin, not
-  self-registered, matching a finance system's usual access model.
-- **User & role management** — admin-only CRUD. Enforces the "exactly four trustees" business
-  rule from Section 5 (blocks a 5th active trustee; blocks dropping below four without an
-  explicit `?override=true`, e.g. for a resignation pending replacement).
-- **Approval workflow** (`src/services/approvalService.js`) — this is the core of the system.
-  Enforces the fixed Finance → Director → all-four-Trustees sequence regardless of amount
-  (Section 5), blocks a stage from acting out of order, prevents an approver from voting twice
-  at the same stage, and tracks "3 of 4 trustees signed" individually. Covered by unit tests
-  in `tests/approvalService.test.js`.
-- **Segregated payment execution** (Section 6) — `POST /api/payment-requests/:id/execute` is a
-  distinct step from approval, only callable once a request has cleared all four trustees, and
-  is a manual human action — nothing in this codebase auto-pays.
-- **Budget validation** (`src/services/budgetService.js`) — a new request is rejected if it
-  would exceed a budget line's remaining headroom, counting both already-spent funds and
-  everything else currently in the approval pipeline. Re-checked again at execution time.
-- **Reconciliation rules by payment type** (Section 7) — `src/services/reconciliationService.js`
-  encodes the required-document table exactly as specified and derives Reconciled /
-  Pending — Missing [X] automatically as documents are uploaded.
-- **Dashboard** (Section 8) — live disbursed/reconciled/outstanding counts and a 7/14/30-day
-  aging report, filterable by centre.
-- **Audit log** — every approval, rejection, execution, and reconciliation event writes an
-  `audit_log` row with actor, action, and details (Section 10).
+- Node.js 18+ and npm
+- PostgreSQL installed and running locally (or a connection string to one)
+- Redis, only if you want the notification worker running too (optional for a demo —
+  the app works fully without it)
 
-## Setup
+## Quick start
 
-1. Install Node.js 18+, then:
-   ```bash
-   npm install
-   ```
-2. Copy `.env.example` to `.env` and fill in real values (database credentials, a generated
-   `JWT_SECRET`, Redis connection).
-3. Create the database and apply the schema:
-   ```bash
-   createdb challengeaid_disbursement
-   npm run migrate
-   ```
-4. Seed demo centres, budget lines, and one user per role:
-   ```bash
-   npm run seed
-   ```
-   This prints the seeded login emails and a shared demo password — change it immediately in
-   any non-local environment.
-5. Start the API:
-   ```bash
-   npm start
-   ```
-6. (Optional, for approver reminders) start Redis and the worker separately:
-   ```bash
-   npm run worker
-   ```
-   The worker is a stub: it will log a warning and skip sending rather than fail, since no SMS
-   gateway has been chosen yet (Section 12 open question).
+### Mac / Linux
 
-Run the test suite with `npm test`.
+```bash
+cd challengeaid-system
+./setup.sh
+```
 
-## API summary
+### Windows (PowerShell)
 
-| Method & Path | Who | Purpose |
-|---|---|---|
-| `POST /api/auth/login` | anyone | Get a JWT |
-| `POST /api/users` | admin | Create a user |
-| `DELETE /api/users/:id` | admin | Deactivate a user |
-| `POST /api/centres` | admin | Create a centre |
-| `POST /api/budget-lines` | admin, finance | Create a budget line |
-| `POST /api/payment-requests` | staff | Submit a request |
-| `GET /api/payment-requests` | all | List requests (staff see only their own) |
-| `GET /api/payment-requests/:id` | all | Get one request with approval + reconciliation status |
-| `POST /api/payment-requests/:id/decision` | finance, director, trustee | Approve / reject / request info |
-| `POST /api/payment-requests/:id/execute` | finance, admin | Record the manual bank/mobile-money payout |
-| `POST /api/payment-requests/:id/documents` | staff, finance, admin | Attach a reconciliation document |
-| `GET /api/dashboard/summary` | director, trustee, finance, admin | Live counts |
-| `GET /api/dashboard/aging` | director, trustee, finance, admin | 7/14/30-day aging buckets |
+```powershell
+cd challengeaid-system
+.\setup.ps1
+```
 
-## Still needed before this is production-ready
+Either script installs dependencies for both projects and creates `backend/.env` and
+`frontend/.env` from their templates. **It will pause you here to edit `backend/.env`** —
+fill in your real PostgreSQL username/password and generate a `JWT_SECRET` (e.g.
+`openssl rand -hex 32`, or any long random string if that command isn't available on your
+system). The frontend's `.env` needs no changes for local use.
 
-This is a working API foundation with the highest-risk logic (approval sequencing, budget
-enforcement, reconciliation rules) implemented and tested — but it is **not yet a complete
-end-to-end system**. Notably missing:
+### Then, from the `challengeaid-system` folder:
 
-- **Frontend** — nothing in Section 11's "multi-stage approval dashboard" is built; this is
-  API-only. A React frontend (per the doc's suggested stack) would consume these endpoints.
-- **Real file storage for uploads** — `documents` endpoint accepts a `fileUrl` string; there's
-  no actual file upload handling (multipart, S3/object storage, virus scanning).
-- **SMS gateway integration** — the worker queues jobs but no gateway is wired in (Section 12
-  open question: which gateway to use).
-- **Escalation/reminder triggers** — nothing currently enqueues a reminder job when a request
-  sits awaiting one trustee's signature; the queue exists but is unused.
-- **Bank/M-Pesa webhook handling** — execution is recorded by the Finance Officer typing in a
-  transaction reference; there's no webhook to verify that reference against Cooperative Bank
-  independently (planned as a Phase 2 API integration per Section 6.2).
-- **Two-factor authentication** — recommended in Section 10 for Finance/Director/Trustee
-  accounts; not implemented (JWT password auth only).
-- **Exportable reports (PDF/Excel)** — Section 8's board-meeting export is not built.
-- **More granular tests** — the approval sequence has unit test coverage; budget validation,
-  reconciliation status transitions, and the HTTP layer (auth middleware, role checks, request
-  validation) do not yet have their own tests.
-- **Named Finance/Accounts Officer confirmation and hosting/budget decisions** — Section 12's
-  open questions are still open; nothing in code depends on their answers, but they'll shape
-  Phase 1 rollout.
+```bash
+# 1. Create the database (name must match PGDATABASE in backend/.env)
+createdb challengeaid_disbursement
 
-## Design decisions worth flagging back to Finance/Programme/Board
+# 2. Apply the schema
+npm run migrate
 
-- The "all four trustees on every request" rule is enforced exactly as specified, including for
-  small amounts — the design doc itself flags (Section 5) this may be worth revisiting for
-  trustee time after a few months of real use.
-- Budget validation counts pipeline commitments (submitted-but-not-yet-disbursed requests), not
-  just historically spent funds — this is stricter than the doc explicitly specifies, but avoids
-  two requests against the same thin budget line both clearing approval and then colliding at
-  execution time. Worth confirming this matches Finance's expectations.
+# 3. Seed demo centres, budget lines, and one login per role
+npm run seed
+
+# 4. Start both the API and the frontend together
+npm run dev
+```
+
+`npm run dev` runs the backend (port 3000) and frontend (port 5173) side by side in one
+terminal, each prefixed and color-coded so you can tell their logs apart. Open
+**http://localhost:5173** — that's what your boss opens too.
+
+If you'd rather run them in two separate terminals (useful for debugging one in isolation):
+
+```bash
+npm run dev:backend    # terminal 1
+npm run dev:frontend   # terminal 2
+```
+
+## Logging in
+
+The seed script prints login emails and a shared demo password to the terminal
+(default `ChangeMe123!` unless you changed `SEED_ADMIN_PASSWORD` in `backend/.env`).
+One account per role: `admin@`, `staff@`, `finance@`, `director@`, and four trustees
+(`trustee1@` through `trustee4@`), all `@challengeaid.org`.
+
+`frontend/README.md` has a full step-by-step script for demoing the entire approval →
+execution → reconciliation workflow across those accounts.
+
+## Verifying it's actually working
+
+```bash
+npm test                          # backend's automated tests
+curl http://localhost:3000/health # should return {"status":"ok"}
+```
+
+If `npm run dev` is running and you can log in at `localhost:5173` and see the request
+list, both halves are wired together correctly.
+
+## Before showing this to anyone outside your team
+
+- **Do not commit `backend/.env` or `frontend/.env`** — both are already listed in their
+  respective `.gitignore` files, but double-check before pushing to a shared repo.
+- Change the seeded demo password immediately if this ever runs anywhere other than your
+  own machine.
+- Read the "Still needed" sections in `backend/README.md` and `frontend/README.md` before
+  calling this production-ready — this is a working Phase 1 MVP (per the design doc's
+  phasing), not a finished system. It's honest about the gaps so nobody is surprised later.

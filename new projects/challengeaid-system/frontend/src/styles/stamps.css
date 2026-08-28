@@ -1,0 +1,91 @@
+/* The approval stamp row — the app's signature element. Each stage of
+   the approval chain (Finance, Director, four Trustees) is drawn as a
+   circular stamp outline. It fills with ink and gets a mark once
+   decided, echoing the physical rubber-stamped signoffs this system
+   replaces — that shift is the whole point of the project. */
+
+.stamp-row {
+  display: flex;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+  margin: 1.5rem 0;
+}
+
+.stamp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 84px;
+}
+
+.stamp-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2.5px solid var(--line-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  color: var(--line-strong);
+  background: var(--surface);
+  transition: all 160ms ease;
+}
+
+.stamp-circle.pending {
+  border-style: dashed;
+}
+
+.stamp-circle.approved {
+  border-color: var(--stamp-teal);
+  color: var(--stamp-teal);
+  background: var(--stamp-teal-soft);
+  transform: rotate(-6deg);
+}
+
+.stamp-circle.rejected {
+  border-color: var(--stamp-brick);
+  color: var(--stamp-brick);
+  background: var(--stamp-brick-soft);
+  transform: rotate(-6deg);
+}
+
+.stamp-circle.waiting-info {
+  border-color: var(--stamp-amber);
+  color: var(--stamp-amber);
+  background: var(--stamp-amber-soft);
+  transform: rotate(-6deg);
+}
+
+.stamp-label {
+  font-size: 0.74rem;
+  text-align: center;
+  color: var(--ink-soft);
+  line-height: 1.25;
+}
+
+.stamp-label .who {
+  display: block;
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 0.72rem;
+}
+
+/* Status badge used inline in lists/tables */
+.status-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.status-badge.neutral { background: var(--paper-raised); color: var(--ink-soft); border: 1px solid var(--line); }
+.status-badge.progress { background: var(--stamp-amber-soft); color: var(--stamp-amber); }
+.status-badge.good { background: var(--stamp-teal-soft); color: var(--stamp-teal); }
+.status-badge.bad { background: var(--stamp-brick-soft); color: var(--stamp-brick); }
