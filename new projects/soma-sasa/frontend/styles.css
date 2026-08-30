@@ -760,3 +760,179 @@ th {
 }
 
 .recommendation-card.hidden { display: none; }
+
+/* ==========================================================================
+   Subject sections (Literacy / Numeracy) within Young Learner Zone
+   ========================================================================== */
+
+.subject-section { margin-bottom: 32px; }
+
+.subject-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.subject-section-header h3 {
+  color: var(--primary-color);
+  font-size: 17px;
+}
+
+.level-badge {
+  display: inline-block;
+  background: var(--light-bg);
+  border: 1px solid var(--card-border);
+  color: var(--primary-color);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.mascot-card { position: relative; }
+
+.start-here-ribbon {
+  position: absolute;
+  top: -10px;
+  right: 12px;
+  background: var(--status-offline);
+  color: var(--primary-color);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+/* Placement quiz ("Find My Level") */
+.placement-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.placement-option-btn {
+  text-align: left;
+  width: 100%;
+}
+
+/* ==========================================================================
+   Template lessons (fill-in resume / cover letter / worksheets)
+   ========================================================================== */
+
+.template-form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.template-form label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+
+.template-form input[type="text"],
+.template-form textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.template-form input[type="text"]:focus,
+.template-form textarea:focus {
+  border-color: var(--accent-color);
+}
+
+.template-preview-heading {
+  color: var(--primary-color);
+  font-size: 14px;
+  margin-top: 18px;
+  margin-bottom: 6px;
+}
+
+.template-preview {
+  background: var(--light-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 12px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 220px;
+  overflow-y: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.template-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+/* ==========================================================================
+   LinkedIn message builder
+   ========================================================================== */
+
+.linkedin-scenarios {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+#linkedin-editor {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px;
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+#linkedin-editor:focus { border-color: var(--accent-color); }
+
+/* ==========================================================================
+   Checklist lessons (self-check / rubric criteria)
+   ========================================================================== */
+
+.checklist-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.checklist-item input[type="checkbox"] {
+  margin-top: 3px;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent-color);
+  flex-shrink: 0;
+}

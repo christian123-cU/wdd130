@@ -1,56 +1,544 @@
 [
   {
-    "id": "fln_01",
+    "id": "lit_beginner",
     "category": "fln",
-    "mascotId": "nambari",
-    "title": "Foundational Arithmetic: Base Ten Addition",
-    "desc": "Understand addition and carrying values using local market trade scenarios.",
-    "lessonContent": "In base ten, when adding values that equal 10 or more, you must carry the value over to the next place column. For example, if you buy tomatoes for KES 17 and onions for KES 15, calculate 7 + 5 = 12. Write down 2, and carry 1 to the tens column to calculate 1 + 1 + 1 = 3 (Total: KES 32).",
+    "subcategory": "literacy",
+    "level": "beginner",
+    "type": "quiz",
+    "title": "Letter Sounds: s, a, t, p, i, n",
+    "desc": "Learn your first letter sounds and blend them into simple sound-parts.",
+    "lessonContent": "These six letters are often the very first sounds young readers learn: s, a, t, p, i, n. Say each sound out loud: 'sss', 'a', 't', 'p', 'i', 'n'. When we put two sounds together, we can blend them into a new sound-part. For example, 't' and 'a' blend into 'ta'. Practice blending sounds slowly at first, then faster.",
     "quiz": {
-      "question": "Calculate the total cost of buying goods priced at KES 28 and KES 14:",
-      "options": ["KES 42", "KES 38", "KES 32"],
+      "question": "Blend the sounds 's' and 'a' together. What do you get?",
+      "options": [
+        "sa",
+        "pi",
+        "nt"
+      ],
       "correctIndex": 0,
-      "hint": "Add the ones column first (8 + 4), then carry the extra ten into the tens column."
+      "hint": "Say 's' then 'a' quickly, one right after the other."
+    }
+  },
+  {
+    "id": "lit_word",
+    "category": "fln",
+    "subcategory": "literacy",
+    "level": "word",
+    "type": "quiz",
+    "title": "Story Time: Cat and Rat",
+    "desc": "Read a short story about a cat and a rat, and answer questions about what happened.",
+    "lessonContent": "The cat sits on the chair. He waits for the rat. The rat is under the chair. The rat hides from the cat. The cat jumps. The rat runs away. The cat is tired. He sleeps under the chair.",
+    "quiz": {
+      "question": "Where does the rat hide from the cat?",
+      "options": [
+        "On the chair",
+        "Under the chair",
+        "Outside the house"
+      ],
+      "correctIndex": 1,
+      "hint": "Read the second sentence about the rat again."
+    }
+  },
+  {
+    "id": "lit_paragraph",
+    "category": "fln",
+    "subcategory": "literacy",
+    "level": "paragraph",
+    "type": "quiz",
+    "title": "Reading Practice: My School",
+    "desc": "Read a paragraph about school life and check your understanding.",
+    "lessonContent": "My school is the best. We go to school from Monday to Friday. We learn to read and write. I listen to the teacher. I do my homework. My school has a big playground. We play games at break time. I play football with my friends. Others skip with a rope. The bell rings. We run back to class.",
+    "quiz": {
+      "question": "What games are played at break time in this story?",
+      "options": [
+        "Football and skipping rope",
+        "Swimming and running",
+        "Chess and painting"
+      ],
+      "correctIndex": 0,
+      "hint": "Look for the sentence naming what the writer and friends play."
+    }
+  },
+  {
+    "id": "lit_story",
+    "category": "fln",
+    "subcategory": "literacy",
+    "level": "story",
+    "type": "quiz",
+    "title": "Story Time: A Lion and the Rat",
+    "desc": "A longer story about a lion and a rat who become unlikely friends.",
+    "lessonContent": "The lion had just finished his meal. He was resting under a shade. Suddenly, a rat decided to play on his face. The lion caught the rat and wanted to eat him. The rat begged him to save his life. The lion decided to let him go. One day, the lion fell into a hunter's trap. He roared in anger. The whole forest could hear him. The rat knew it was time to return the favor. Before the hunters came back, the rat ate up the trap and the lion was free. He thanked the grateful rat.",
+    "quiz": {
+      "question": "How did the rat save the lion?",
+      "options": [
+        "By roaring loudly to scare the hunters away",
+        "By eating through the trap to free him",
+        "By hiding the lion in a hole"
+      ],
+      "correctIndex": 1,
+      "hint": "Think about what the rat is good at — chewing things."
     }
   },
   {
     "id": "fln_02",
     "category": "fln",
-    "mascotId": "herufi",
+    "subcategory": "literacy",
+    "level": "word",
+    "type": "quiz",
     "title": "Foundational Literacy: Simple Word Sounds",
     "desc": "Master sounding out combined consonants (digraphs) in common Swahili or English words.",
     "lessonContent": "Digraphs are pairs of letters that write one single sound, like 'sh' in 'shule' (school) or 'ch' in 'chakula' (food). Sounding these letter groupings as a single sound helps build reading fluency.",
     "quiz": {
       "question": "Which sound group completes the word '___akula' to mean food in Swahili?",
-      "options": ["sh", "ch", "th"],
+      "options": [
+        "sh",
+        "ch",
+        "th"
+      ],
       "correctIndex": 1,
-      "hint": "Say the word slowly out loud \u2014 'ch' plus 'akula' makes 'chakula'."
+      "hint": "Say the word slowly out loud — 'ch' plus 'akula' makes 'chakula'."
+    }
+  },
+  {
+    "id": "num_1digit",
+    "category": "fln",
+    "subcategory": "numeracy",
+    "level": "1digit",
+    "type": "quiz",
+    "title": "Number Sense: Adding Small Numbers",
+    "desc": "Build confidence adding numbers from 1 to 9 using oral practice.",
+    "lessonContent": "Before adding big numbers, it helps to be fast with small ones. When you add two small numbers, count on from the bigger number. For example, for 5 + 3, start at 5 and count on: 6, 7, 8. So 5 + 3 = 8. Ask yourself: What numbers am I adding? What do I need to do? Why?",
+    "quiz": {
+      "question": "What is 6 + 3?",
+      "options": [
+        "8",
+        "9",
+        "10"
+      ],
+      "correctIndex": 1,
+      "hint": "Start at 6 and count on 3 more: 7, 8, 9."
+    }
+  },
+  {
+    "id": "fln_01",
+    "category": "fln",
+    "subcategory": "numeracy",
+    "level": "2digit",
+    "type": "quiz",
+    "title": "Foundational Arithmetic: Base Ten Addition",
+    "desc": "Understand addition and carrying values using local market trade scenarios.",
+    "lessonContent": "In base ten, when adding values that equal 10 or more, you must carry the value over to the next place column. For example, if you buy tomatoes for KES 17 and onions for KES 15, calculate 7 + 5 = 12. Write down 2, and carry 1 to the tens column to calculate 1 + 1 + 1 = 3 (Total: KES 32).",
+    "quiz": {
+      "question": "Calculate the total cost of buying goods priced at KES 28 and KES 14:",
+      "options": [
+        "KES 42",
+        "KES 38",
+        "KES 32"
+      ],
+      "correctIndex": 0,
+      "hint": "Add the ones column first (8 + 4), then carry the extra ten into the tens column."
+    }
+  },
+  {
+    "id": "num_2digit_sub",
+    "category": "fln",
+    "subcategory": "numeracy",
+    "level": "2digit",
+    "type": "quiz",
+    "title": "Market Skills: Two-Digit Subtraction",
+    "desc": "Practice subtracting two-digit numbers using a real market scenario.",
+    "lessonContent": "Yussuf had 24 tickets and sold 17 of them at the market. To find out how many are unsold, we subtract: 24 - 17. Subtract the ones first: 4 is smaller than 7, so borrow a ten from the tens column, making it 14 - 7 = 7 ones, with 1 ten left. Then subtract the tens: 1 - 1 = 0. So 24 - 17 = 7. Ask yourself: What is given? What is being asked? What do I need to do?",
+    "quiz": {
+      "question": "Yussuf had 24 tickets and sold 17. How many tickets are unsold?",
+      "options": [
+        "7",
+        "9",
+        "6"
+      ],
+      "correctIndex": 0,
+      "hint": "Borrow a ten to subtract the ones column: 14 - 7 = 7."
+    }
+  },
+  {
+    "id": "num_3digit_add",
+    "category": "fln",
+    "subcategory": "numeracy",
+    "level": "3digit",
+    "type": "quiz",
+    "title": "Farm Records: Three-Digit Addition",
+    "desc": "Add three-digit numbers with carrying, using a farm harvest scenario.",
+    "lessonContent": "Ahmed grew 127 pumpkins and Junaid grew 148. To find the total, add the ones first: 7 + 8 = 15. Write down 5 and carry 1 ten. Then add the tens: 2 + 4 + 1 (carried) = 7. Then add the hundreds: 1 + 1 = 2. So 127 + 148 = 275.",
+    "quiz": {
+      "question": "Ahmed grew 127 pumpkins and Junaid grew 148. How many pumpkins did they grow in total?",
+      "options": [
+        "265",
+        "275",
+        "285"
+      ],
+      "correctIndex": 1,
+      "hint": "Add the ones first (7+8=15), carry the 1, then add the tens and hundreds."
+    }
+  },
+  {
+    "id": "num_mult",
+    "category": "fln",
+    "subcategory": "numeracy",
+    "level": "multiplication",
+    "type": "quiz",
+    "title": "Shopping Math: Multiplication",
+    "desc": "Solve a multiplication word problem about buying cups at the market.",
+    "lessonContent": "James buys 4 cups at 56 shillings each. To find the total cost, multiply: 4 x 56. Split 56 into 50 and 6: 4 x 50 = 200, and 4 x 6 = 24. Add the parts together: 200 + 24 = 224. So James spends 224 shillings.",
+    "quiz": {
+      "question": "James buys 4 cups at 56 shillings each. How much does he spend in total?",
+      "options": [
+        "204 shillings",
+        "224 shillings",
+        "244 shillings"
+      ],
+      "correctIndex": 1,
+      "hint": "Split 56 into 50 and 6, multiply each by 4, then add the results."
+    }
+  },
+  {
+    "id": "num_div",
+    "category": "fln",
+    "subcategory": "numeracy",
+    "level": "division",
+    "type": "quiz",
+    "title": "Sharing Fairly: Division with Remainders",
+    "desc": "Practice dividing a group of items equally, including what happens when there's a remainder.",
+    "lessonContent": "Yasin has 35 marbles to share equally among 4 friends. Divide 35 by 4: 4 x 8 = 32, which is the closest we can get without going over 35. Each friend gets 8 marbles, and there are 35 - 32 = 3 marbles left over as the remainder.",
+    "quiz": {
+      "question": "Yasin shares 35 marbles equally among 4 friends. How many marbles does each friend get, and how many are left over?",
+      "options": [
+        "8 each, 3 left over",
+        "7 each, 7 left over",
+        "9 each, 0 left over"
+      ],
+      "correctIndex": 0,
+      "hint": "Think: what number times 4 gets closest to 35 without going over?"
     }
   },
   {
     "id": "prof_01",
     "category": "professional",
+    "type": "quiz",
     "title": "M-PESA Business Safety & Scam Detection",
     "desc": "Identify secure practices to protect your business receipts and digital wallet keys.",
     "lessonContent": "Protecting your digital assets is crucial. Mobile money providers will never ask for your private PIN over the phone. If you receive a phone call claiming there is a transaction error and requesting your credentials, end the call immediately and report the occurrence through your secure user interface.",
     "quiz": {
       "question": "If a caller requests your mobile money PIN to reverse an accidental transaction, you should:",
-      "options": ["Tell them your PIN immediately", "Hang up and report the suspicious contact", "Give them a temporary alternative PIN"],
+      "options": [
+        "Tell them your PIN immediately",
+        "Hang up and report the suspicious contact",
+        "Give them a temporary alternative PIN"
+      ],
       "correctIndex": 1,
-      "hint": "No legitimate provider ever needs your PIN over a phone call \u2014 not even to 'fix' something."
+      "hint": "No legitimate provider ever needs your PIN over a phone call — not even to 'fix' something."
     }
   },
   {
     "id": "prof_02",
     "category": "professional",
+    "type": "quiz",
     "title": "Building a Simple Professional Resume",
     "desc": "Structure your skills to secure technical apprenticeships or vocational jobs.",
     "lessonContent": "A professional CV lists contact info, key skills, and previous experience in reverse chronological order. Highlighting practical, volunteer, and community projects (such as peer-circle support) demonstrates your leadership capacity.",
     "quiz": {
       "question": "Which section is the most critical to place at the top of a modern resume for technical work?",
-      "options": ["List of personal hobbies", "Your primary school name", "Contact details and key technical/practical skills"],
+      "options": [
+        "List of personal hobbies",
+        "Your primary school name",
+        "Contact details and key technical/practical skills"
+      ],
       "correctIndex": 2,
       "hint": "An employer needs to know who you are and what you can do before anything else."
     }
+  },
+  {
+    "id": "prof_resume_builder",
+    "category": "professional",
+    "type": "template",
+    "title": "Resume Builder",
+    "desc": "Fill in your details to build a clean, professional resume you can copy or download.",
+    "templateFields": [
+      {
+        "id": "fullName",
+        "label": "Full Name",
+        "placeholder": "Jane Wanjiru"
+      },
+      {
+        "id": "contact",
+        "label": "Location & Contact",
+        "placeholder": "Nairobi, Kenya | your.email@gmail.com | +254 7XX XXX XXX"
+      },
+      {
+        "id": "summary",
+        "label": "Professional Summary (2-3 sentences)",
+        "placeholder": "A brief summary of your experience, skills, and what you're looking for next.",
+        "multiline": true
+      },
+      {
+        "id": "skills",
+        "label": "Key Skills (comma-separated)",
+        "placeholder": "Customer service, Microsoft Excel, Team leadership"
+      },
+      {
+        "id": "exp1",
+        "label": "Experience — Role, Organization, Dates",
+        "placeholder": "Sales Assistant, ABC Traders — Jan 2023 to Present"
+      },
+      {
+        "id": "exp1bullets",
+        "label": "What you did (one achievement per line)",
+        "placeholder": "Increased weekly sales by 15% through better customer follow-up",
+        "multiline": true
+      },
+      {
+        "id": "education",
+        "label": "Education",
+        "placeholder": "Certificate in Business Studies, XYZ College, 2022"
+      },
+      {
+        "id": "certifications",
+        "label": "Certifications (optional)",
+        "placeholder": "First Aid Certification, Red Cross"
+      }
+    ],
+    "templateOutput": "{{fullName}}\n{{contact}}\n\nPROFESSIONAL SUMMARY\n{{summary}}\n\nSKILLS\n{{skills}}\n\nEXPERIENCE\n{{exp1}}\n{{exp1bullets}}\n\nEDUCATION\n{{education}}\n\nCERTIFICATIONS\n{{certifications}}"
+  },
+  {
+    "id": "prof_coverletter_builder",
+    "category": "professional",
+    "type": "template",
+    "title": "Cover Letter Builder",
+    "desc": "Build a personalized cover letter using a professional structure.",
+    "templateFields": [
+      {
+        "id": "fullName",
+        "label": "Your Full Name",
+        "placeholder": "Jane Wanjiru"
+      },
+      {
+        "id": "contact",
+        "label": "Contact Info",
+        "placeholder": "Nairobi, Kenya | your.email@gmail.com | +254 7XX XXX XXX"
+      },
+      {
+        "id": "date",
+        "label": "Date",
+        "placeholder": "August 30, 2026"
+      },
+      {
+        "id": "recruiter",
+        "label": "Recruiter/Hiring Manager Name & Title",
+        "placeholder": "Mr. John Otieno, Hiring Manager"
+      },
+      {
+        "id": "company",
+        "label": "Company Name",
+        "placeholder": "Acme Traders Ltd"
+      },
+      {
+        "id": "intro",
+        "label": "Introduction (position, where you saw it, why excited)",
+        "placeholder": "I am writing to apply for the Sales Assistant position advertised on...",
+        "multiline": true
+      },
+      {
+        "id": "body",
+        "label": "Why you're a fit (skills, achievements, alignment)",
+        "placeholder": "In my previous role at..., I...",
+        "multiline": true
+      },
+      {
+        "id": "closing",
+        "label": "Closing (thanks + availability)",
+        "placeholder": "Thank you for considering my application. I would welcome the chance to discuss...",
+        "multiline": true
+      }
+    ],
+    "templateOutput": "{{fullName}}\n{{contact}}\n\n{{date}}\n\n{{recruiter}}\n{{company}}\n\nDear {{recruiter}},\n\n{{intro}}\n\n{{body}}\n\n{{closing}}\n\nSincerely,\n{{fullName}}"
+  },
+  {
+    "id": "prof_careerplan_worksheet",
+    "category": "professional",
+    "type": "template",
+    "title": "Build a Career Plan",
+    "desc": "Set your career goals across different time horizons.",
+    "templateFields": [
+      {
+        "id": "overallGoal",
+        "label": "Overall Career Goal",
+        "multiline": true
+      },
+      {
+        "id": "shortTerm",
+        "label": "Short-term Career Goals",
+        "multiline": true
+      },
+      {
+        "id": "longTerm",
+        "label": "Long-term Career Goals",
+        "multiline": true
+      },
+      {
+        "id": "oneYear",
+        "label": "One-Year Goals",
+        "multiline": true
+      },
+      {
+        "id": "threeYear",
+        "label": "Three-Year Goals",
+        "multiline": true
+      },
+      {
+        "id": "fiveYear",
+        "label": "Five-Year Goals",
+        "multiline": true
+      }
+    ],
+    "templateOutput": "MY CAREER PLAN\n\nOverall Career Goal:\n{{overallGoal}}\n\nShort-term Goals:\n{{shortTerm}}\n\nLong-term Goals:\n{{longTerm}}\n\nOne-Year Goals:\n{{oneYear}}\n\nThree-Year Goals:\n{{threeYear}}\n\nFive-Year Goals:\n{{fiveYear}}"
+  },
+  {
+    "id": "prof_careerexplore_worksheet",
+    "category": "professional",
+    "type": "template",
+    "title": "Career Path Exploration",
+    "desc": "Research and organize your thinking about a career path you're considering.",
+    "templateFields": [
+      {
+        "id": "occupations",
+        "label": "Occupations of Interest",
+        "multiline": true
+      },
+      {
+        "id": "skillsReq",
+        "label": "Required Skills",
+        "multiline": true
+      },
+      {
+        "id": "positions",
+        "label": "Available Job Positions",
+        "multiline": true
+      },
+      {
+        "id": "companies",
+        "label": "Companies I'm Interested In",
+        "multiline": true
+      },
+      {
+        "id": "salary",
+        "label": "Expected Salary"
+      },
+      {
+        "id": "education",
+        "label": "Additional Education Required"
+      },
+      {
+        "id": "interviews",
+        "label": "Informational Interviews"
+      },
+      {
+        "id": "shadowing",
+        "label": "Job Shadowing Opportunities"
+      },
+      {
+        "id": "internships",
+        "label": "Available Internships"
+      },
+      {
+        "id": "actionPlan",
+        "label": "Action Plan (list your steps)",
+        "multiline": true
+      }
+    ],
+    "templateOutput": "CAREER PATH EXPLORATION\n\nOccupations of Interest:\n{{occupations}}\n\nRequired Skills:\n{{skillsReq}}\n\nAvailable Job Positions:\n{{positions}}\n\nCompanies I'm Interested In:\n{{companies}}\n\nExpected Salary:\n{{salary}}\n\nAdditional Education Required:\n{{education}}\n\nInformational Interviews:\n{{interviews}}\n\nJob Shadowing Opportunities:\n{{shadowing}}\n\nAvailable Internships:\n{{internships}}\n\nAction Plan:\n{{actionPlan}}"
+  },
+  {
+    "id": "prof_linkedin_templates",
+    "category": "professional",
+    "type": "linkedin",
+    "title": "LinkedIn Connection Message Builder",
+    "desc": "Pick a scenario, then personalize a ready-made LinkedIn connection message.",
+    "scenarios": [
+      {
+        "label": "Same school as them",
+        "text": "Hi [First Name],\nWe are both students at [College/University] and I would like to connect with you on LinkedIn."
+      },
+      {
+        "label": "Mutual connection",
+        "text": "Hi [First Name],\nWe both know [Mutual Contact] and I see you're connected on LinkedIn. I would like to join your network."
+      },
+      {
+        "label": "Alumnus of your college",
+        "text": "Hi [First Name],\nI see you are an alumnus of [College/University], and I look forward to being one too, as a [Your Major] student. I hope you'll consider connecting."
+      },
+      {
+        "label": "Works at a company you want",
+        "text": "Hi [First Name],\nWe haven't met, but your profile came up when I was looking at openings at [Company Name]. I'd love to connect."
+      },
+      {
+        "label": "Fellow group member",
+        "text": "Hi [First Name],\nI'm a fellow member of the [Group Name] LinkedIn group. I hope you'll consider connecting."
+      },
+      {
+        "label": "No prior connection",
+        "text": "Hi [First Name],\nI'm a [Your Major] student graduating from [College/University] this year and would appreciate joining your network."
+      },
+      {
+        "label": "Met at a conference",
+        "text": "Hi [First Name],\nIt was a pleasure to hear you speak at [Event]. Your talk was genuinely helpful for my job search. I'd like to connect."
+      },
+      {
+        "label": "They viewed your profile",
+        "text": "Hi [First Name],\nThanks for visiting my profile! I'd love to connect and learn more about your work at [Company Name]."
+      },
+      {
+        "label": "Before applying to their job post",
+        "text": "Hi [First Name],\nI noticed the position you posted and have hands-on experience in [Skill]. I'd appreciate connecting to discuss it."
+      },
+      {
+        "label": "After applying to their job post",
+        "text": "Hi [First Name],\nI wanted to let you know I applied for the [Position Title] role. I'd appreciate connecting to discuss how I could add value."
+      }
+    ]
+  },
+  {
+    "id": "prof_checklist",
+    "category": "professional",
+    "type": "checklist",
+    "title": "Application Quality Checklist",
+    "desc": "Self-check your resume, cover letter, and LinkedIn profile before you apply.",
+    "checklistItems": [
+      {
+        "id": "customize",
+        "label": "I customized this for the specific job/company"
+      },
+      {
+        "id": "keywords",
+        "label": "I used keywords from the job description"
+      },
+      {
+        "id": "proofread",
+        "label": "I checked spelling, grammar, and formatting"
+      },
+      {
+        "id": "peerreview",
+        "label": "I asked someone else to review it"
+      },
+      {
+        "id": "linkedinfields",
+        "label": "My LinkedIn profile has all core fields completed (headline, summary, photo, banner)"
+      },
+      {
+        "id": "linkedinskills",
+        "label": "I've added 30+ relevant skills to my LinkedIn profile"
+      },
+      {
+        "id": "linkedinrecs",
+        "label": "I've requested at least one LinkedIn recommendation"
+      }
+    ]
   }
 ]

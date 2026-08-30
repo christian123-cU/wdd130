@@ -21,6 +21,23 @@
 const API_BASE_URL = "http://localhost:3001/api";
 const HEALTH_TIMEOUT_MS = 2500;
 
+// Level ordering for the two FLN subjects, used for sorting and placement.
+const LITERACY_LEVELS = ["beginner", "word", "paragraph", "story"];
+const LITERACY_LEVEL_LABELS = {
+  beginner: "Beginner",
+  word: "Word Level",
+  paragraph: "Paragraph Level",
+  story: "Story Level",
+};
+const NUMERACY_LEVELS = ["1digit", "2digit", "3digit", "multiplication", "division"];
+const NUMERACY_LEVEL_LABELS = {
+  "1digit": "Number Sense (1-digit)",
+  "2digit": "2-Digit Numbers",
+  "3digit": "3-Digit Numbers",
+  multiplication: "Multiplication",
+  division: "Division",
+};
+
 // ---- Global platform state ----
 let courses = [];
 let isServerReachable = false;
@@ -181,6 +198,15 @@ function switchStudentMode(mode) {
 }
 
 // ==========================================================================
+// Mascot lookup: literacy/numeracy courses are guided by one mascot each
+// ==========================================================================
+function getMascotForCourse(course) {
+  if (course.subcategory === "literacy") return getMascot("herufi");
+  if (course.subcategory === "numeracy") return getMascot("nambari");
+  return null;
+}
+
+// ==========================================================================
 // YOUNG LEARNER MODE — mascot-guided FLN courses, stars, streaks, badges
 // ==========================================================================
 function renderYoungMode() {
@@ -191,18 +217,49 @@ function renderYoungMode() {
   const grid = document.getElementById("young-course-grid");
   grid.innerHTML = "";
 
-  const flnCourses = courses.filter((c) => c.category === "fln");
-  if (flnCourses.length === 0) {
+  const literacyCourses = sortByLevel(courses.filter((c) => c.subcategory === "literacy"), LITERACY_LEVELS);
+  const numeracyCourses = sortByLevel(courses.filter((c) => c.subcategory === "numeracy"), NUMERACY_LEVELS);
+
+  if (literacyCourses.length === 0 && numeracyCourses.length === 0) {
     grid.innerHTML = "<p class='empty-state'>No lessons loaded yet. Please sync when online.</p>";
     return;
   }
 
-  flnCourses.forEach((course) => {
-    const mascot = getMascot(course.mascotId);
+  grid.appendChild(renderSubjectSection("📖 Literacy", "literacy", literacyCourses, LITERACY_LEVEL_LABELS));
+  grid.appendChild(renderSubjectSection("🔢 Numeracy", "numeracy", numeracyCourses, NUMERACY_LEVEL_LABELS));
+
+  renderBadgeShelf(courses.filter((c) => c.category === "fln"), profile);
+}
+
+function sortByLevel(list, levelOrder) {
+  return [...list].sort((a, b) => levelOrder.indexOf(a.level) - levelOrder.indexOf(b.level));
+}
+
+function renderSubjectSection(title, subject, subjectCourses, levelLabels) {
+  const section = document.createElement("div");
+  section.className = "subject-section";
+
+  const recommendedId = getRecommendedCourseId(subject, subjectCourses);
+
+  const header = document.createElement("div");
+  header.className = "subject-section-header";
+  header.innerHTML = `
+    <h3>${title}</h3>
+    <button class="mode-back-btn" onclick="openPlacementQuiz('${subject}')">🎯 Find My Level</button>
+  `;
+  section.appendChild(header);
+
+  const grid = document.createElement("div");
+  grid.className = "grid-layout young-grid";
+
+  subjectCourses.forEach((course) => {
+    const mascot = getMascotForCourse(course);
     const completed = getCourseProgress(course.id).completed;
+    const isRecommended = course.id === recommendedId && !completed;
     const card = document.createElement("div");
     card.className = "mascot-card";
     card.innerHTML = `
+      ${isRecommended ? `<span class="start-here-ribbon">⭐ Start Here</span>` : ""}
       <div class="mascot-card-top">
         <div class="mascot-avatar">${mascot ? mascot.svg : ""}</div>
         <div class="mascot-name-role">
@@ -210,6 +267,7 @@ function renderYoungMode() {
           <span>${escapeHtml(mascot ? mascot.role : "")}</span>
         </div>
       </div>
+      <span class="level-badge">${escapeHtml(levelLabels[course.level] || course.level || "")}</span>
       <div class="mascot-course-title">${escapeHtml(course.title)}</div>
       <div class="mascot-speech-bubble">"${escapeHtml(mascot ? mascot.greeting : "")}"</div>
       <div class="course-status-row">
@@ -224,7 +282,8 @@ function renderYoungMode() {
     grid.appendChild(card);
   });
 
-  renderBadgeShelf(flnCourses, profile);
+  section.appendChild(grid);
+  return section;
 }
 
 function renderBadgeShelf(flnCourses, profile) {
@@ -232,7 +291,7 @@ function renderBadgeShelf(flnCourses, profile) {
   shelf.innerHTML = "";
   flnCourses.forEach((course) => {
     const unlocked = profile.badges.includes(course.id);
-    const mascot = getMascot(course.mascotId);
+    const mascot = getMascotForCourse(course);
     const item = document.createElement("div");
     item.className = `badge-item ${unlocked ? "unlocked" : ""}`;
     item.innerHTML = `
@@ -241,6 +300,59 @@ function renderBadgeShelf(flnCourses, profile) {
     `;
     shelf.appendChild(item);
   });
+}
+
+// ==========================================================================
+// "Find My Level" placement quiz — self-reported starting level
+// ==========================================================================
+const PLACEMENT_OPTIONS = {
+  literacy: [
+    { label: "I don't know letters yet", level: "beginner" },
+    { label: "I can read some words", level: "word" },
+    { label: "I can read a short paragraph", level: "paragraph" },
+    { label: "I can read a whole story", level: "story" },
+  ],
+  numeracy: [
+    { label: "I'm still learning numbers", level: "1digit" },
+    { label: "I know 2-digit numbers (10-99)", level: "2digit" },
+    { label: "I know 3-digit numbers (100-999)", level: "3digit" },
+    { label: "I can subtract, ready for multiplication", level: "multiplication" },
+    { label: "I can multiply, ready for division", level: "division" },
+  ],
+};
+
+function openPlacementQuiz(subject) {
+  const options = PLACEMENT_OPTIONS[subject];
+  const payload = document.getElementById("placement-payload");
+  payload.innerHTML = `
+    <h2>Find your ${subject === "literacy" ? "reading" : "number"} level</h2>
+    <p class="lesson-content">Pick what feels true right now — you can always change this later.</p>
+    <div class="placement-options">
+      ${options.map((opt) => `
+        <button class="action-btn placement-option-btn" onclick="setPlacementLevel('${subject}', '${opt.level}')">
+          ${escapeHtml(opt.label)}
+        </button>
+      `).join("")}
+    </div>
+  `;
+  document.getElementById("placement-modal").classList.remove("hidden");
+}
+
+function closePlacementQuiz() {
+  document.getElementById("placement-modal").classList.add("hidden");
+}
+
+function setPlacementLevel(subject, level) {
+  localStorage.setItem(`${subject}_level`, level);
+  closePlacementQuiz();
+  renderYoungMode();
+}
+
+function getRecommendedCourseId(subject, subjectCourses) {
+  const savedLevel = localStorage.getItem(`${subject}_level`);
+  if (!savedLevel) return null;
+  const match = subjectCourses.find((c) => c.level === savedLevel && !getCourseProgress(c.id).completed);
+  return match ? match.id : null;
 }
 
 // ==========================================================================
@@ -268,22 +380,29 @@ function renderSkillsMode() {
 
   professionalCourses.forEach((course) => {
     const progress = getCourseProgress(course.id);
+    const typeLabel = { quiz: "Quiz Module", template: "Interactive Template", linkedin: "Message Builder", checklist: "Self-Check" }[course.type] || "Module";
+    const actionLabel = {
+      quiz: progress.completed ? "Review Module" : "Start Module",
+      template: progress.completed ? "Edit Template" : "Fill In Template",
+      linkedin: progress.completed ? "Edit Messages" : "Build Messages",
+      checklist: progress.completed ? "Review Checklist" : "Start Checklist",
+    }[course.type] || "Open";
+
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
       <div class="course-card-body">
+        <span class="level-badge">${typeLabel}</span>
         <h3>${escapeHtml(course.title)}</h3>
         <p>${escapeHtml(course.desc)}</p>
         <div class="course-status-row">
           <span class="badge ${progress.completed ? "online" : "offline"}">
-            ${progress.completed ? "Mastered ✓" : "Not started"}
+            ${progress.completed ? "Done ✓" : "Not started"}
           </span>
           ${progress.attempts > 0 ? `<span class="badge offline">${progress.attempts} past miss${progress.attempts > 1 ? "es" : ""}</span>` : ""}
         </div>
       </div>
-      <button class="action-btn" onclick="startLesson('${course.id}')">
-        ${progress.completed ? "Review Module" : "Start Module"}
-      </button>
+      <button class="action-btn" onclick="startLesson('${course.id}')">${actionLabel}</button>
     `;
     grid.appendChild(card);
   });
@@ -293,7 +412,6 @@ function renderSkillsMode() {
 function computeRecommendation(professionalCourses) {
   const notStarted = professionalCourses.filter((c) => !getCourseProgress(c.id).completed);
   if (notStarted.length > 0) {
-    // Prioritise a course that's never been attempted at all.
     const fresh = notStarted.find((c) => getCourseProgress(c.id).attempts === 0);
     const target = fresh || notStarted[0];
     const reason = fresh
@@ -302,14 +420,14 @@ function computeRecommendation(professionalCourses) {
     return { course: target, reason };
   }
 
-  // Everything is complete: suggest a review of whatever was hardest.
-  const struggled = [...professionalCourses].sort(
+  const quizCourses = professionalCourses.filter((c) => (c.type || "quiz") === "quiz");
+  const struggled = [...quizCourses].sort(
     (a, b) => getCourseProgress(b.id).attempts - getCourseProgress(a.id).attempts
   )[0];
   if (struggled && getCourseProgress(struggled.id).attempts > 0) {
     return { course: struggled, reason: "You found this tricky earlier — a quick review will lock it in." };
   }
-  return null; // aced everything, nothing to recommend
+  return null;
 }
 
 function renderRecommendation(professionalCourses) {
@@ -329,14 +447,27 @@ function renderRecommendation(professionalCourses) {
 }
 
 // ==========================================================================
-// Lesson modal + quiz with retry handling (shared by both modes)
+// Lesson modal — dispatches by course.type: quiz | template | linkedin | checklist
 // ==========================================================================
 function startLesson(id) {
   const course = courses.find((c) => c.id === id);
   if (!course) return;
+  const type = course.type || "quiz";
 
+  if (type === "template") return startTemplateLesson(course);
+  if (type === "linkedin") return startLinkedInLesson(course);
+  if (type === "checklist") return startChecklistLesson(course);
+  return startQuizLesson(course);
+}
+
+function closeLesson() {
+  document.getElementById("lesson-modal").classList.add("hidden");
+}
+
+// ---- Quiz lessons (FLN + simple professional courses) ----
+function startQuizLesson(course) {
   currentQuizAttempts = 0;
-  const mascot = getMascot(course.mascotId);
+  const mascot = getMascotForCourse(course);
   const payload = document.getElementById("lesson-payload");
   payload.innerHTML = `
     ${mascot ? `<div class="mascot-card-top" style="margin-bottom:10px;">
@@ -363,13 +494,9 @@ function startLesson(id) {
   document.getElementById("lesson-modal").classList.remove("hidden");
 }
 
-function closeLesson() {
-  document.getElementById("lesson-modal").classList.add("hidden");
-}
-
 function evaluateAnswer(courseId, selectedIndex, correctIndex) {
   const course = courses.find((c) => c.id === courseId);
-  const mascot = getMascot(course?.mascotId);
+  const mascot = getMascotForCourse(course);
   const feedback = document.getElementById("quiz-feedback");
   const attemptsEl = document.getElementById("quiz-attempts");
   const hintEl = document.getElementById("quiz-hint");
@@ -392,7 +519,6 @@ function evaluateAnswer(courseId, selectedIndex, correctIndex) {
     return;
   }
 
-  // Wrong answer: lock that option out, let them retry the rest
   currentQuizAttempts += 1;
   recordAttempt(courseId);
   selectedBtn.classList.add("wrong");
@@ -404,6 +530,177 @@ function evaluateAnswer(courseId, selectedIndex, correctIndex) {
   if (currentQuizAttempts >= 2 && course?.quiz?.hint) {
     hintEl.innerText = `Hint: ${course.quiz.hint}`;
     hintEl.classList.remove("hidden");
+  }
+}
+
+// ---- Template lessons (fill-in resume/cover letter/worksheets) ----
+function getTemplateData(courseId) {
+  return JSON.parse(localStorage.getItem(`template_data_${courseId}`)) || {};
+}
+
+function saveTemplateData(courseId, data) {
+  localStorage.setItem(`template_data_${courseId}`, JSON.stringify(data));
+}
+
+function startTemplateLesson(course) {
+  const saved = getTemplateData(course.id);
+  const payload = document.getElementById("lesson-payload");
+  payload.innerHTML = `
+    <h2 id="lesson-title">${escapeHtml(course.title)}</h2>
+    <p class="lesson-content">${escapeHtml(course.desc)}</p>
+    <div class="template-form">
+      ${course.templateFields.map((field) => `
+        <label for="tf_${field.id}">${escapeHtml(field.label)}</label>
+        ${field.multiline
+          ? `<textarea id="tf_${field.id}" rows="3" placeholder="${escapeHtml(field.placeholder || "")}" oninput="updateTemplatePreview('${course.id}')">${escapeHtml(saved[field.id] || "")}</textarea>`
+          : `<input type="text" id="tf_${field.id}" placeholder="${escapeHtml(field.placeholder || "")}" value="${escapeHtml(saved[field.id] || "")}" oninput="updateTemplatePreview('${course.id}')">`
+        }
+      `).join("")}
+    </div>
+    <h3 class="template-preview-heading">Preview</h3>
+    <div id="template-preview" class="template-preview"></div>
+    <div class="template-actions">
+      <button class="action-btn secondary" onclick="copyTemplateOutput()">Copy</button>
+      <button class="action-btn secondary" onclick="downloadTemplateOutput('${course.id}')">Download .txt</button>
+      <button class="action-btn" onclick="completeTemplateLesson('${course.id}')">Save & Mark Complete</button>
+    </div>
+  `;
+  document.getElementById("lesson-modal").classList.remove("hidden");
+  updateTemplatePreview(course.id);
+}
+
+function updateTemplatePreview(courseId) {
+  const course = courses.find((c) => c.id === courseId);
+  const data = {};
+  course.templateFields.forEach((field) => {
+    const el = document.getElementById(`tf_${field.id}`);
+    data[field.id] = el ? el.value : "";
+  });
+  saveTemplateData(courseId, data);
+
+  let output = course.templateOutput;
+  course.templateFields.forEach((field) => {
+    const value = data[field.id] && data[field.id].trim() ? data[field.id] : `[${field.label}]`;
+    output = output.split(`{{${field.id}}}`).join(value);
+  });
+
+  const preview = document.getElementById("template-preview");
+  if (preview) preview.textContent = output;
+}
+
+function copyTemplateOutput() {
+  const text = document.getElementById("template-preview").textContent;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).catch(() => {});
+  }
+}
+
+function downloadTemplateOutput(courseId) {
+  const text = document.getElementById("template-preview").textContent;
+  const blob = new Blob([text], { type: "text/plain" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = `${courseId}.txt`;
+  link.click();
+}
+
+async function completeTemplateLesson(courseId) {
+  await markComplete(courseId);
+  closeLesson();
+  if (currentStudentMode === "skills") renderSkillsMode();
+}
+
+// ---- LinkedIn message builder (special-cased: scenario picker + free editor) ----
+function startLinkedInLesson(course) {
+  const savedText = localStorage.getItem(`linkedin_editor_${course.id}`) || "";
+  const payload = document.getElementById("lesson-payload");
+  payload.innerHTML = `
+    <h2 id="lesson-title">${escapeHtml(course.title)}</h2>
+    <p class="lesson-content">${escapeHtml(course.desc)}</p>
+    <div class="linkedin-scenarios">
+      ${course.scenarios.map((s, i) => `
+        <button class="filter-btn" onclick="loadLinkedInScenario('${course.id}', ${i})">${escapeHtml(s.label)}</button>
+      `).join("")}
+    </div>
+    <label for="linkedin-editor" style="display:block; margin-top:14px; font-size:13px; font-weight:600; color:var(--primary-color);">Your message (fill in the brackets):</label>
+    <textarea id="linkedin-editor" rows="6" oninput="saveLinkedInEditor('${course.id}')">${escapeHtml(savedText)}</textarea>
+    <div class="template-actions">
+      <button class="action-btn secondary" onclick="copyLinkedInEditor()">Copy</button>
+      <button class="action-btn" onclick="completeTemplateLesson('${course.id}')">Save & Mark Complete</button>
+    </div>
+  `;
+  document.getElementById("lesson-modal").classList.remove("hidden");
+}
+
+function loadLinkedInScenario(courseId, index) {
+  const course = courses.find((c) => c.id === courseId);
+  const scenario = course.scenarios[index];
+  const editor = document.getElementById("linkedin-editor");
+  editor.value = scenario.text;
+  saveLinkedInEditor(courseId);
+}
+
+function saveLinkedInEditor(courseId) {
+  const editor = document.getElementById("linkedin-editor");
+  localStorage.setItem(`linkedin_editor_${courseId}`, editor.value);
+}
+
+function copyLinkedInEditor() {
+  const text = document.getElementById("linkedin-editor").value;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).catch(() => {});
+  }
+}
+
+// ---- Checklist lessons (self-check + facilitator rubric criteria) ----
+function getChecklistState(courseId) {
+  return JSON.parse(localStorage.getItem(`checklist_state_${courseId}`)) || {};
+}
+
+function saveChecklistState(courseId, state) {
+  localStorage.setItem(`checklist_state_${courseId}`, JSON.stringify(state));
+}
+
+function startChecklistLesson(course) {
+  const state = getChecklistState(course.id);
+  const payload = document.getElementById("lesson-payload");
+  payload.innerHTML = `
+    <h2 id="lesson-title">${escapeHtml(course.title)}</h2>
+    <p class="lesson-content">${escapeHtml(course.desc)}</p>
+    <div class="checklist-list">
+      ${course.checklistItems.map((item) => `
+        <label class="checklist-item">
+          <input type="checkbox" id="cl_${item.id}" ${state[item.id] ? "checked" : ""}
+            onchange="toggleChecklistItem('${course.id}', '${item.id}')">
+          <span>${escapeHtml(item.label)}</span>
+        </label>
+      `).join("")}
+    </div>
+    <p id="checklist-progress" class="quiz-attempts"></p>
+  `;
+  document.getElementById("lesson-modal").classList.remove("hidden");
+  updateChecklistProgress(course.id);
+}
+
+function toggleChecklistItem(courseId, itemId) {
+  const state = getChecklistState(courseId);
+  const checkbox = document.getElementById(`cl_${itemId}`);
+  state[itemId] = checkbox.checked;
+  saveChecklistState(courseId, state);
+  updateChecklistProgress(courseId);
+}
+
+async function updateChecklistProgress(courseId) {
+  const course = courses.find((c) => c.id === courseId);
+  const state = getChecklistState(courseId);
+  const checkedCount = course.checklistItems.filter((item) => state[item.id]).length;
+  const total = course.checklistItems.length;
+  const progressEl = document.getElementById("checklist-progress");
+  if (progressEl) progressEl.innerText = `${checkedCount} of ${total} checked`;
+
+  if (checkedCount === total && !getCourseProgress(courseId).completed) {
+    await markComplete(courseId);
+    if (currentStudentMode === "skills") renderSkillsMode();
   }
 }
 
@@ -432,7 +729,6 @@ async function markComplete(courseId) {
   progress[courseId] = entry;
   localStorage.setItem("student_progress", JSON.stringify(progress));
 
-  // Gamification: only reward stars/badges/streak on first-ever completion
   if (!wasAlreadyComplete) {
     const starsEarned = currentQuizAttempts === 0 ? 2 : 1;
     awardStarsAndBadge(courseId, starsEarned);
@@ -457,7 +753,6 @@ async function loadProgressFromServer() {
     if (!res.ok) throw new Error("Bad response");
     const serverProgress = await res.json();
     const localProgress = JSON.parse(localStorage.getItem("student_progress")) || {};
-    // Merge: completed wins, attempts take the max seen on either side
     const merged = { ...serverProgress };
     Object.keys(localProgress).forEach((id) => {
       const s = serverProgress[id] || { completed: false, attempts: 0 };
@@ -496,7 +791,7 @@ function awardStarsAndBadge(courseId, starsEarned) {
 function bumpStreak() {
   const profile = getLearnerProfile();
   const today = new Date().toISOString().slice(0, 10);
-  if (profile.lastActiveDate === today) return; // already counted today
+  if (profile.lastActiveDate === today) return;
 
   if (profile.lastActiveDate) {
     const prev = new Date(profile.lastActiveDate);
@@ -527,7 +822,6 @@ async function loadProfileFromServer() {
     const serverProfile = await res.json();
     if (serverProfile && Object.keys(serverProfile).length > 0) {
       const local = getLearnerProfile();
-      // Take whichever side has more progress; avoids clobbering local gains.
       const merged = serverProfile.totalStars >= local.totalStars ? serverProfile : local;
       saveLearnerProfile(merged);
     }
@@ -715,17 +1009,111 @@ function renderStats(stats) {
 }
 
 // ==========================================================================
-// Offline SMS / print pack generator
+// Offline SMS / print pack generator (courses)
 // ==========================================================================
 function exportSMSPack() {
   let smsText = "--- SOMA SASA COHORT SMS PACK ---\n";
   courses.forEach((c) => {
+    if (c.type && c.type !== "quiz") return; // only quiz-style lessons fit the SMS format
     smsText += `\n[REF:${c.id}]\nQ: ${c.title}\nLesson: ${c.lessonContent.substring(0, 100)}...\nQuiz: ${c.quiz.question}\nOptions: ${c.quiz.options.join(" | ")}\n`;
   });
-  const blob = new Blob([smsText], { type: "text/plain" });
+  downloadText(smsText, "somasasa_offline_sms_kit.txt");
+}
+
+// ==========================================================================
+// Facilitator Activity Guide — curated TaRL activities (numeracy + literacy)
+// These are in-person, group-led activities that don't map to app quizzes,
+// so they're exported as a reference guide for facilitators instead.
+// ==========================================================================
+function exportActivityGuide() {
+  const text = `--- SOMA SASA FACILITATOR ACTIVITY GUIDE ---
+Based on the Teaching at the Right Level (TaRL) approach.
+
+======================
+NUMERACY — Level Groups
+======================
+Group 1 (Beginner + 1-digit): Numbers with Bundle & Sticks, Number Chart Reading, Number Wheel, Clap & Snap
+Group 2 (2-digit + 3-digit): Expansion Chart Reading, Numbers with Play Money, Number Wheel (3 circles)
+Group 3 (Subtraction + Division): Oral Addition & Subtraction, Multiplication Box Method, Division with Sticks
+
+KEY ACTIVITY — Numbers with Bundle & Sticks
+Objective: Recognize numbers 1-99 and understand place value (ones/tens).
+Materials: Sticks, rubber bands, chalk, 1-100 number chart.
+1. Pick up a handful of sticks; learners guess the count, then count aloud together.
+2. Introduce the rule: 10 sticks = 1 bundle = 10 (tens).
+3. Draw a place-value frame (Bundles | Sticks); fill it in and read the number.
+4. Small groups quiz each other: "In 36, how many bundles and sticks?"
+
+KEY ACTIVITY — Solving Word Problems (The Four Questions)
+Whenever you introduce a word problem, walk learners through:
+  1. What information is given?
+  2. What is being asked?
+  3. What do I need to do?
+  4. Why?
+Then solve step-by-step together using sticks or play money, and write the answer as a full sentence.
+
+KEY ACTIVITY — Clap & Snap
+Objective: Recognize place value in 2- or 3-digit numbers, no materials needed.
+1 clap = 10 (tens), 1 snap = 1 (one). Demonstrate a number (e.g. 2 claps + 3 snaps = 23), then reverse the
+game: say a number and have a learner clap/snap it correctly.
+
+======================
+LITERACY — Level Groups
+======================
+Group 1 (Beginner + Letter): Jolly Phonics sound groups, Word Diary, Letter Jump, Picture Card Reading
+Group 2 (Word + Paragraph): Sentence Diary, Rhyming Words, Paragraph Booklet Reading, Matching Words & Pictures
+Group 3 (Story): Story Booklet Reading, Re-telling a Story, Picture Card Story Building
+
+KEY ACTIVITY — Jolly Phonics Sound Groups (teach in this order, not all at once)
+  1. s, a, t, p, i, n        5. z, w, ng, v, oo
+  2. ck, e, h, r, m, d        6. y, x, ch, sh, th
+  3. g, o, u, l, f, b         7. qu, ou, oi, ue, er, ar
+  4. ai, j, oa, ie, ee, or
+Read the sounds first, read them together with learners, then let learners read on their own.
+
+KEY ACTIVITY — Word Diary / Sentence Diary
+Fold five sheets of paper in half, staple the spine to make a booklet, then snip the pages into
+thirds (Word Diary) or halves (Sentence Diary) so each strip reveals part of a word or sentence.
+Open one strip at a time and read the new word/sentence it makes — a simple, reusable reveal format.
+
+KEY ACTIVITY — Story Booklet Reading (whole class, daily)
+1. Discuss the title and let learners predict the plot.
+2. Read the story aloud, pointing at each word, while learners follow with a finger.
+3. Invite learners to read it back, a few sentences each.
+4. Ask 1-2 comprehension questions and discuss what the story teaches.
+
+======================
+CLASSROOM SETUP NOTES
+======================
+- Seat learners in a semicircle or U-shape so everyone can see demonstrations.
+- Whole-class activities first, then break into level groups, then individual practice.
+- Session rules: listen carefully, raise your hand, answer in full sentences.
+- Assess every 10 days and re-group learners as they progress — never lock a learner into
+  a level permanently.
+`;
+  downloadText(text, "soma_sasa_facilitator_activity_guide.txt");
+}
+
+// ==========================================================================
+// Facilitator Assessment Rubric — mirrors the learner self-check criteria
+// ==========================================================================
+function exportRubric() {
+  const checklistCourse = courses.find((c) => c.id === "prof_checklist");
+  const items = checklistCourse ? checklistCourse.checklistItems : [];
+  let text = "--- SOMA SASA APPLICATION ASSESSMENT RUBRIC (Facilitator Copy) ---\n";
+  text += "Use this to score a learner's resume, cover letter, and LinkedIn profile.\n\n";
+  items.forEach((item, i) => {
+    text += `[ ] ${i + 1}. ${item.label}\n`;
+  });
+  text += "\nScore: ___ / " + items.length + "\nNotes:\n";
+  downloadText(text, "soma_sasa_facilitator_assessment_rubric.txt");
+}
+
+function downloadText(text, filename) {
+  const blob = new Blob([text], { type: "text/plain" });
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
-  link.download = "somasasa_offline_sms_kit.txt";
+  link.download = filename;
   link.click();
 }
 

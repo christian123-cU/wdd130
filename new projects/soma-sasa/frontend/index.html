@@ -98,6 +98,14 @@
         <div id="lesson-payload"></div>
       </div>
     </div>
+
+    <!-- Placement Quiz Modal ("Find My Level") -->
+    <div id="placement-modal" class="modal hidden">
+      <div class="modal-content" role="dialog" aria-modal="true">
+        <span class="close-btn" onclick="closePlacementQuiz()" role="button" aria-label="Close" tabindex="0">&times;</span>
+        <div id="placement-payload"></div>
+      </div>
+    </div>
   </section>
 
   <!-- 2. TEACHER FACILITATOR VIEW -->
@@ -143,6 +151,20 @@
         <h3>SMS &amp; Offline Materials Delivery</h3>
         <p>Package course text into low-cost SMS templates or print-ready layouts for regions completely disconnected from the grid.</p>
         <button class="action-btn secondary" onclick="exportSMSPack()">Generate SMS Content Sheets</button>
+      </div>
+
+      <!-- Facilitator Activity Guide (TaRL) -->
+      <div class="card">
+        <h3>Facilitator Activity Guide</h3>
+        <p>In-person TaRL activities for numeracy and literacy — bundle & sticks, clap & snap, Jolly Phonics groups, story circles — grouped by learning level.</p>
+        <button class="action-btn secondary" onclick="exportActivityGuide()">Download Activity Guide</button>
+      </div>
+
+      <!-- Assessment Rubric -->
+      <div class="card">
+        <h3>Application Assessment Rubric</h3>
+        <p>A printable scoring sheet for grading a learner's resume, cover letter, and LinkedIn profile against the same criteria they self-check.</p>
+        <button class="action-btn secondary" onclick="exportRubric()">Download Rubric</button>
       </div>
     </div>
 
