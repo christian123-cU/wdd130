@@ -1,0 +1,56 @@
+[
+  {
+    "id": "fln_01",
+    "category": "fln",
+    "mascotId": "nambari",
+    "title": "Foundational Arithmetic: Base Ten Addition",
+    "desc": "Understand addition and carrying values using local market trade scenarios.",
+    "lessonContent": "In base ten, when adding values that equal 10 or more, you must carry the value over to the next place column. For example, if you buy tomatoes for KES 17 and onions for KES 15, calculate 7 + 5 = 12. Write down 2, and carry 1 to the tens column to calculate 1 + 1 + 1 = 3 (Total: KES 32).",
+    "quiz": {
+      "question": "Calculate the total cost of buying goods priced at KES 28 and KES 14:",
+      "options": ["KES 42", "KES 38", "KES 32"],
+      "correctIndex": 0,
+      "hint": "Add the ones column first (8 + 4), then carry the extra ten into the tens column."
+    }
+  },
+  {
+    "id": "fln_02",
+    "category": "fln",
+    "mascotId": "herufi",
+    "title": "Foundational Literacy: Simple Word Sounds",
+    "desc": "Master sounding out combined consonants (digraphs) in common Swahili or English words.",
+    "lessonContent": "Digraphs are pairs of letters that write one single sound, like 'sh' in 'shule' (school) or 'ch' in 'chakula' (food). Sounding these letter groupings as a single sound helps build reading fluency.",
+    "quiz": {
+      "question": "Which sound group completes the word '___akula' to mean food in Swahili?",
+      "options": ["sh", "ch", "th"],
+      "correctIndex": 1,
+      "hint": "Say the word slowly out loud \u2014 'ch' plus 'akula' makes 'chakula'."
+    }
+  },
+  {
+    "id": "prof_01",
+    "category": "professional",
+    "title": "M-PESA Business Safety & Scam Detection",
+    "desc": "Identify secure practices to protect your business receipts and digital wallet keys.",
+    "lessonContent": "Protecting your digital assets is crucial. Mobile money providers will never ask for your private PIN over the phone. If you receive a phone call claiming there is a transaction error and requesting your credentials, end the call immediately and report the occurrence through your secure user interface.",
+    "quiz": {
+      "question": "If a caller requests your mobile money PIN to reverse an accidental transaction, you should:",
+      "options": ["Tell them your PIN immediately", "Hang up and report the suspicious contact", "Give them a temporary alternative PIN"],
+      "correctIndex": 1,
+      "hint": "No legitimate provider ever needs your PIN over a phone call \u2014 not even to 'fix' something."
+    }
+  },
+  {
+    "id": "prof_02",
+    "category": "professional",
+    "title": "Building a Simple Professional Resume",
+    "desc": "Structure your skills to secure technical apprenticeships or vocational jobs.",
+    "lessonContent": "A professional CV lists contact info, key skills, and previous experience in reverse chronological order. Highlighting practical, volunteer, and community projects (such as peer-circle support) demonstrates your leadership capacity.",
+    "quiz": {
+      "question": "Which section is the most critical to place at the top of a modern resume for technical work?",
+      "options": ["List of personal hobbies", "Your primary school name", "Contact details and key technical/practical skills"],
+      "correctIndex": 2,
+      "hint": "An employer needs to know who you are and what you can do before anything else."
+    }
+  }
+]

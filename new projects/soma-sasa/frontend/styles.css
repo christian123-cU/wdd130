@@ -1,0 +1,762 @@
+/* Core Variables - Safe CSS custom properties matching local context colors */
+:root {
+  --primary-color: #0D3B2E;   /* Forest green for leadership feel */
+  --accent-color: #1D9E75;    /* Light brand green */
+  --text-color: #333333;
+  --light-bg: #F8FDFB;
+  --card-border: #E1F5EE;
+  --status-online: #5DCAA5;
+  --status-offline: #FFA726;
+  --status-error: #C0392B;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background-color: var(--light-bg);
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Header & Navigation Styles */
+.app-header {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 600px) {
+  .app-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.brand h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.brand h1 span {
+  color: var(--accent-color);
+}
+
+/* Badges — text color chosen per background to meet contrast (~4.5:1) */
+.badge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.badge.online { background-color: var(--status-online); color: var(--primary-color); }
+.badge.offline { background-color: var(--status-offline); color: var(--primary-color); }
+.badge.error { background-color: var(--status-error); color: #ffffff; }
+
+.mode-switcher {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-btn {
+  background: none;
+  border: 1px solid var(--accent-color);
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.nav-btn.active, .nav-btn:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+}
+
+/* Containers */
+.app-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.view-pane { display: none; }
+.view-pane.active { display: block; }
+
+/* Hero Units */
+.welcome-hero, .teacher-hero {
+  margin-bottom: 25px;
+}
+
+.welcome-hero h2, .teacher-hero h2 {
+  color: var(--primary-color);
+  font-size: 22px;
+}
+
+.subtitle {
+  color: #555555; /* darkened from #666 for stronger contrast on light-bg */
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+/* Progress summary bar (student view) */
+.progress-summary {
+  max-width: 420px;
+}
+
+.progress-summary-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 6px;
+}
+
+.progress-track {
+  width: 100%;
+  height: 10px;
+  background-color: var(--card-border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--primary-color);
+  border-radius: 6px;
+  transition: width 0.4s ease;
+}
+
+/* Filters & Cards Layout */
+.category-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+
+.filter-btn {
+  background: #ffffff;
+  border: 1px solid var(--accent-color);
+  color: var(--primary-color);
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.filter-btn.active {
+  background-color: var(--primary-color); /* darkened for AA contrast with white text */
+  color: #ffffff;
+  border-color: var(--primary-color);
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 600px) {
+  .grid-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Card UI Components */
+.card {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.card.full-width {
+  grid-column: 1 / -1;
+  margin-top: 20px;
+}
+
+.card h3 {
+  color: var(--primary-color);
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.course-card-body { margin-bottom: 12px; }
+
+.course-status-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* Buttons — primary-color background used wherever text carries meaning,
+   since accent-color is too light to meet 4.5:1 contrast with either
+   white or dark text at button-text sizes. */
+.action-btn {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  text-align: center;
+  font-size: 13px;
+}
+
+.action-btn:hover { background-color: #0a2e24; }
+
+.action-btn.secondary {
+  background-color: var(--accent-color);
+  color: var(--primary-color); /* dark text on the lighter accent green for contrast */
+}
+
+.action-btn.secondary:hover { background-color: #18885f; }
+
+.action-btn:disabled {
+  background-color: #9fb7ae;
+  cursor: not-allowed;
+}
+
+form label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 6px;
+}
+
+form input[type="text"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+form input[type="text"]:focus {
+  border-color: var(--accent-color);
+}
+
+/* Stats row (teacher dashboard) */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 600px) {
+  .stats-row { grid-template-columns: repeat(4, 1fr); }
+}
+
+.stat-card {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 14px;
+  text-align: center;
+}
+
+.stat-value {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.stat-label {
+  display: block;
+  font-size: 12px;
+  color: #555;
+  margin-top: 4px;
+}
+
+.teacher-tools-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 600px) {
+  .teacher-tools-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* Table Design */
+.table-wrapper { overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--card-border);
+}
+
+th {
+  background-color: var(--light-bg);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Modal Workspace */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.modal.hidden { display: none; }
+
+.modal-content {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #555; /* darkened from #888 for contrast */
+}
+
+#lesson-title {
+  color: var(--primary-color);
+  font-size: 19px;
+  padding-right: 24px;
+}
+
+.lesson-content {
+  margin: 15px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Interactive Task Styling */
+.interactive-quiz {
+  margin-top: 15px;
+  background: var(--light-bg);
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.quiz-question {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--primary-color);
+}
+
+.quiz-attempts {
+  font-size: 11px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.quiz-option {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid var(--card-border);
+  margin-top: 8px;
+  border-radius: 6px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text-color);
+}
+
+.quiz-option:hover:not(:disabled) {
+  background: #eefaf6;
+  border-color: var(--accent-color);
+}
+
+.quiz-option:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.quiz-option.wrong {
+  background: #FDECEA;
+  border-color: var(--status-error);
+  color: #7A2018;
+}
+
+.quiz-option.correct {
+  background: #E4F7EF;
+  border-color: var(--accent-color);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.quiz-feedback {
+  margin-top: 12px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.quiz-feedback.success { color: #0d7a4f; }
+.quiz-feedback.error { color: var(--status-error); }
+
+.quiz-hint {
+  margin-top: 10px;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--primary-color);
+  background: #FFF6E5;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+/* Footer */
+.app-footer {
+  background-color: var(--primary-color);
+  color: #f0f0f0; /* brightened from #e2e2e2 for slightly stronger contrast */
+  padding: 15px 20px;
+  text-align: center;
+  font-size: 11px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+@media (min-width: 600px) {
+  .app-footer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.sync-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.queue-badge {
+  background-color: var(--status-offline);
+  color: var(--primary-color);
+}
+
+.hidden { display: none !important; }
+
+.sync-btn {
+  background: var(--accent-color);
+  color: var(--primary-color); /* dark text for contrast on the light accent green */
+  border: none;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.sync-btn:hover { background-color: #18885f; color: #ffffff; }
+
+.empty-state {
+  font-size: 13px;
+  color: #555;
+  padding: 10px 0;
+}
+
+/* ==========================================================================
+   Learning path split: Young Learner Zone vs Skills & Work Zone
+   ========================================================================== */
+
+.mode-chooser .welcome-hero { margin-bottom: 20px; }
+
+.mode-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+@media (min-width: 600px) {
+  .mode-cards { grid-template-columns: 1fr 1fr; }
+}
+
+.mode-card {
+  background: #ffffff;
+  border: 2px solid var(--card-border);
+  border-radius: 14px;
+  padding: 24px 18px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+  font-family: inherit;
+}
+
+.mode-card:hover, .mode-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--accent-color);
+}
+
+.mode-card-emoji {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.mode-card h3 {
+  color: var(--primary-color);
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.mode-card p {
+  color: #555;
+  font-size: 13px;
+}
+
+.mode-card-young { border-color: #cdeadc; background: linear-gradient(180deg, #ffffff, #F3FBF7); }
+.mode-card-skills { border-color: #d7e6e0; background: linear-gradient(180deg, #ffffff, #F6FAF9); }
+
+.student-mode-pane.hidden { display: none; }
+
+.mode-pane-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.mode-back-btn {
+  background: none;
+  border: 1px solid var(--card-border);
+  color: var(--primary-color);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mode-back-btn:hover { background: var(--light-bg); }
+
+/* --- Young Learner mode --- */
+.young-title {
+  color: var(--primary-color);
+  font-size: 19px;
+  margin-bottom: 16px;
+}
+
+.young-stats {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.stat-pill {
+  background: var(--light-bg);
+  border: 1px solid var(--card-border);
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+
+.young-grid { grid-template-columns: 1fr; }
+@media (min-width: 600px) { .young-grid { grid-template-columns: 1fr 1fr; } }
+
+.mascot-card {
+  background: #ffffff;
+  border: 2px solid var(--card-border);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mascot-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mascot-avatar {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+}
+
+.mascot-avatar svg { width: 100%; height: 100%; }
+
+.mascot-name-role h3 {
+  color: var(--primary-color);
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+.mascot-name-role span {
+  font-size: 11px;
+  color: #666;
+}
+
+.mascot-course-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.mascot-speech-bubble {
+  background: var(--light-bg);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: var(--primary-color);
+  font-style: italic;
+  position: relative;
+}
+
+.badge-shelf {
+  margin-top: 28px;
+}
+
+.badge-shelf h3 {
+  color: var(--primary-color);
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.badge-shelf-list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.badge-item {
+  width: 90px;
+  text-align: center;
+  padding: 10px 6px;
+  border-radius: 10px;
+  border: 1px dashed var(--card-border);
+  font-size: 11px;
+  color: #888;
+}
+
+.badge-item.unlocked {
+  border: 1px solid var(--accent-color);
+  background: #EAF9F3;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.badge-icon {
+  font-size: 26px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* --- Skills mode --- */
+.skills-title {
+  color: var(--primary-color);
+  font-size: 19px;
+  margin-bottom: 4px;
+}
+
+.mastery-summary {
+  max-width: 460px;
+  margin: 16px 0 20px;
+}
+
+.recommendation-card {
+  background: #ffffff;
+  border: 1.5px solid var(--primary-color);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 20px;
+  max-width: 520px;
+}
+
+.recommendation-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  margin-bottom: 6px;
+}
+
+.recommendation-card h3 {
+  color: var(--primary-color);
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.recommendation-card p {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.recommendation-card.hidden { display: none; }

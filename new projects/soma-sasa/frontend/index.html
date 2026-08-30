@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soma Sasa - Micro-Learning Platform</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Header Bar -->
+<header class="app-header">
+  <div class="brand">
+    <h1>Soma<span>Sasa</span></h1>
+    <span id="connection-status" class="badge offline">Checking connection…</span>
+  </div>
+  <nav class="mode-switcher">
+    <button id="btn-student-view" class="nav-btn active" onclick="switchView('student')">Student Portal</button>
+    <button id="btn-teacher-view" class="nav-btn" onclick="switchView('teacher')">Teacher Facilitator</button>
+  </nav>
+</header>
+
+<main class="app-container">
+
+  <!-- 1. STUDENT VIEW -->
+  <section id="student-view" class="view-pane active">
+
+    <!-- Mode chooser: shown until a path is picked -->
+    <div id="mode-chooser" class="mode-chooser">
+      <div class="welcome-hero">
+        <h2>Habari! Which path are you on today?</h2>
+        <p class="subtitle">Pick the zone that fits what you want to learn.</p>
+      </div>
+      <div class="mode-cards">
+        <button class="mode-card mode-card-young" onclick="switchStudentMode('young')">
+          <span class="mode-card-emoji" aria-hidden="true">🐘🦜</span>
+          <h3>Young Learner Zone</h3>
+          <p>Fun reading &amp; number lessons with Nambari and Herufi.</p>
+        </button>
+        <button class="mode-card mode-card-skills" onclick="switchStudentMode('skills')">
+          <span class="mode-card-emoji" aria-hidden="true">📊</span>
+          <h3>Skills &amp; Work Zone</h3>
+          <p>Practical work &amp; money lessons, with personalised suggestions.</p>
+        </button>
+      </div>
+    </div>
+
+    <!-- YOUNG LEARNER MODE -->
+    <div id="young-mode" class="student-mode-pane young-mode hidden">
+      <div class="mode-pane-header young-header">
+        <button class="mode-back-btn" onclick="showModeChooser()">&larr; Back</button>
+        <div class="young-stats" role="group" aria-label="Your stars and streak">
+          <span class="stat-pill">⭐ <span id="young-stars">0</span> stars</span>
+          <span class="stat-pill">🔥 <span id="young-streak">0</span> day streak</span>
+        </div>
+      </div>
+      <h2 class="young-title">Pick a lesson with your learning buddy!</h2>
+      <div id="young-course-grid" class="grid-layout young-grid"></div>
+
+      <div class="badge-shelf">
+        <h3>Your Badges</h3>
+        <div id="badge-shelf-list" class="badge-shelf-list"></div>
+      </div>
+    </div>
+
+    <!-- SKILLS MODE -->
+    <div id="skills-mode" class="student-mode-pane skills-mode hidden">
+      <div class="mode-pane-header">
+        <button class="mode-back-btn" onclick="showModeChooser()">&larr; Back</button>
+      </div>
+      <h2 class="skills-title">Work &amp; Life Skills</h2>
+      <p class="subtitle">Track your mastery and see what's worth reviewing next.</p>
+
+      <div class="mastery-summary">
+        <div class="progress-summary-labels">
+          <span id="mastery-text">0 of 0 modules mastered</span>
+          <span id="mastery-percent">0%</span>
+        </div>
+        <div class="progress-track">
+          <div id="mastery-fill" class="progress-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <div id="recommendation-card" class="recommendation-card hidden">
+        <span class="recommendation-label">Recommended next</span>
+        <h3 id="recommendation-title"></h3>
+        <p id="recommendation-reason"></p>
+        <button id="recommendation-btn" class="action-btn">Start now</button>
+      </div>
+
+      <div id="skills-course-grid" class="grid-layout"></div>
+    </div>
+
+    <!-- Lesson Interactive Modal/Workspace (shared by both modes) -->
+    <div id="lesson-modal" class="modal hidden">
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="lesson-title">
+        <span class="close-btn" onclick="closeLesson()" role="button" aria-label="Close lesson" tabindex="0">&times;</span>
+        <div id="lesson-payload"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. TEACHER FACILITATOR VIEW -->
+  <section id="teacher-view" class="view-pane">
+    <div class="teacher-hero">
+      <h2>Facilitator Dashboard</h2>
+      <p>Support community peer-learning circles, issue physical completion records, and capture student progress offline.</p>
+    </div>
+
+    <!-- Aggregate Stats -->
+    <div class="stats-row" id="stats-row">
+      <div class="stat-card">
+        <span class="stat-value" id="stat-groups">0</span>
+        <span class="stat-label">Peer Groups</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="stat-learners">0</span>
+        <span class="stat-label">Active Learners</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="stat-completions">0</span>
+        <span class="stat-label">Completed Modules</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="stat-rate">0%</span>
+        <span class="stat-label">Completion Rate</span>
+      </div>
+    </div>
+
+    <div class="teacher-tools-grid">
+      <!-- Peer Cohort Creation -->
+      <div class="card">
+        <h3>Create Peer Study Group</h3>
+        <form id="cohort-form" onsubmit="createCohort(event)">
+          <label for="cohort-name">Group/Village Name:</label>
+          <input type="text" id="cohort-name" placeholder="e.g., Kibera Sector B" required>
+          <button type="submit" class="action-btn">Register Group</button>
+        </form>
+      </div>
+
+      <!-- Offline SMS/Print Exporter -->
+      <div class="card">
+        <h3>SMS &amp; Offline Materials Delivery</h3>
+        <p>Package course text into low-cost SMS templates or print-ready layouts for regions completely disconnected from the grid.</p>
+        <button class="action-btn secondary" onclick="exportSMSPack()">Generate SMS Content Sheets</button>
+      </div>
+    </div>
+
+    <!-- Registered Cohorts & Student Progress Tracker -->
+    <div class="card full-width">
+      <h3>Local Student Cohorts Tracker</h3>
+      <div class="table-wrapper">
+        <table id="cohorts-table">
+          <thead>
+            <tr>
+              <th>Group Name</th>
+              <th>Active Learners</th>
+              <th>Completed Modules</th>
+              <th>Completion %</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="cohorts-list"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer Sync Indicator -->
+<footer class="app-footer">
+  <p>&copy; 2026 Soma Sasa. Developed for Kenya &amp; Regional Scale.</p>
+  <div class="sync-control">
+    <span id="sync-message">Checking sync status…</span>
+    <span id="sync-queue-badge" class="badge queue-badge hidden">0 pending</span>
+    <button class="sync-btn" onclick="triggerManualSync()">Sync Now</button>
+  </div>
+</footer>
+
+<script src="mascots.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

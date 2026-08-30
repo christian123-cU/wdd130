@@ -1,0 +1,8 @@
+{
+  "cohorts": [
+    { "id": "cohort_seed_1", "name": "Nairobi East Peer Circle", "count": 12, "completed": 3 },
+    { "id": "cohort_seed_2", "name": "Kisumu Tech Club", "count": 8, "completed": 1 }
+  ],
+  "progress": {},
+  "profiles": {}
+}
