@@ -1,8 +1,49 @@
 {
   "cohorts": [
-    { "id": "cohort_seed_1", "name": "Nairobi East Peer Circle", "count": 12, "completed": 3 },
-    { "id": "cohort_seed_2", "name": "Kisumu Tech Club", "count": 8, "completed": 1 }
+    {
+      "id": "cohort_seed_1",
+      "name": "Nairobi East Peer Circle",
+      "count": 12,
+      "completed": 3
+    },
+    {
+      "id": "cohort_seed_2",
+      "name": "Kisumu Tech Club",
+      "count": 8,
+      "completed": 1
+    }
   ],
-  "progress": {},
-  "profiles": {}
+  "progress": {
+    "307b2227-6466-4c01-8cd6-e9a020f48b31": {
+      "prof_02": {
+        "completed": true,
+        "attempts": 0
+      },
+      "prof_01": {
+        "completed": true,
+        "attempts": 0
+      },
+      "fln_01": {
+        "completed": true,
+        "attempts": 1
+      },
+      "fln_02": {
+        "completed": true,
+        "attempts": 1
+      }
+    }
+  },
+  "profiles": {
+    "307b2227-6466-4c01-8cd6-e9a020f48b31": {
+      "totalStars": 8,
+      "streak": 1,
+      "lastActiveDate": "2026-08-30",
+      "badges": [
+        "prof_02",
+        "prof_01",
+        "fln_01",
+        "fln_02"
+      ]
+    }
+  }
 }
