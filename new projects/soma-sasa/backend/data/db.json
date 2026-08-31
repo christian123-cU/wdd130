@@ -1,8 +1,61 @@
 {
   "cohorts": [
-    { "id": "cohort_seed_1", "name": "Nairobi East Peer Circle", "count": 12, "completed": 3 },
-    { "id": "cohort_seed_2", "name": "Kisumu Tech Club", "count": 8, "completed": 1 }
+    {
+      "id": "cohort_seed_1",
+      "name": "Nairobi East Peer Circle",
+      "count": 12,
+      "completed": 3
+    },
+    {
+      "id": "cohort_seed_2",
+      "name": "Kisumu Tech Club",
+      "count": 8,
+      "completed": 1
+    }
   ],
   "progress": {},
-  "students": {}
+  "students": {
+    "e7c6b94d-a240-4a01-97b6-181d6b4cb928": {
+      "name": "Christian",
+      "isAnonymous": false,
+      "literacyLevel": "word",
+      "numeracyLevel": "numberRecognition",
+      "literacyAssessed": true,
+      "numeracyAssessed": true,
+      "literacyProgress": {
+        "word": {
+          "lessonsCompleted": [
+            "lit_word_1",
+            "lit_word_2",
+            "lit_word_3",
+            "lit_word_4",
+            "lit_word_5",
+            "lit_word_6",
+            "lit_word_7"
+          ],
+          "testPassed": true
+        }
+      },
+      "numeracyProgress": {
+        "numberRecognition": {
+          "lessonsCompleted": [
+            "num_nr_1",
+            "num_nr_2",
+            "num_nr_3",
+            "num_nr_4",
+            "num_nr_5",
+            "num_nr_6",
+            "num_nr_7"
+          ],
+          "testPassed": false
+        }
+      },
+      "totalStars": 19,
+      "streak": 1,
+      "lastActiveDate": "2026-08-31",
+      "badges": [
+        "literacy_word"
+      ]
+    }
+  }
 }
