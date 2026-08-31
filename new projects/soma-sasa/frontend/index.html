@@ -22,20 +22,36 @@
 
 <main class="app-container">
 
+  <!-- 0. REGISTRATION SCREEN — shown once, before anything else -->
+  <section id="registration-screen" class="view-pane">
+    <div class="welcome-hero">
+      <h2>Karibu! Welcome to Soma Sasa.</h2>
+      <p class="subtitle">What should we call you? You can also skip this and stay anonymous.</p>
+    </div>
+    <div class="registration-card">
+      <label for="registration-name">Your name (optional)</label>
+      <input type="text" id="registration-name" placeholder="e.g., Amina">
+      <div class="template-actions">
+        <button class="action-btn" onclick="completeRegistration(false)">Continue with this name</button>
+        <button class="action-btn secondary" onclick="completeRegistration(true)">Continue as Anonymous</button>
+      </div>
+    </div>
+  </section>
+
   <!-- 1. STUDENT VIEW -->
-  <section id="student-view" class="view-pane active">
+  <section id="student-view" class="view-pane">
 
     <!-- Mode chooser: shown until a path is picked -->
     <div id="mode-chooser" class="mode-chooser">
       <div class="welcome-hero">
-        <h2>Habari! Which path are you on today?</h2>
+        <h2 id="mode-chooser-greeting">Which path are you on today?</h2>
         <p class="subtitle">Pick the zone that fits what you want to learn.</p>
       </div>
       <div class="mode-cards">
         <button class="mode-card mode-card-young" onclick="switchStudentMode('young')">
           <span class="mode-card-emoji" aria-hidden="true">🐘🦜</span>
           <h3>Young Learner Zone</h3>
-          <p>Fun reading &amp; number lessons with Nambari and Herufi.</p>
+          <p>Leveled literacy and numeracy with Nambari and Herufi.</p>
         </button>
         <button class="mode-card mode-card-skills" onclick="switchStudentMode('skills')">
           <span class="mode-card-emoji" aria-hidden="true">📊</span>
@@ -54,12 +70,43 @@
           <span class="stat-pill">🔥 <span id="young-streak">0</span> day streak</span>
         </div>
       </div>
-      <h2 class="young-title">Pick a lesson with your learning buddy!</h2>
-      <div id="young-course-grid" class="grid-layout young-grid"></div>
 
-      <div class="badge-shelf">
-        <h3>Your Badges</h3>
-        <div id="badge-shelf-list" class="badge-shelf-list"></div>
+      <!-- 1a. Subject chooser (Literacy / Numeracy) -->
+      <div id="subject-chooser" class="young-screen">
+        <h2 class="young-title">Choose a subject</h2>
+        <div class="mode-cards" id="subject-cards"></div>
+      </div>
+
+      <!-- 1b. Assessment flow -->
+      <div id="assessment-flow" class="young-screen hidden">
+        <div id="assessment-payload"></div>
+      </div>
+
+      <!-- 1c. Level roadmap -->
+      <div id="level-roadmap" class="young-screen hidden">
+        <div class="mode-pane-header">
+          <button class="mode-back-btn" onclick="showSubjectChooser()">&larr; Subjects</button>
+        </div>
+        <h2 class="young-title" id="roadmap-title"></h2>
+        <div id="roadmap-cards" class="roadmap-cards"></div>
+        <div class="badge-shelf">
+          <h3>Your Badges</h3>
+          <div id="badge-shelf-list" class="badge-shelf-list"></div>
+        </div>
+      </div>
+
+      <!-- 1d. Lesson viewer (intro hook + activity content) -->
+      <div id="lesson-viewer" class="young-screen hidden">
+        <div class="mode-pane-header">
+          <button class="mode-back-btn" onclick="exitLessonViewer()">&larr; Level</button>
+          <span id="lesson-progress-label" class="stat-pill"></span>
+        </div>
+        <div id="lesson-viewer-payload"></div>
+      </div>
+
+      <!-- 1e. Level test -->
+      <div id="level-test-screen" class="young-screen hidden">
+        <div id="level-test-payload"></div>
       </div>
     </div>
 
@@ -91,7 +138,7 @@
       <div id="skills-course-grid" class="grid-layout"></div>
     </div>
 
-    <!-- Lesson Interactive Modal/Workspace (shared by both modes) -->
+    <!-- Lesson Interactive Modal/Workspace (used by Skills Zone only now) -->
     <div id="lesson-modal" class="modal hidden">
       <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="lesson-title">
         <span class="close-btn" onclick="closeLesson()" role="button" aria-label="Close lesson" tabindex="0">&times;</span>
@@ -99,91 +146,129 @@
       </div>
     </div>
 
-    <!-- Placement Quiz Modal ("Find My Level") -->
-    <div id="placement-modal" class="modal hidden">
-      <div class="modal-content" role="dialog" aria-modal="true">
-        <span class="close-btn" onclick="closePlacementQuiz()" role="button" aria-label="Close" tabindex="0">&times;</span>
-        <div id="placement-payload"></div>
+    <!-- Celebration overlay (confetti + revise/continue) -->
+    <div id="celebration-overlay" class="celebration-overlay hidden">
+      <div class="confetti-field" id="confetti-field"></div>
+      <div class="celebration-card">
+        <h2>🎉 Level Complete!</h2>
+        <p id="celebration-message">You mastered this level.</p>
+        <div id="celebration-choices" class="template-actions hidden">
+          <button class="action-btn secondary" onclick="revisitCurrentLevel()">Revise this level</button>
+          <button class="action-btn" onclick="continueToNextLevel()">Continue to next level</button>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- 2. TEACHER FACILITATOR VIEW -->
   <section id="teacher-view" class="view-pane">
-    <div class="teacher-hero">
-      <h2>Facilitator Dashboard</h2>
-      <p>Support community peer-learning circles, issue physical completion records, and capture student progress offline.</p>
-    </div>
 
-    <!-- Aggregate Stats -->
-    <div class="stats-row" id="stats-row">
-      <div class="stat-card">
-        <span class="stat-value" id="stat-groups">0</span>
-        <span class="stat-label">Peer Groups</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-value" id="stat-learners">0</span>
-        <span class="stat-label">Active Learners</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-value" id="stat-completions">0</span>
-        <span class="stat-label">Completed Modules</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-value" id="stat-rate">0%</span>
-        <span class="stat-label">Completion Rate</span>
+    <!-- Password gate -->
+    <div id="teacher-gate" class="teacher-gate">
+      <div class="registration-card">
+        <h3>Facilitator Access</h3>
+        <p>This dashboard is for authorized facilitators only.</p>
+        <label for="teacher-password">Password</label>
+        <input type="password" id="teacher-password" placeholder="Enter password">
+        <button class="action-btn" onclick="attemptTeacherLogin()">Unlock Dashboard</button>
+        <p id="teacher-gate-error" class="quiz-feedback error hidden">Incorrect password. Try again.</p>
       </div>
     </div>
 
-    <div class="teacher-tools-grid">
-      <!-- Peer Cohort Creation -->
-      <div class="card">
-        <h3>Create Peer Study Group</h3>
-        <form id="cohort-form" onsubmit="createCohort(event)">
-          <label for="cohort-name">Group/Village Name:</label>
-          <input type="text" id="cohort-name" placeholder="e.g., Kibera Sector B" required>
-          <button type="submit" class="action-btn">Register Group</button>
-        </form>
+    <div id="teacher-dashboard-content" class="hidden">
+      <div class="teacher-hero">
+        <h2>Facilitator Dashboard</h2>
+        <p>Support community peer-learning circles, track learner levels, and issue physical completion records.</p>
       </div>
 
-      <!-- Offline SMS/Print Exporter -->
-      <div class="card">
-        <h3>SMS &amp; Offline Materials Delivery</h3>
-        <p>Package course text into low-cost SMS templates or print-ready layouts for regions completely disconnected from the grid.</p>
-        <button class="action-btn secondary" onclick="exportSMSPack()">Generate SMS Content Sheets</button>
+      <!-- Aggregate Stats -->
+      <div class="stats-row" id="stats-row">
+        <div class="stat-card">
+          <span class="stat-value" id="stat-groups">0</span>
+          <span class="stat-label">Peer Groups</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-learners">0</span>
+          <span class="stat-label">Active Learners</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-completions">0</span>
+          <span class="stat-label">Completed Modules</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-rate">0%</span>
+          <span class="stat-label">Completion Rate</span>
+        </div>
       </div>
 
-      <!-- Facilitator Activity Guide (TaRL) -->
-      <div class="card">
-        <h3>Facilitator Activity Guide</h3>
-        <p>In-person TaRL activities for numeracy and literacy — bundle & sticks, clap & snap, Jolly Phonics groups, story circles — grouped by learning level.</p>
-        <button class="action-btn secondary" onclick="exportActivityGuide()">Download Activity Guide</button>
+      <!-- Learner Roster by Level -->
+      <div class="card full-width">
+        <h3>Learner Roster — Grouped by Level</h3>
+        <p>Assessed levels update automatically as learners complete their placement quizzes.</p>
+        <div class="table-wrapper">
+          <table id="roster-table">
+            <thead>
+              <tr>
+                <th>Learner</th>
+                <th>Literacy Level</th>
+                <th>Numeracy Level</th>
+              </tr>
+            </thead>
+            <tbody id="roster-list"></tbody>
+          </table>
+        </div>
       </div>
 
-      <!-- Assessment Rubric -->
-      <div class="card">
-        <h3>Application Assessment Rubric</h3>
-        <p>A printable scoring sheet for grading a learner's resume, cover letter, and LinkedIn profile against the same criteria they self-check.</p>
-        <button class="action-btn secondary" onclick="exportRubric()">Download Rubric</button>
-      </div>
-    </div>
+      <div class="teacher-tools-grid">
+        <!-- Peer Cohort Creation -->
+        <div class="card">
+          <h3>Create Peer Study Group</h3>
+          <form id="cohort-form" onsubmit="createCohort(event)">
+            <label for="cohort-name">Group/Village Name:</label>
+            <input type="text" id="cohort-name" placeholder="e.g., Kibera Sector B" required>
+            <button type="submit" class="action-btn">Register Group</button>
+          </form>
+        </div>
 
-    <!-- Registered Cohorts & Student Progress Tracker -->
-    <div class="card full-width">
-      <h3>Local Student Cohorts Tracker</h3>
-      <div class="table-wrapper">
-        <table id="cohorts-table">
-          <thead>
-            <tr>
-              <th>Group Name</th>
-              <th>Active Learners</th>
-              <th>Completed Modules</th>
-              <th>Completion %</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="cohorts-list"></tbody>
-        </table>
+        <!-- Offline SMS/Print Exporter -->
+        <div class="card">
+          <h3>SMS &amp; Offline Materials Delivery</h3>
+          <p>Package course text into low-cost SMS templates or print-ready layouts for regions completely disconnected from the grid.</p>
+          <button class="action-btn secondary" onclick="exportSMSPack()">Generate SMS Content Sheets</button>
+        </div>
+
+        <!-- Facilitator Activity Guide (TaRL) -->
+        <div class="card">
+          <h3>Facilitator Activity Guide</h3>
+          <p>In-person TaRL activities for numeracy and literacy — bundle & sticks, clap & snap, Jolly Phonics groups, story circles — grouped by learning level.</p>
+          <button class="action-btn secondary" onclick="exportActivityGuide()">Download Activity Guide</button>
+        </div>
+
+        <!-- Assessment Rubric -->
+        <div class="card">
+          <h3>Application Assessment Rubric</h3>
+          <p>A printable scoring sheet for grading a learner's resume, cover letter, and LinkedIn profile against the same criteria they self-check.</p>
+          <button class="action-btn secondary" onclick="exportRubric()">Download Rubric</button>
+        </div>
+      </div>
+
+      <!-- Registered Cohorts & Student Progress Tracker -->
+      <div class="card full-width">
+        <h3>Local Student Cohorts Tracker</h3>
+        <div class="table-wrapper">
+          <table id="cohorts-table">
+            <thead>
+              <tr>
+                <th>Group Name</th>
+                <th>Active Learners</th>
+                <th>Completed Modules</th>
+                <th>Completion %</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="cohorts-list"></tbody>
+          </table>
+        </div>
       </div>
     </div>
   </section>
@@ -192,7 +277,7 @@
 
 <!-- Footer Sync Indicator -->
 <footer class="app-footer">
-  <p>&copy; 2026 Soma Sasa. Developed for Kenya &amp; Regional Scale.</p>
+  <p>&copy; 2026 Soma Sasa. Developed for Kenya, East Africa &amp; beyond.</p>
   <div class="sync-control">
     <span id="sync-message">Checking sync status…</span>
     <span id="sync-queue-badge" class="badge queue-badge hidden">0 pending</span>

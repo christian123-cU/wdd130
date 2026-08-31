@@ -1,0 +1,2732 @@
+{
+  "literacy": {
+    "levels": [
+      {
+        "id": "beginner",
+        "order": 1,
+        "name": "Beginner",
+        "description": "Learning to recognize letters and connect them to their sounds for the first time.",
+        "lessons": [
+          {
+            "id": "lit_beginner_1",
+            "title": "Sound Group 1: s, a, t, p, i, n",
+            "activityType": "letter_intro",
+            "introType": "letter_reveal",
+            "data": {
+              "letters": [
+                "s",
+                "a",
+                "t",
+                "p",
+                "i",
+                "n"
+              ],
+              "blends": [
+                {
+                  "parts": [
+                    "s",
+                    "a"
+                  ],
+                  "result": "sa"
+                },
+                {
+                  "parts": [
+                    "t",
+                    "a"
+                  ],
+                  "result": "ta"
+                },
+                {
+                  "parts": [
+                    "p",
+                    "i"
+                  ],
+                  "result": "pi"
+                },
+                {
+                  "parts": [
+                    "i",
+                    "n"
+                  ],
+                  "result": "in"
+                },
+                {
+                  "parts": [
+                    "s",
+                    "i"
+                  ],
+                  "result": "si"
+                }
+              ],
+              "practiceWords": [
+                "sat",
+                "pin",
+                "tan",
+                "tip",
+                "nap"
+              ]
+            }
+          },
+          {
+            "id": "lit_beginner_2",
+            "title": "Sound Group 2: ck, e, h, r, m, d",
+            "activityType": "letter_intro",
+            "introType": "letter_reveal",
+            "data": {
+              "letters": [
+                "ck",
+                "e",
+                "h",
+                "r",
+                "m",
+                "d"
+              ],
+              "blends": [
+                {
+                  "parts": [
+                    "h",
+                    "e"
+                  ],
+                  "result": "he"
+                },
+                {
+                  "parts": [
+                    "r",
+                    "e"
+                  ],
+                  "result": "re"
+                },
+                {
+                  "parts": [
+                    "m",
+                    "e"
+                  ],
+                  "result": "me"
+                },
+                {
+                  "parts": [
+                    "d",
+                    "e"
+                  ],
+                  "result": "de"
+                },
+                {
+                  "parts": [
+                    "e",
+                    "d"
+                  ],
+                  "result": "ed"
+                }
+              ],
+              "practiceWords": [
+                "red",
+                "hen",
+                "dam",
+                "hem",
+                "mad"
+              ]
+            }
+          },
+          {
+            "id": "lit_beginner_3",
+            "title": "Sound Group 3: g, o, u, l, f, b",
+            "activityType": "letter_intro",
+            "introType": "letter_reveal",
+            "data": {
+              "letters": [
+                "g",
+                "o",
+                "u",
+                "l",
+                "f",
+                "b"
+              ],
+              "blends": [
+                {
+                  "parts": [
+                    "g",
+                    "o"
+                  ],
+                  "result": "go"
+                },
+                {
+                  "parts": [
+                    "u",
+                    "p"
+                  ],
+                  "result": "up"
+                },
+                {
+                  "parts": [
+                    "b",
+                    "u"
+                  ],
+                  "result": "bu"
+                },
+                {
+                  "parts": [
+                    "f",
+                    "o"
+                  ],
+                  "result": "fo"
+                },
+                {
+                  "parts": [
+                    "l",
+                    "o"
+                  ],
+                  "result": "lo"
+                }
+              ],
+              "practiceWords": [
+                "log",
+                "bug",
+                "fog",
+                "gum",
+                "lob"
+              ]
+            }
+          },
+          {
+            "id": "lit_beginner_4",
+            "title": "Sound Group 4: ai, j, oa, ie, ee, or",
+            "activityType": "letter_intro",
+            "introType": "letter_reveal",
+            "data": {
+              "letters": [
+                "ai",
+                "j",
+                "oa",
+                "ie",
+                "ee",
+                "or"
+              ],
+              "blends": [
+                {
+                  "parts": [
+                    "j",
+                    "ai"
+                  ],
+                  "result": "jai"
+                },
+                {
+                  "parts": [
+                    "oa",
+                    "t"
+                  ],
+                  "result": "oat"
+                },
+                {
+                  "parts": [
+                    "ee",
+                    "p"
+                  ],
+                  "result": "eep"
+                },
+                {
+                  "parts": [
+                    "or",
+                    "n"
+                  ],
+                  "result": "orn"
+                },
+                {
+                  "parts": [
+                    "ie",
+                    "d"
+                  ],
+                  "result": "ied"
+                }
+              ],
+              "practiceWords": [
+                "rain",
+                "boat",
+                "seed",
+                "corn",
+                "tied"
+              ]
+            }
+          },
+          {
+            "id": "lit_beginner_5",
+            "title": "Sound Group 5: z, w, ng, v, oo",
+            "activityType": "letter_intro",
+            "introType": "letter_reveal",
+            "data": {
+              "letters": [
+                "z",
+                "w",
+                "ng",
+                "v",
+                "oo"
+              ],
+              "blends": [
+                {
+                  "parts": [
+                    "z",
+                    "oo"
+                  ],
+                  "result": "zoo"
+                },
+                {
+                  "parts": [
+                    "w",
+                    "in"
+                  ],
+                  "result": "win"
+                },
+                {
+                  "parts": [
+                    "v",
+                    "an"
+                  ],
+                  "result": "van"
+                },
+                {
+                  "parts": [
+                    "s",
+                    "ing"
+                  ],
+                  "result": "sing"
+                },
+                {
+                  "parts": [
+                    "m",
+                    "oo"
+                  ],
+                  "result": "moo"
+                }
+              ],
+              "practiceWords": [
+                "zoo",
+                "van",
+                "wing",
+                "moon",
+                "wag"
+              ]
+            }
+          },
+          {
+            "id": "lit_beginner_6",
+            "title": "Sound Group 6: y, x, ch, sh, th",
+            "activityType": "letter_intro",
+            "introType": "letter_reveal",
+            "data": {
+              "letters": [
+                "y",
+                "x",
+                "ch",
+                "sh",
+                "th"
+              ],
+              "blends": [
+                {
+                  "parts": [
+                    "ch",
+                    "at"
+                  ],
+                  "result": "chat"
+                },
+                {
+                  "parts": [
+                    "sh",
+                    "op"
+                  ],
+                  "result": "shop"
+                },
+                {
+                  "parts": [
+                    "th",
+                    "in"
+                  ],
+                  "result": "thin"
+                },
+                {
+                  "parts": [
+                    "y",
+                    "es"
+                  ],
+                  "result": "yes"
+                },
+                {
+                  "parts": [
+                    "f",
+                    "ox"
+                  ],
+                  "result": "fox"
+                }
+              ],
+              "practiceWords": [
+                "chat",
+                "shop",
+                "thin",
+                "yes",
+                "fox"
+              ]
+            }
+          },
+          {
+            "id": "lit_beginner_7",
+            "title": "Sound Group 7: qu, ou, oi, ue, er, ar",
+            "activityType": "letter_intro",
+            "introType": "letter_reveal",
+            "data": {
+              "letters": [
+                "qu",
+                "ou",
+                "oi",
+                "ue",
+                "er",
+                "ar"
+              ],
+              "blends": [
+                {
+                  "parts": [
+                    "qu",
+                    "ick"
+                  ],
+                  "result": "quick"
+                },
+                {
+                  "parts": [
+                    "c",
+                    "ar"
+                  ],
+                  "result": "car"
+                },
+                {
+                  "parts": [
+                    "j",
+                    "oi"
+                  ],
+                  "result": "joi"
+                },
+                {
+                  "parts": [
+                    "h",
+                    "er"
+                  ],
+                  "result": "her"
+                },
+                {
+                  "parts": [
+                    "l",
+                    "oud"
+                  ],
+                  "result": "loud"
+                }
+              ],
+              "practiceWords": [
+                "quick",
+                "car",
+                "join",
+                "her",
+                "loud"
+              ]
+            }
+          }
+        ],
+        "test": {
+          "questions": [
+            {
+              "question": "Blend the sounds 's' and 'a'. What do you get?",
+              "options": [
+                "sa",
+                "at",
+                "ip"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "Which two sounds blend together to make 'sh'?",
+              "options": [
+                "s + h",
+                "s + t",
+                "c + h"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "Which word can you build from the sounds c-h-a-t?",
+              "options": [
+                "chat",
+                "shot",
+                "than"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        }
+      },
+      {
+        "id": "letter",
+        "order": 2,
+        "name": "Letter",
+        "description": "Knowing individual letters well and starting to blend them into short, familiar words.",
+        "lessons": [
+          {
+            "id": "lit_letter_1",
+            "title": "Reviewing the Alphabet A-M",
+            "activityType": "letter_intro",
+            "introType": "letter_reveal",
+            "data": {
+              "letters": [
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "h",
+                "i",
+                "j",
+                "k",
+                "l",
+                "m"
+              ],
+              "blends": [
+                {
+                  "parts": [
+                    "a",
+                    "b"
+                  ],
+                  "result": "ab"
+                },
+                {
+                  "parts": [
+                    "c",
+                    "d"
+                  ],
+                  "result": "cd"
+                }
+              ],
+              "practiceWords": [
+                "cab",
+                "bad",
+                "dam"
+              ]
+            }
+          },
+          {
+            "id": "lit_letter_2",
+            "title": "Reviewing the Alphabet N-Z",
+            "activityType": "letter_intro",
+            "introType": "letter_reveal",
+            "data": {
+              "letters": [
+                "n",
+                "o",
+                "p",
+                "q",
+                "r",
+                "s",
+                "t",
+                "u",
+                "v",
+                "w",
+                "x",
+                "y",
+                "z"
+              ],
+              "blends": [
+                {
+                  "parts": [
+                    "s",
+                    "u"
+                  ],
+                  "result": "su"
+                },
+                {
+                  "parts": [
+                    "t",
+                    "o"
+                  ],
+                  "result": "to"
+                }
+              ],
+              "practiceWords": [
+                "sun",
+                "top",
+                "pot"
+              ]
+            }
+          },
+          {
+            "id": "lit_letter_3",
+            "title": "Vowel Sounds: a, e, i, o, u",
+            "activityType": "letter_intro",
+            "introType": "letter_reveal",
+            "data": {
+              "letters": [
+                "a",
+                "e",
+                "i",
+                "o",
+                "u"
+              ],
+              "blends": [
+                {
+                  "parts": [
+                    "a",
+                    "t"
+                  ],
+                  "result": "at"
+                },
+                {
+                  "parts": [
+                    "u",
+                    "p"
+                  ],
+                  "result": "up"
+                }
+              ],
+              "practiceWords": [
+                "ant",
+                "egg",
+                "ink",
+                "oak",
+                "up"
+              ]
+            }
+          },
+          {
+            "id": "lit_letter_4",
+            "title": "Consonant Blends: bl, cl, fr, gr, st, tr",
+            "activityType": "letter_intro",
+            "introType": "letter_reveal",
+            "data": {
+              "letters": [
+                "bl",
+                "cl",
+                "fr",
+                "gr",
+                "st",
+                "tr"
+              ],
+              "blends": [
+                {
+                  "parts": [
+                    "bl",
+                    "ack"
+                  ],
+                  "result": "black"
+                },
+                {
+                  "parts": [
+                    "st",
+                    "op"
+                  ],
+                  "result": "stop"
+                },
+                {
+                  "parts": [
+                    "tr",
+                    "ip"
+                  ],
+                  "result": "trip"
+                }
+              ],
+              "practiceWords": [
+                "black",
+                "stop",
+                "trip",
+                "frog",
+                "grab",
+                "clap"
+              ]
+            }
+          },
+          {
+            "id": "lit_letter_5",
+            "title": "Word Family: -at (cat, hat, mat, sat, rat)",
+            "activityType": "word_ladder",
+            "introType": "word_build_hook",
+            "data": {
+              "words": [
+                "cat",
+                "hat",
+                "mat",
+                "sat",
+                "rat"
+              ],
+              "instruction": "Watch each word build up, then read the whole -at family on your own."
+            }
+          },
+          {
+            "id": "lit_letter_6",
+            "title": "Word Family: -in and -og (pin, tin, dog, log)",
+            "activityType": "word_ladder",
+            "introType": "word_build_hook",
+            "data": {
+              "words": [
+                "pin",
+                "tin",
+                "win",
+                "dog",
+                "log",
+                "fog"
+              ],
+              "instruction": "These words share an ending sound. Build each one and read it aloud."
+            }
+          },
+          {
+            "id": "lit_letter_7",
+            "title": "Rhyming Words: cook, look, hook, book",
+            "activityType": "word_ladder",
+            "introType": "word_build_hook",
+            "data": {
+              "words": [
+                "cook",
+                "look",
+                "hook",
+                "book",
+                "play",
+                "day",
+                "say"
+              ],
+              "instruction": "Rhyming words sound alike at the end. Build each word and notice the pattern."
+            }
+          }
+        ],
+        "test": {
+          "questions": [
+            {
+              "question": "Which word belongs to the -at family?",
+              "options": [
+                "hat",
+                "hog",
+                "hen"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "Which two words rhyme?",
+              "options": [
+                "cook and book",
+                "cook and cat",
+                "cook and dog"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "Which blend starts the word 'stop'?",
+              "options": [
+                "st",
+                "sp",
+                "sh"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        }
+      },
+      {
+        "id": "word",
+        "order": 3,
+        "name": "Word",
+        "description": "Reading words of increasing length fluently and combining them into simple sentences.",
+        "lessons": [
+          {
+            "id": "lit_word_1",
+            "title": "Building 2-Letter Words",
+            "activityType": "word_ladder",
+            "introType": "word_build_hook",
+            "data": {
+              "words": [
+                "at",
+                "an",
+                "in",
+                "on",
+                "up",
+                "it",
+                "is",
+                "am"
+              ],
+              "instruction": "Two-letter words are short but important. Build each one, then try reading it without help."
+            }
+          },
+          {
+            "id": "lit_word_2",
+            "title": "Building 3-Letter Words",
+            "activityType": "word_ladder",
+            "introType": "word_build_hook",
+            "data": {
+              "words": [
+                "cat",
+                "dog",
+                "sun",
+                "big",
+                "red",
+                "run",
+                "hen",
+                "bed"
+              ],
+              "instruction": "Three-letter words often follow a consonant-vowel-consonant pattern. Build each word."
+            }
+          },
+          {
+            "id": "lit_word_3",
+            "title": "Building 4-Letter Words",
+            "activityType": "word_ladder",
+            "introType": "word_build_hook",
+            "data": {
+              "words": [
+                "fish",
+                "milk",
+                "book",
+                "tree",
+                "star",
+                "play",
+                "blue",
+                "cake"
+              ],
+              "instruction": "Four-letter words may include a blend or a silent letter. Take your time building each one."
+            }
+          },
+          {
+            "id": "lit_word_4",
+            "title": "Building 5-Letter Words",
+            "activityType": "word_ladder",
+            "introType": "word_build_hook",
+            "data": {
+              "words": [
+                "house",
+                "table",
+                "apple",
+                "mango",
+                "grass",
+                "water",
+                "chair",
+                "bread"
+              ],
+              "instruction": "Five-letter words are longer, but the same blending skills apply. Build each one carefully."
+            }
+          },
+          {
+            "id": "lit_word_5",
+            "title": "Sight Words You'll See Often",
+            "activityType": "word_ladder",
+            "introType": "word_build_hook",
+            "data": {
+              "words": [
+                "the",
+                "is",
+                "and",
+                "was",
+                "said",
+                "you",
+                "are",
+                "have",
+                "they",
+                "this"
+              ],
+              "instruction": "Sight words don't always follow normal sound rules, so it helps to recognize them by sight. Practice each one."
+            }
+          },
+          {
+            "id": "lit_word_6",
+            "title": "Building Simple Sentences",
+            "activityType": "passage_reader",
+            "introType": "segment_hook",
+            "data": {
+              "title": "Building Simple Sentences",
+              "text": "The cat sat on the mat. I see a big dog. We play in the sun. She has a red bag. The sun is hot today.",
+              "teaser": "Notice how short, familiar words combine into full sentences.",
+              "vocab": [
+                {
+                  "word": "mat",
+                  "meaning": "a small piece of material on the floor"
+                }
+              ],
+              "questions": []
+            }
+          },
+          {
+            "id": "lit_word_7",
+            "title": "Reading Short Sentences",
+            "activityType": "passage_reader",
+            "introType": "segment_hook",
+            "data": {
+              "title": "Reading Short Sentences",
+              "text": "Sam has a pet cat. The cat likes milk. Sam plays with the cat every day. They are good friends.",
+              "teaser": "Read each sentence slowly, then read the whole passage again a little faster.",
+              "vocab": [
+                {
+                  "word": "pet",
+                  "meaning": "an animal kept at home for company"
+                }
+              ],
+              "questions": []
+            }
+          }
+        ],
+        "test": {
+          "questions": [
+            {
+              "question": "Which of these is a 2-letter word?",
+              "options": [
+                "at",
+                "cat",
+                "house"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "Complete the sentence: 'The cat ___ on the mat.'",
+              "options": [
+                "sat",
+                "house",
+                "and"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "Which word is a common sight word?",
+              "options": [
+                "the",
+                "elephant",
+                "umbrella"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        }
+      },
+      {
+        "id": "paragraph",
+        "order": 4,
+        "name": "Paragraph",
+        "description": "Reading short paragraphs fluently and understanding what they mean.",
+        "lessons": [
+          {
+            "id": "lit_paragraph_1",
+            "title": "Cat and Rat",
+            "activityType": "passage_reader",
+            "introType": "segment_hook",
+            "data": {
+              "title": "Cat and Rat",
+              "text": "The cat sits on the chair. He waits for the rat. The rat is under the chair. The rat hides from the cat. The cat jumps. The rat runs away. The cat is tired. He sleeps under the chair.",
+              "teaser": "Where do you think the rat is hiding?",
+              "vocab": [],
+              "questions": [
+                {
+                  "question": "Where is the cat at the start of the story?",
+                  "options": [
+                    "On the chair",
+                    "Under the chair",
+                    "In the garden"
+                  ],
+                  "correctIndex": 0
+                }
+              ]
+            }
+          },
+          {
+            "id": "lit_paragraph_2",
+            "title": "Koki's Stomach",
+            "activityType": "passage_reader",
+            "introType": "segment_hook",
+            "data": {
+              "title": "Koki's Stomach",
+              "text": "Koki is in class. But he thinks about food. He is so hungry. He has a banana in his bag. He wants to eat the banana. The bell rings. He looks around him. Did others hear a sound? Yes! It is time for lunch.",
+              "teaser": "Have you ever felt too hungry to concentrate in class?",
+              "vocab": [],
+              "questions": [
+                {
+                  "question": "What does Koki have in his bag?",
+                  "options": [
+                    "A banana",
+                    "A book",
+                    "A ball"
+                  ],
+                  "correctIndex": 0
+                }
+              ]
+            }
+          },
+          {
+            "id": "lit_paragraph_3",
+            "title": "My Sister Anna",
+            "activityType": "passage_reader",
+            "introType": "segment_hook",
+            "data": {
+              "title": "My Sister Anna",
+              "text": "Anna is my sister. She likes to go to school. All the teachers like her. She does her homework. She helps me with my homework. She helps our mother to cook food. We play in the farm. She then puts me to sleep. I love my sister Anna.",
+              "teaser": "What does a good sibling do to help at home?",
+              "vocab": [],
+              "questions": [
+                {
+                  "question": "What does Anna help her mother do?",
+                  "options": [
+                    "Cook food",
+                    "Wash the car",
+                    "Feed the goats"
+                  ],
+                  "correctIndex": 0
+                }
+              ]
+            }
+          },
+          {
+            "id": "lit_paragraph_4",
+            "title": "Road Safety",
+            "activityType": "passage_reader",
+            "introType": "segment_hook",
+            "data": {
+              "title": "Road Safety",
+              "text": "There are many buses, bicycles and motorbikes on the road. Our teacher says you must: Look right, look left. Look right and look left again. If the road is clear; then you can cross. If the road is not clear, you must stop and wait.",
+              "teaser": "Why do you think it's important to look both ways more than once?",
+              "vocab": [],
+              "questions": [
+                {
+                  "question": "What should you do if the road is not clear?",
+                  "options": [
+                    "Stop and wait",
+                    "Run across quickly",
+                    "Close your eyes"
+                  ],
+                  "correctIndex": 0
+                }
+              ]
+            }
+          },
+          {
+            "id": "lit_paragraph_5",
+            "title": "A Sunny Place",
+            "activityType": "passage_reader",
+            "introType": "segment_hook",
+            "data": {
+              "title": "A Sunny Place",
+              "text": "Peter and Mary live in Kitui. Kitui is a sunny place. They always wear light clothes. They play in the sun. They are happy when it rains. They help their mother plant maize and beans. They sell maize and beans in the market.",
+              "teaser": "What crops do you think grow well in a sunny place?",
+              "vocab": [],
+              "questions": [
+                {
+                  "question": "What do Peter and Mary help plant?",
+                  "options": [
+                    "Maize and beans",
+                    "Rice and wheat",
+                    "Tea and coffee"
+                  ],
+                  "correctIndex": 0
+                }
+              ]
+            }
+          },
+          {
+            "id": "lit_paragraph_6",
+            "title": "My School",
+            "activityType": "passage_reader",
+            "introType": "segment_hook",
+            "data": {
+              "title": "My School",
+              "text": "My school is the best. We go to school from Monday to Friday. We learn to read and write. I listen to the teacher. I do my homework. My school has a big playground. We play games at break time. I play football with my friends. Others skip with a rope. The bell rings. We run back to class.",
+              "teaser": "What games do you like to play at break time?",
+              "vocab": [],
+              "questions": [
+                {
+                  "question": "What games are played at break time in this story?",
+                  "options": [
+                    "Football and skipping rope",
+                    "Swimming and running",
+                    "Chess and painting"
+                  ],
+                  "correctIndex": 0
+                }
+              ]
+            }
+          },
+          {
+            "id": "lit_paragraph_7",
+            "title": "Market Day",
+            "activityType": "passage_reader",
+            "introType": "segment_hook",
+            "data": {
+              "title": "Market Day",
+              "text": "Today is market day. I go to the market. I go with my mother. There are many things at the market. We see fruits, clothes and shoes. There are many people too. We buy four bananas, a mango and two cakes. We also buy a dress, socks and shoes. The dress is red. The socks are white. The shoe is black in colour.",
+              "teaser": "What would you like to buy on a market day?",
+              "vocab": [],
+              "questions": [
+                {
+                  "question": "What color is the dress bought at the market?",
+                  "options": [
+                    "Red",
+                    "Blue",
+                    "Green"
+                  ],
+                  "correctIndex": 0
+                }
+              ]
+            }
+          }
+        ],
+        "test": {
+          "questions": [
+            {
+              "question": "In 'Cat and Rat', where does the rat hide from the cat?",
+              "options": [
+                "Under the chair",
+                "On the chair",
+                "Outside"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "In 'Road Safety', what should you do before crossing a clear road?",
+              "options": [
+                "Look right, then left, then right again",
+                "Just start walking",
+                "Wait for someone else"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "In 'My School', what happens when the bell rings at break time?",
+              "options": [
+                "Everyone runs back to class",
+                "School ends for the day",
+                "Lunch begins"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        }
+      },
+      {
+        "id": "story",
+        "order": 5,
+        "name": "Story",
+        "description": "Reading full stories with fluency, and understanding and discussing what they mean.",
+        "lessons": [
+          {
+            "id": "lit_story_1",
+            "title": "My Favorite Day",
+            "activityType": "passage_reader",
+            "introType": "segment_hook",
+            "data": {
+              "title": "My Favorite Day",
+              "text": "My name is Mike. I am a pupil. I go to school every day. Today is Sunday. It is my favorite day. I do not go to school. As a family, we go to church. After church, my mother and I go to the park. At the park, we see bears, giraffes and monkeys. What do you do on your favorite day?",
+              "teaser": "What's your own favorite day of the week, and why?",
+              "vocab": [],
+              "questions": [
+                {
+                  "question": "Where do Mike and his mother go on Sundays?",
+                  "options": [
+                    "The park",
+                    "The market",
+                    "School"
+                  ],
+                  "correctIndex": 0
+                }
+              ]
+            }
+          },
+          {
+            "id": "lit_story_2",
+            "title": "Atieno's Family",
+            "activityType": "passage_reader",
+            "introType": "segment_hook",
+            "data": {
+              "title": "Atieno's Family",
+              "text": "Atieno is in grade two at Furaha primary. She lives with her parents. Her mother's name is Martha. She works in a bank. Her father's name is Peter. He is a tailor. Atieno's parents take good care of her. She has one brother and two sisters. They are all older than her. Atieno loves her parents, brother and sisters very much.",
+              "teaser": "How many children do you think are in a typical family you know?",
+              "vocab": [],
+              "questions": [
+                {
+                  "question": "How many children are in Atieno's family in total?",
+                  "options": [
+                    "Four",
+                    "Two",
+                    "Six"
+                  ],
+                  "correctIndex": 0
+                }
+              ]
+            }
+          },
+          {
+            "id": "lit_story_3",
+            "title": "The Ant and the Grasshopper",
+            "activityType": "passage_reader",
+            "introType": "segment_hook",
+            "data": {
+              "title": "The Ant and the Grasshopper",
+              "text": "One day, the grasshopper was hoping and singing in the field. An ant passed by carrying an ear of maize. The grasshopper called him to play but he said he was preparing for the dry season. The grasshopper did not seem to worry. When the drought came, ant had enough for himself. The grasshopper got a little share from the ant.",
+              "teaser": "What do you think this story teaches about planning ahead?",
+              "vocab": [],
+              "questions": [
+                {
+                  "question": "Why did the ant refuse to play with the grasshopper?",
+                  "options": [
+                    "He was preparing for the dry season",
+                    "He was tired",
+                    "He didn't like the grasshopper"
+                  ],
+                  "correctIndex": 0
+                }
+              ]
+            }
+          },
+          {
+            "id": "lit_story_4",
+            "title": "A Lion and the Rat",
+            "activityType": "passage_reader",
+            "introType": "segment_hook",
+            "data": {
+              "title": "A Lion and the Rat",
+              "text": "The lion had just finished his meal. He was resting under a shade. Suddenly, a rat decided to play on his face. The lion caught the rat and wanted to eat him. The rat begged him to save his life. The lion decided to let him go. One day, the lion fell into a hunter's trap. He roared in anger. The whole forest could hear him. The rat knew it was time to return the favor. Before the hunters came back, the rat ate up the trap and the lion was free. He thanked the grateful rat.",
+              "teaser": "Do you think small acts of kindness can come back to help you later?",
+              "vocab": [],
+              "questions": [
+                {
+                  "question": "How did the rat save the lion?",
+                  "options": [
+                    "By eating through the trap to free him",
+                    "By roaring to scare the hunters",
+                    "By hiding the lion in a hole"
+                  ],
+                  "correctIndex": 0
+                }
+              ]
+            }
+          },
+          {
+            "id": "lit_story_5",
+            "title": "Zeke the Zebra",
+            "activityType": "passage_reader",
+            "introType": "segment_hook",
+            "data": {
+              "title": "Zeke the Zebra",
+              "text": "Zeke lives in the savannah. Here, grasses are tall with very few trees and no mountains. There is a river from which all the animals in the savannah drink. Most of these animals are Zeke's friends. Though Zeke is a zebra, he always wanted to look like other animals. He admired how swift the horse was and wished for long hairs. He adored the big flappy ears of the elephant. How he wished he could walk on two legs. When he learnt that he could not have all these, he is happy with himself.",
+              "teaser": "Why do you think it's important to be happy with who you are?",
+              "vocab": [],
+              "questions": [
+                {
+                  "question": "What did Zeke admire about the elephant?",
+                  "options": [
+                    "Its big flappy ears",
+                    "Its stripes",
+                    "Its long neck"
+                  ],
+                  "correctIndex": 0
+                }
+              ]
+            }
+          },
+          {
+            "id": "lit_story_6",
+            "title": "The Magical Honey Pot",
+            "activityType": "passage_reader",
+            "introType": "segment_hook",
+            "data": {
+              "title": "The Magical Honey Pot",
+              "text": "One morning, the bear was looking for his honey pot. He looked for it under his bed and could not find it. He looked for it on his bookshelf but it was not there. The bear called his friend rabbit. He asked rabbit to help him find the honey pot. They looked all over but could not find it. Suddenly, rabbit saw something drop from the roof. It was bear's honey pot. Luckily, it did not break. They were both very happy. From that day on, bear calls it the magical honey pot.",
+              "teaser": "Where do you think the honey pot had been hiding the whole time?",
+              "vocab": [],
+              "questions": [
+                {
+                  "question": "Where did rabbit finally spot the honey pot?",
+                  "options": [
+                    "Dropping from the roof",
+                    "Under the bed",
+                    "In the kitchen"
+                  ],
+                  "correctIndex": 0
+                }
+              ]
+            }
+          },
+          {
+            "id": "lit_story_7",
+            "title": "Peter's Fortune",
+            "activityType": "passage_reader",
+            "introType": "segment_hook",
+            "data": {
+              "title": "Peter's Fortune",
+              "text": "There was a big tree in the garden, just a few steps from the window. Peter decided to cut down the tree. A woodcutter came and cut the tree. The roots were widely spread. The woodcutter had to dig a big hole. He suggested that the hole could be used as a rubbish pit. Peter climbed down and saw some gold coins. Next to the coins, he saw a green metal box. It had rings, necklaces and bracelets, all made of gold. He had found his fortune.",
+              "teaser": "What do you think Peter should do with his surprise fortune?",
+              "vocab": [],
+              "questions": [
+                {
+                  "question": "What did Peter find in the hole besides gold coins?",
+                  "options": [
+                    "A green metal box of jewelry",
+                    "Old books",
+                    "Bags of maize"
+                  ],
+                  "correctIndex": 0
+                }
+              ]
+            }
+          }
+        ],
+        "test": {
+          "questions": [
+            {
+              "question": "In 'A Lion and the Rat', what is the story's main lesson?",
+              "options": [
+                "Kindness can be repaid later",
+                "Lions are always dangerous",
+                "Rats should be avoided"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "In 'The Ant and the Grasshopper', what happened when the drought came?",
+              "options": [
+                "The ant had enough food, the grasshopper did not",
+                "Both animals had plenty of food",
+                "The grasshopper had more food than the ant"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "In 'Zeke the Zebra', how does Zeke feel by the end of the story?",
+              "options": [
+                "Happy with who he is",
+                "Sad that he can't change",
+                "Angry at the other animals"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        }
+      }
+    ],
+    "assessment": {
+      "letters": [
+        {
+          "letter": "s",
+          "check": {
+            "question": "Which word starts with the letter 's'?",
+            "options": [
+              "sun",
+              "cat",
+              "dog"
+            ],
+            "correctIndex": 0
+          }
+        },
+        {
+          "letter": "a",
+          "check": {
+            "question": "Which word starts with the letter 'a'?",
+            "options": [
+              "apple",
+              "sun",
+              "dog"
+            ],
+            "correctIndex": 0
+          }
+        },
+        {
+          "letter": "t",
+          "check": {
+            "question": "Which word starts with the letter 't'?",
+            "options": [
+              "tap",
+              "sun",
+              "cat"
+            ],
+            "correctIndex": 0
+          }
+        },
+        {
+          "letter": "p",
+          "check": {
+            "question": "Which word starts with the letter 'p'?",
+            "options": [
+              "pig",
+              "dog",
+              "sun"
+            ],
+            "correctIndex": 0
+          }
+        },
+        {
+          "letter": "i",
+          "check": {
+            "question": "Which word starts with the letter 'i'?",
+            "options": [
+              "ink",
+              "cat",
+              "sun"
+            ],
+            "correctIndex": 0
+          }
+        },
+        {
+          "letter": "n",
+          "check": {
+            "question": "Which word starts with the letter 'n'?",
+            "options": [
+              "net",
+              "dog",
+              "cat"
+            ],
+            "correctIndex": 0
+          }
+        },
+        {
+          "letter": "e",
+          "check": {
+            "question": "Which word starts with the letter 'e'?",
+            "options": [
+              "egg",
+              "sun",
+              "cat"
+            ],
+            "correctIndex": 0
+          }
+        },
+        {
+          "letter": "o",
+          "check": {
+            "question": "Which word starts with the letter 'o'?",
+            "options": [
+              "orange",
+              "dog",
+              "cat"
+            ],
+            "correctIndex": 0
+          }
+        },
+        {
+          "letter": "m",
+          "check": {
+            "question": "Which word starts with the letter 'm'?",
+            "options": [
+              "mat",
+              "sun",
+              "dog"
+            ],
+            "correctIndex": 0
+          }
+        },
+        {
+          "letter": "h",
+          "check": {
+            "question": "Which word starts with the letter 'h'?",
+            "options": [
+              "hat",
+              "cat",
+              "dog"
+            ],
+            "correctIndex": 0
+          }
+        }
+      ],
+      "words": [
+        {
+          "word": "dog",
+          "check": {
+            "question": "Which word names a common animal that barks?",
+            "options": [
+              "dog",
+              "cat",
+              "cow"
+            ],
+            "correctIndex": 0
+          }
+        },
+        {
+          "word": "big",
+          "check": {
+            "question": "Which word means the opposite of 'small'?",
+            "options": [
+              "big",
+              "run",
+              "red"
+            ],
+            "correctIndex": 0
+          }
+        },
+        {
+          "word": "run",
+          "check": {
+            "question": "Which word means to move fast using your legs?",
+            "options": [
+              "run",
+              "sit",
+              "dog"
+            ],
+            "correctIndex": 0
+          }
+        },
+        {
+          "word": "red",
+          "check": {
+            "question": "Which word is a color, like blood or roses?",
+            "options": [
+              "red",
+              "blue",
+              "big"
+            ],
+            "correctIndex": 0
+          }
+        },
+        {
+          "word": "school",
+          "check": {
+            "question": "Which word names where children go to learn?",
+            "options": [
+              "school",
+              "house",
+              "market"
+            ],
+            "correctIndex": 0
+          }
+        },
+        {
+          "word": "happy",
+          "check": {
+            "question": "Which word describes how you feel when something good happens?",
+            "options": [
+              "happy",
+              "table",
+              "walk"
+            ],
+            "correctIndex": 0
+          }
+        },
+        {
+          "word": "water",
+          "check": {
+            "question": "Which word names something you drink every day?",
+            "options": [
+              "water",
+              "chair",
+              "book"
+            ],
+            "correctIndex": 0
+          }
+        },
+        {
+          "word": "friend",
+          "check": {
+            "question": "Which word names someone you like to play with?",
+            "options": [
+              "friend",
+              "shoe",
+              "cloud"
+            ],
+            "correctIndex": 0
+          }
+        },
+        {
+          "word": "market",
+          "check": {
+            "question": "Which word names a place where people buy and sell food?",
+            "options": [
+              "market",
+              "river",
+              "roof"
+            ],
+            "correctIndex": 0
+          }
+        },
+        {
+          "word": "family",
+          "check": {
+            "question": "Which word names the people you live with at home?",
+            "options": [
+              "family",
+              "forest",
+              "pencil"
+            ],
+            "correctIndex": 0
+          }
+        }
+      ],
+      "paragraphs": [
+        {
+          "text": "The goat lives on the farm. Every morning, the farmer gives the goat some grass to eat. The goat likes to jump around the yard. In the evening, the goat rests near the small hut.",
+          "questions": [
+            {
+              "question": "What does the farmer give the goat in the morning?",
+              "options": [
+                "Grass",
+                "Milk",
+                "Rice"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "Where does the goat rest in the evening?",
+              "options": [
+                "Near the small hut",
+                "In the river",
+                "At the market"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "text": "Amina helps her mother every weekend. She sweeps the floor and washes the plates. Her mother is always happy with her help. After chores, Amina plays outside with her friends.",
+          "questions": [
+            {
+              "question": "What does Amina do to help her mother?",
+              "options": [
+                "Sweeps the floor and washes plates",
+                "Cooks dinner",
+                "Feeds the chickens"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "What does Amina do after her chores?",
+              "options": [
+                "Plays outside with friends",
+                "Goes to sleep",
+                "Reads a book alone"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        }
+      ],
+      "story": {
+        "text": "There once was a small tortoise who wanted to race the fastest animals in the forest. Everyone laughed, saying he was too slow. But the tortoise did not give up. On the day of the race, he walked steadily, never stopping to rest. The faster animals ran ahead but stopped along the way to rest and play. By the time they remembered the race, the tortoise had already crossed the finish line. The forest learned that slow and steady effort can win in the end.",
+        "questions": [
+          {
+            "question": "Why did the tortoise win the race?",
+            "options": [
+              "He kept going steadily without stopping",
+              "He was actually the fastest animal",
+              "The other animals gave up the race entirely"
+            ],
+            "correctIndex": 0
+          },
+          {
+            "question": "What is the main lesson of this story?",
+            "options": [
+              "Slow and steady effort can win in the end",
+              "Only fast animals can win races",
+              "Racing is not important"
+            ],
+            "correctIndex": 0
+          }
+        ]
+      }
+    }
+  },
+  "numeracy": {
+    "levels": [
+      {
+        "id": "numberRecognition",
+        "order": 1,
+        "name": "Number Recognition",
+        "description": "Recognizing, reading, and understanding the place value of numbers up to 100.",
+        "lessons": [
+          {
+            "id": "num_nr_1",
+            "title": "Numbers 1 to 10",
+            "activityType": "number_blocks",
+            "introType": "number_reveal",
+            "data": {
+              "focusRange": "1-10",
+              "numbers": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ],
+              "explanation": "These are the first ten numbers. Each one represents a count of objects — 1 is a single item, 10 is a full group of ten.",
+              "practicePrompt": "Try counting ten objects around you, one at a time, up to 10."
+            }
+          },
+          {
+            "id": "num_nr_2",
+            "title": "Numbers 11 to 20",
+            "activityType": "number_blocks",
+            "introType": "number_reveal",
+            "data": {
+              "focusRange": "11-20",
+              "numbers": [
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20
+              ],
+              "explanation": "After 10, we start combining a ten with extra ones: 11 is 'ten and one', 12 is 'ten and two', and so on up to 20 (two full tens).",
+              "practicePrompt": "Practice saying 11 through 20 out loud, noticing the 'ten and ___' pattern."
+            }
+          },
+          {
+            "id": "num_nr_3",
+            "title": "Numbers 21 to 50 (Counting by Tens)",
+            "activityType": "number_blocks",
+            "introType": "number_reveal",
+            "data": {
+              "focusRange": "21-50",
+              "numbers": [
+                21,
+                30,
+                40,
+                50
+              ],
+              "explanation": "From here, numbers grow in groups of ten: 21, 22, 23... up to 30, then 31 to 40, then 41 to 50. Notice how the tens digit changes every ten numbers.",
+              "practicePrompt": "Count out loud in tens: 10, 20, 30, 40, 50."
+            }
+          },
+          {
+            "id": "num_nr_4",
+            "title": "Numbers 51 to 100",
+            "activityType": "number_blocks",
+            "introType": "number_reveal",
+            "data": {
+              "focusRange": "51-100",
+              "numbers": [
+                51,
+                60,
+                70,
+                80,
+                90,
+                100
+              ],
+              "explanation": "The same tens pattern continues all the way to 100, which is ten full groups of ten.",
+              "practicePrompt": "Practice reading these numbers aloud: 55, 68, 74, 89, 100."
+            }
+          },
+          {
+            "id": "num_nr_5",
+            "title": "Place Value: Tens and Ones",
+            "activityType": "number_blocks",
+            "introType": "number_reveal",
+            "data": {
+              "focusRange": "place-value",
+              "numbers": [
+                23,
+                47,
+                68
+              ],
+              "explanation": "Every 2-digit number has a 'tens' digit and a 'ones' digit. In 47, the 4 means 4 tens (40) and the 7 means 7 ones. Together: 40 + 7 = 47.",
+              "practicePrompt": "Break down these numbers into tens and ones: 35, 62, 89."
+            }
+          },
+          {
+            "id": "num_nr_6",
+            "title": "Reading 2-Digit Numbers",
+            "activityType": "number_blocks",
+            "introType": "number_reveal",
+            "data": {
+              "focusRange": "reading-2digit",
+              "numbers": [
+                16,
+                29,
+                53,
+                81
+              ],
+              "explanation": "When you see a 2-digit number, read the tens digit first, then the ones digit — 53 is read as 'fifty-three', not 'five-three'.",
+              "practicePrompt": "Practice reading these numbers the correct way: 16, 29, 53, 81."
+            }
+          },
+          {
+            "id": "num_nr_7",
+            "title": "Matching Numbers to Their Expanded Form",
+            "activityType": "number_blocks",
+            "introType": "number_reveal",
+            "data": {
+              "focusRange": "expanded-form",
+              "numbers": [
+                47,
+                68,
+                93
+              ],
+              "explanation": "The expanded form of a number shows the value of each digit added together. 47 = 40 + 7. 68 = 60 + 8. 93 = 90 + 3.",
+              "practicePrompt": "Try writing the expanded form of these numbers yourself: 52, 76, 39."
+            }
+          }
+        ],
+        "test": {
+          "questions": [
+            {
+              "question": "What is the expanded form of 47?",
+              "options": [
+                "40 + 7",
+                "4 + 7",
+                "400 + 7"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "Which number comes right after 59?",
+              "options": [
+                "60",
+                "50",
+                "61"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "In the number 68, what does the 6 represent?",
+              "options": [
+                "6 tens (60)",
+                "6 ones",
+                "6 hundreds"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        }
+      },
+      {
+        "id": "addition",
+        "order": 2,
+        "name": "Addition",
+        "description": "Adding numbers together, including carrying over between place values.",
+        "lessons": [
+          {
+            "id": "num_add_1",
+            "title": "Adding Small Numbers (1-Digit)",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "What is 6 + 3?",
+              "steps": [
+                "Start at the bigger number, 6.",
+                "Count on 3 more: 7, 8, 9.",
+                "So 6 + 3 = 9."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "5 + 4 = ?",
+                  "answer": "9"
+                },
+                {
+                  "text": "7 + 2 = ?",
+                  "answer": "9"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_add_2",
+            "title": "Adding 2-Digit + 1-Digit (No Carrying)",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "What is 24 + 5?",
+              "steps": [
+                "What is given? 24 and 5.",
+                "Add the ones first: 4 + 5 = 9.",
+                "The tens stay the same: 2 tens.",
+                "So 24 + 5 = 29."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "32 + 6 = ?",
+                  "answer": "38"
+                },
+                {
+                  "text": "51 + 7 = ?",
+                  "answer": "58"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_add_3",
+            "title": "Adding 2-Digit + 1-Digit (With Carrying)",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "What is 28 + 5?",
+              "steps": [
+                "Add the ones first: 8 + 5 = 13.",
+                "Write down 3, carry 1 ten.",
+                "Add the tens: 2 + 1 (carried) = 3.",
+                "So 28 + 5 = 33."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "39 + 4 = ?",
+                  "answer": "43"
+                },
+                {
+                  "text": "47 + 6 = ?",
+                  "answer": "53"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_add_4",
+            "title": "Adding 2-Digit + 2-Digit",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "What is 34 + 19?",
+              "steps": [
+                "Add the ones first: 4 + 9 = 13. Write 3, carry 1.",
+                "Add the tens: 3 + 1 + 1 (carried) = 5.",
+                "So 34 + 19 = 53."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "28 + 16 = ?",
+                  "answer": "44"
+                },
+                {
+                  "text": "45 + 27 = ?",
+                  "answer": "72"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_add_5",
+            "title": "Addition Word Problems",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "Idris has 28 oranges. His mother gave him 16 more. How many does Idris have now?",
+              "steps": [
+                "What is given? Idris has 28 oranges and receives 16 more.",
+                "What is being asked? The total number of oranges.",
+                "Add: 28 + 16 = 44.",
+                "Answer: Idris now has 44 oranges."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "Ali has 34 marbles. His friend gave him 19 more. How many in total?",
+                  "answer": "53"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_add_6",
+            "title": "Adding 3-Digit Numbers (With Carrying)",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "Ahmed grew 127 pumpkins and Junaid grew 148. How many did they grow in total?",
+              "steps": [
+                "Add the ones: 7 + 8 = 15. Write 5, carry 1.",
+                "Add the tens: 2 + 4 + 1 (carried) = 7.",
+                "Add the hundreds: 1 + 1 = 2.",
+                "So 127 + 148 = 275."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "Winnie has 236 marbles and Abdullah has 249. How many in total?",
+                  "answer": "485"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_add_7",
+            "title": "Mixed Addition Practice",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "Review: solve these using everything you've learned so far.",
+              "steps": [
+                "Try 45 + 38 on your own first.",
+                "Add ones: 5 + 8 = 13, write 3 carry 1.",
+                "Add tens: 4 + 3 + 1 = 8.",
+                "So 45 + 38 = 83."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "63 + 29 = ?",
+                  "answer": "92"
+                },
+                {
+                  "text": "158 + 236 = ?",
+                  "answer": "394"
+                }
+              ]
+            }
+          }
+        ],
+        "test": {
+          "questions": [
+            {
+              "question": "What is 28 + 5?",
+              "options": [
+                "33",
+                "23",
+                "13"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "Idris has 28 oranges and gets 16 more. How many does he have?",
+              "options": [
+                "44",
+                "38",
+                "42"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "What is 127 + 148?",
+              "options": [
+                "275",
+                "265",
+                "285"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        }
+      },
+      {
+        "id": "subtraction",
+        "order": 3,
+        "name": "Subtraction",
+        "description": "Subtracting numbers, including borrowing across place values.",
+        "lessons": [
+          {
+            "id": "num_sub_1",
+            "title": "Subtracting Small Numbers (1-Digit)",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "What is 9 - 4?",
+              "steps": [
+                "Start at 9.",
+                "Count back 4: 8, 7, 6, 5.",
+                "So 9 - 4 = 5."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "8 - 3 = ?",
+                  "answer": "5"
+                },
+                {
+                  "text": "7 - 5 = ?",
+                  "answer": "2"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_sub_2",
+            "title": "Subtracting 2-Digit - 1-Digit (No Borrowing)",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "What is 27 - 5?",
+              "steps": [
+                "Subtract the ones: 7 - 5 = 2.",
+                "The tens stay the same: 2 tens.",
+                "So 27 - 5 = 22."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "38 - 6 = ?",
+                  "answer": "32"
+                },
+                {
+                  "text": "49 - 3 = ?",
+                  "answer": "46"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_sub_3",
+            "title": "Subtracting With Borrowing",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "Yussuf had 24 tickets and sold 17. How many are unsold?",
+              "steps": [
+                "Subtract the ones: 4 is smaller than 7, so borrow a ten. 14 - 7 = 7.",
+                "Subtract the tens (after borrowing): 1 - 1 = 0.",
+                "So 24 - 17 = 7 tickets unsold."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "35 - 19 = ?",
+                  "answer": "16"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_sub_4",
+            "title": "More Practice With Borrowing",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "What is 42 - 19?",
+              "steps": [
+                "Ones: 2 is smaller than 9, borrow a ten. 12 - 9 = 3.",
+                "Tens (after borrowing): 3 - 1 = 2.",
+                "So 42 - 19 = 23."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "56 - 29 = ?",
+                  "answer": "27"
+                },
+                {
+                  "text": "63 - 38 = ?",
+                  "answer": "25"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_sub_5",
+            "title": "Subtraction Word Problems",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "Aslam had 35 mangoes and gave 19 to his sister. How many does he have now?",
+              "steps": [
+                "What is given? 35 mangoes, 19 given away.",
+                "What is being asked? How many are left.",
+                "Subtract: 35 - 19 = 16.",
+                "Answer: Aslam has 16 mangoes left."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "Sara had 56 beans and ate 29. How many are left?",
+                  "answer": "27"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_sub_6",
+            "title": "Subtracting 3-Digit Numbers",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "A mango tree had 306 mangoes; 189 were eaten by a monkey. How many are left?",
+              "steps": [
+                "Subtract the ones: 6 is smaller than 9, borrow. 16 - 9 = 7.",
+                "Subtract the tens (after borrowing): 9 is smaller than 8+1, borrow again. Work through carefully.",
+                "Subtract the hundreds.",
+                "So 306 - 189 = 117."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "543 students, 219 are girls. How many are boys?",
+                  "answer": "324"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_sub_7",
+            "title": "Mixed Subtraction Practice",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "Review: solve these using everything you've learned so far.",
+              "steps": [
+                "Try 82 - 59 on your own first.",
+                "Ones: 2 is smaller than 9, borrow. 12 - 9 = 3.",
+                "Tens (after borrowing): 7 - 5 = 2.",
+                "So 82 - 59 = 23."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "91 - 47 = ?",
+                  "answer": "44"
+                },
+                {
+                  "text": "204 - 118 = ?",
+                  "answer": "86"
+                }
+              ]
+            }
+          }
+        ],
+        "test": {
+          "questions": [
+            {
+              "question": "What is 24 - 17?",
+              "options": [
+                "7",
+                "17",
+                "9"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "Aslam had 35 mangoes and gave away 19. How many are left?",
+              "options": [
+                "16",
+                "24",
+                "14"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "What is 306 - 189?",
+              "options": [
+                "117",
+                "127",
+                "107"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        }
+      },
+      {
+        "id": "multiplication",
+        "order": 4,
+        "name": "Multiplication",
+        "description": "Understanding multiplication as repeated addition and solving multiplication word problems.",
+        "lessons": [
+          {
+            "id": "num_mult_1",
+            "title": "What Multiplication Means",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "6 groups of 3 sticks — how many sticks in total?",
+              "steps": [
+                "Multiplication is repeated addition: 6 groups of 3 means 3 + 3 + 3 + 3 + 3 + 3.",
+                "That's the same as 6 x 3.",
+                "6 x 3 = 18 sticks."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "4 groups of 5 = ? (as multiplication)",
+                  "answer": "20"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_mult_2",
+            "title": "Multiplication Table of 2 and 3",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "Learn: 2 x 1 through 2 x 10, and 3 x 1 through 3 x 10.",
+              "steps": [
+                "2 x 1=2, 2x2=4, 2x3=6, 2x4=8, 2x5=10, 2x6=12, 2x7=14, 2x8=16, 2x9=18, 2x10=20",
+                "3x1=3, 3x2=6, 3x3=9, 3x4=12, 3x5=15, 3x6=18, 3x7=21, 3x8=24, 3x9=27, 3x10=30",
+                "Try reciting both tables out loud a few times."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "2 x 7 = ?",
+                  "answer": "14"
+                },
+                {
+                  "text": "3 x 8 = ?",
+                  "answer": "24"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_mult_3",
+            "title": "Multiplication Table of 4 and 5",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "Learn: 4 x 1 through 4 x 10, and 5 x 1 through 5 x 10.",
+              "steps": [
+                "4x1=4, 4x2=8, 4x3=12, 4x4=16, 4x5=20, 4x6=24, 4x7=28, 4x8=32, 4x9=36, 4x10=40",
+                "5x1=5, 5x2=10, 5x3=15, 5x4=20, 5x5=25, 5x6=30, 5x7=35, 5x8=40, 5x9=45, 5x10=50",
+                "Try reciting both tables out loud a few times."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "4 x 6 = ?",
+                  "answer": "24"
+                },
+                {
+                  "text": "5 x 9 = ?",
+                  "answer": "45"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_mult_4",
+            "title": "Multiplying by Tens (Pattern Shortcut)",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "What is 40 x 3?",
+              "steps": [
+                "First solve the simple fact: 4 x 3 = 12.",
+                "Since 40 has one extra zero compared to 4, add that zero to the answer: 120.",
+                "So 40 x 3 = 120."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "60 x 4 = ?",
+                  "answer": "240"
+                },
+                {
+                  "text": "6 x 40 = ?",
+                  "answer": "240"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_mult_5",
+            "title": "Multiplying 2-Digit by 2-Digit (Box Method)",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "What is 24 x 15?",
+              "steps": [
+                "Split both numbers: 24 = 20 + 4, and 15 = 10 + 5.",
+                "Multiply each part: 20x10=200, 4x10=40, 20x5=100, 4x5=20.",
+                "Add all four parts: 200+40+100+20 = 360.",
+                "So 24 x 15 = 360."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "Try splitting and solving 32 x 12 the same way.",
+                  "answer": "384"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_mult_6",
+            "title": "Multiplication Word Problems",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "James buys 4 cups at 56 shillings each. How much does he spend?",
+              "steps": [
+                "What is given? 4 cups, 56 shillings each.",
+                "What do I do? Multiply: 4 x 56.",
+                "Split 56 into 50 and 6: 4x50=200, 4x6=24.",
+                "Add: 200 + 24 = 224 shillings."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "A dairy farm produces 45 gallons of milk daily. How many in 7 days?",
+                  "answer": "315"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_mult_7",
+            "title": "Mixed Multiplication Practice",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "Review: solve these using everything you've learned so far.",
+              "steps": [
+                "Try 6 x 23 on your own first.",
+                "Split 23 into 20 and 3.",
+                "6x20=120, 6x3=18.",
+                "Add: 120 + 18 = 138."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "9 x 15 = ?",
+                  "answer": "135"
+                },
+                {
+                  "text": "7 x 34 = ?",
+                  "answer": "238"
+                }
+              ]
+            }
+          }
+        ],
+        "test": {
+          "questions": [
+            {
+              "question": "What is 4 x 6?",
+              "options": [
+                "24",
+                "20",
+                "28"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "James buys 4 cups at 56 shillings each. How much does he spend?",
+              "options": [
+                "224 shillings",
+                "204 shillings",
+                "244 shillings"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "What is 24 x 15 using the box method?",
+              "options": [
+                "360",
+                "340",
+                "320"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        }
+      },
+      {
+        "id": "division",
+        "order": 5,
+        "name": "Division",
+        "description": "Sharing quantities equally, including division word problems and remainders.",
+        "lessons": [
+          {
+            "id": "num_div_1",
+            "title": "What Division Means",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "12 sticks shared equally among 4 friends — how many does each get?",
+              "steps": [
+                "Division means sharing a total equally into groups.",
+                "12 shared among 4 friends means 12 ÷ 4.",
+                "12 ÷ 4 = 3 sticks each."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "15 sweets shared among 3 friends = ? each",
+                  "answer": "5"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_div_2",
+            "title": "Division Using the Multiplication Table",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "72 mangoes shared among 3 people — how many each?",
+              "steps": [
+                "Think: what number times 3 equals 72 (or close to it)?",
+                "3 x 24 = 72, so 72 ÷ 3 = 24.",
+                "Each person gets 24 mangoes."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "56 ÷ 7 = ? (think: 7 x ? = 56)",
+                  "answer": "8"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_div_3",
+            "title": "Simple Division Without a Remainder",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "What is 45 ÷ 5?",
+              "steps": [
+                "Think: what times 5 equals 45?",
+                "5 x 9 = 45.",
+                "So 45 ÷ 5 = 9, with no remainder."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "36 ÷ 6 = ?",
+                  "answer": "6"
+                },
+                {
+                  "text": "63 ÷ 9 = ?",
+                  "answer": "7"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_div_4",
+            "title": "Division With Remainders",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "Yasin has 35 marbles to share equally among 4 friends. How many each, with any left over?",
+              "steps": [
+                "Think: what times 4 gets closest to 35 without going over?",
+                "4 x 8 = 32, which is the closest without exceeding 35.",
+                "Each friend gets 8, and 35 - 32 = 3 marbles are left over as the remainder."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "Robert splits 40 erasers between 7 classmates. How many each, and how many remain?",
+                  "answer": "5 each, 5 remain"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_div_5",
+            "title": "Division Word Problems",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "Vincent gives 79 chocolates to 6 friends equally. How many does each friend get, and how many are left over?",
+              "steps": [
+                "What is given? 79 chocolates, 6 friends.",
+                "Think: 6 x 13 = 78, the closest without going over 79.",
+                "Each friend gets 13, and 79 - 78 = 1 chocolate is left over."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "If 74 people are grouped in 6s, how many full groups can be formed?",
+                  "answer": "12 full groups, 2 people left over"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_div_6",
+            "title": "Dividing Larger Numbers",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "A library has 567 books to place equally on 8 shelves. How many per shelf, and how many are left over?",
+              "steps": [
+                "Think: what times 8 gets closest to 567 without going over?",
+                "8 x 70 = 560, which is close.",
+                "567 - 560 = 7 books remain after filling 70 per shelf... but let's check more precisely: 8 x 70 = 560, remainder 7.",
+                "So each shelf gets about 70 books, with 7 left over."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "Father gives 795 shillings to 3 sons equally. How much does each get?",
+                  "answer": "265"
+                }
+              ]
+            }
+          },
+          {
+            "id": "num_div_7",
+            "title": "Mixed Division Practice",
+            "activityType": "operation_steps",
+            "introType": "number_reveal",
+            "data": {
+              "problem": "Review: solve these using everything you've learned so far.",
+              "steps": [
+                "Try 84 ÷ 6 on your own first.",
+                "Think: 6 x 14 = 84.",
+                "So 84 ÷ 6 = 14, no remainder."
+              ],
+              "practiceProblems": [
+                {
+                  "text": "96 ÷ 8 = ?",
+                  "answer": "12"
+                },
+                {
+                  "text": "50 ÷ 6 = ? (with remainder)",
+                  "answer": "8 remainder 2"
+                }
+              ]
+            }
+          }
+        ],
+        "test": {
+          "questions": [
+            {
+              "question": "What is 45 ÷ 5?",
+              "options": [
+                "9",
+                "8",
+                "10"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "Yasin shares 35 marbles among 4 friends. How many each, with the remainder?",
+              "options": [
+                "8 each, 3 left over",
+                "7 each, 7 left over",
+                "9 each, 0 left over"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "question": "What is 96 ÷ 8?",
+              "options": [
+                "12",
+                "11",
+                "13"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        }
+      }
+    ],
+    "assessment": {
+      "numberRecognition": [
+        {
+          "question": "How do you read the number 47?",
+          "options": [
+            "Forty-seven",
+            "Seventy-four",
+            "Four-seven"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "question": "How do you read the number 8?",
+          "options": [
+            "Eight",
+            "Eighty",
+            "Eighteen"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "question": "How do you read the number 62?",
+          "options": [
+            "Sixty-two",
+            "Twenty-six",
+            "Six-two"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "question": "How do you read the number 15?",
+          "options": [
+            "Fifteen",
+            "Fifty",
+            "Five-ten"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "question": "How do you read the number 90?",
+          "options": [
+            "Ninety",
+            "Nine",
+            "Nineteen"
+          ],
+          "correctIndex": 0
+        }
+      ],
+      "addition": [
+        {
+          "question": "What is 6 + 3?",
+          "options": [
+            "9",
+            "8",
+            "10"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "question": "What is 24 + 15?",
+          "options": [
+            "39",
+            "35",
+            "41"
+          ],
+          "correctIndex": 0
+        }
+      ],
+      "subtraction": [
+        {
+          "question": "What is 9 - 4?",
+          "options": [
+            "5",
+            "6",
+            "4"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "question": "What is 32 - 17?",
+          "options": [
+            "15",
+            "17",
+            "25"
+          ],
+          "correctIndex": 0
+        }
+      ],
+      "multiplication": [
+        {
+          "question": "What is 4 x 3?",
+          "options": [
+            "12",
+            "10",
+            "14"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "question": "What is 6 x 5?",
+          "options": [
+            "30",
+            "25",
+            "35"
+          ],
+          "correctIndex": 0
+        }
+      ],
+      "division": [
+        {
+          "question": "What is 12 ÷ 4?",
+          "options": [
+            "3",
+            "4",
+            "2"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "question": "What is 20 ÷ 5?",
+          "options": [
+            "4",
+            "5",
+            "10"
+          ],
+          "correctIndex": 0
+        }
+      ],
+      "wordProblems": [
+        {
+          "section": "addition",
+          "check": {
+            "question": "Idris has 28 oranges. His mother gave him 16 more. How many now?",
+            "options": [
+              "44",
+              "38",
+              "42"
+            ],
+            "correctIndex": 0
+          }
+        },
+        {
+          "section": "subtraction",
+          "check": {
+            "question": "Yussuf had 24 tickets and sold 17. How many are unsold?",
+            "options": [
+              "7",
+              "9",
+              "6"
+            ],
+            "correctIndex": 0
+          }
+        }
+      ]
+    }
+  }
+}

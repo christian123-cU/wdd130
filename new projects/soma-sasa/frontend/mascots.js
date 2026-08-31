@@ -1,7 +1,7 @@
 // ==========================================================================
 // Soma Sasa mascots — inline SVG line-art, no external images/fonts.
-// Each mascot is tied to a course via courses.json's "mascotId" field and
-// used only in Young Learner mode.
+// Voice lines are in English, since the platform is scaling from Kenya to
+// East Africa, then across Africa and beyond.
 // ==========================================================================
 
 const MASCOTS = {
@@ -9,9 +9,9 @@ const MASCOTS = {
     name: "Nambari",
     role: "Your Number Guide",
     accent: "#1D9E75",
-    greeting: "Habari! Let's count together \u2014 I love numbers from the market!",
-    retry: "Hakuna matata, let's try that sum again!",
-    success: "Safi sana! You crunched those numbers like a pro!",
+    greeting: "Hello! Let's explore numbers together.",
+    retry: "Not quite — let's work through it again!",
+    success: "Great work! You solved that one!",
     // A friendly line-art elephant.
     svg: `
       <svg viewBox="0 0 100 100" role="img" aria-label="Nambari the elephant">
@@ -30,9 +30,9 @@ const MASCOTS = {
     name: "Herufi",
     role: "Your Reading Guide",
     accent: "#0D3B2E",
-    greeting: "Karibu! Let's sound out some words together.",
-    retry: "Try again \u2014 sound it out nice and slow!",
-    success: "Safi sana! Your reading is getting stronger every day!",
+    greeting: "Hi there! Let's read together.",
+    retry: "Try again — take it slow and sound it out!",
+    success: "Well done! Your reading is getting stronger!",
     // A friendly line-art parrot.
     svg: `
       <svg viewBox="0 0 100 100" role="img" aria-label="Herufi the parrot">

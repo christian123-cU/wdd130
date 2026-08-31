@@ -8,13 +8,19 @@
  *
  * REST contract (also mirrored in frontend/app.js as API_BASE_URL):
  *   GET    /api/health
- *   GET    /api/courses
- *   GET    /api/students/:deviceId/progress
- *   POST   /api/students/:deviceId/progress      { courseId, completed, attempts }
- *   GET    /api/students/:deviceId/profile
- *   POST   /api/students/:deviceId/profile       { totalStars, streak, lastActiveDate, badges }
+ *   GET    /api/courses                          (professional/skills modules)
+ *   GET    /api/curriculum                        (FLN literacy+numeracy curriculum)
+ *   GET    /api/students                          (roster for teacher dashboard)
+ *   GET    /api/students/:deviceId
+ *   POST   /api/students/:deviceId                { name, isAnonymous, literacyLevel,
+ *                                                    numeracyLevel, literacyAssessed,
+ *                                                    numeracyAssessed, literacyProgress,
+ *                                                    numeracyProgress, totalStars, streak,
+ *                                                    lastActiveDate, badges }
+ *   GET    /api/students/:deviceId/progress        (professional/skills module progress)
+ *   POST   /api/students/:deviceId/progress        { courseId, completed, attempts }
  *   GET    /api/cohorts
- *   POST   /api/cohorts                          { id, name }
+ *   POST   /api/cohorts                            { id, name }
  *   POST   /api/cohorts/:id/increment
  *   GET    /api/stats
  * ---------------------------------------------------------------
@@ -28,6 +34,7 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 const DB_PATH = path.join(__dirname, "data", "db.json");
 const COURSES_PATH = path.join(__dirname, "..", "frontend", "courses.json");
+const CURRICULUM_PATH = path.join(__dirname, "..", "frontend", "fln_curriculum.json");
 
 const app = express();
 app.use(cors());
@@ -45,12 +52,29 @@ function writeDB(data) {
   return writeChain;
 }
 
+function emptyStudent() {
+  return {
+    name: null,
+    isAnonymous: true,
+    literacyLevel: null,
+    numeracyLevel: null,
+    literacyAssessed: false,
+    numeracyAssessed: false,
+    literacyProgress: {},
+    numeracyProgress: {},
+    totalStars: 0,
+    streak: 0,
+    lastActiveDate: null,
+    badges: [],
+  };
+}
+
 // ---- Health check (used by the frontend to detect a reachable server) ----
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", time: Date.now() });
 });
 
-// ---- Courses: server is the source of truth when reachable ----
+// ---- Professional/skills course catalog ----
 app.get("/api/courses", async (req, res) => {
   try {
     const raw = await fs.readFile(COURSES_PATH, "utf-8");
@@ -60,10 +84,60 @@ app.get("/api/courses", async (req, res) => {
   }
 });
 
-// ---- Student progress: { [courseId]: { completed, attempts } } ----
+// ---- FLN literacy + numeracy curriculum ----
+app.get("/api/curriculum", async (req, res) => {
+  try {
+    const raw = await fs.readFile(CURRICULUM_PATH, "utf-8");
+    res.json(JSON.parse(raw));
+  } catch (err) {
+    res.status(500).json({ error: "Could not load curriculum." });
+  }
+});
+
+// ---- Students: full record (identity, assessed levels, lesson/test progress) ----
+app.get("/api/students", async (req, res) => {
+  const db = await readDB();
+  const roster = Object.entries(db.students || {}).map(([deviceId, student]) => ({
+    deviceId,
+    ...student,
+  }));
+  res.json(roster);
+});
+
+app.get("/api/students/:deviceId", async (req, res) => {
+  const db = await readDB();
+  const student = (db.students || {})[req.params.deviceId] || emptyStudent();
+  res.json(student);
+});
+
+app.post("/api/students/:deviceId", async (req, res) => {
+  const db = await readDB();
+  if (!db.students) db.students = {};
+  const { deviceId } = req.params;
+  const existing = db.students[deviceId] || emptyStudent();
+  const body = req.body || {};
+  db.students[deviceId] = {
+    name: body.name !== undefined ? body.name : existing.name,
+    isAnonymous: body.isAnonymous !== undefined ? body.isAnonymous : existing.isAnonymous,
+    literacyLevel: body.literacyLevel !== undefined ? body.literacyLevel : existing.literacyLevel,
+    numeracyLevel: body.numeracyLevel !== undefined ? body.numeracyLevel : existing.numeracyLevel,
+    literacyAssessed: body.literacyAssessed !== undefined ? body.literacyAssessed : existing.literacyAssessed,
+    numeracyAssessed: body.numeracyAssessed !== undefined ? body.numeracyAssessed : existing.numeracyAssessed,
+    literacyProgress: body.literacyProgress !== undefined ? body.literacyProgress : existing.literacyProgress,
+    numeracyProgress: body.numeracyProgress !== undefined ? body.numeracyProgress : existing.numeracyProgress,
+    totalStars: body.totalStars !== undefined ? body.totalStars : existing.totalStars,
+    streak: body.streak !== undefined ? body.streak : existing.streak,
+    lastActiveDate: body.lastActiveDate !== undefined ? body.lastActiveDate : existing.lastActiveDate,
+    badges: body.badges !== undefined ? body.badges : existing.badges,
+  };
+  await writeDB(db);
+  res.json(db.students[deviceId]);
+});
+
+// ---- Professional/skills module progress: { [courseId]: { completed, attempts } } ----
 app.get("/api/students/:deviceId/progress", async (req, res) => {
   const db = await readDB();
-  const progress = db.progress[req.params.deviceId] || {};
+  const progress = (db.progress || {})[req.params.deviceId] || {};
   res.json(progress);
 });
 
@@ -73,6 +147,7 @@ app.post("/api/students/:deviceId/progress", async (req, res) => {
     return res.status(400).json({ error: "courseId is required." });
   }
   const db = await readDB();
+  if (!db.progress) db.progress = {};
   const { deviceId } = req.params;
   if (!db.progress[deviceId]) db.progress[deviceId] = {};
   const existing = db.progress[deviceId][courseId] || { completed: false, attempts: 0 };
@@ -82,30 +157,6 @@ app.post("/api/students/:deviceId/progress", async (req, res) => {
   };
   await writeDB(db);
   res.json(db.progress[deviceId]);
-});
-
-// ---- Learner profile: stars, streak, badges (Young Learner mode) ----
-app.get("/api/students/:deviceId/profile", async (req, res) => {
-  const db = await readDB();
-  const profile = db.profiles[req.params.deviceId] || {
-    totalStars: 0, streak: 0, lastActiveDate: null, badges: []
-  };
-  res.json(profile);
-});
-
-app.post("/api/students/:deviceId/profile", async (req, res) => {
-  const { totalStars, streak, lastActiveDate, badges } = req.body || {};
-  const db = await readDB();
-  const { deviceId } = req.params;
-  const existing = db.profiles[deviceId] || { totalStars: 0, streak: 0, lastActiveDate: null, badges: [] };
-  db.profiles[deviceId] = {
-    totalStars: totalStars !== undefined ? totalStars : existing.totalStars,
-    streak: streak !== undefined ? streak : existing.streak,
-    lastActiveDate: lastActiveDate !== undefined ? lastActiveDate : existing.lastActiveDate,
-    badges: Array.isArray(badges) ? badges : existing.badges,
-  };
-  await writeDB(db);
-  res.json(db.profiles[deviceId]);
 });
 
 // ---- Cohorts ----

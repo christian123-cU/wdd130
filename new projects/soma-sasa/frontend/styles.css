@@ -936,3 +936,401 @@ th {
   accent-color: var(--accent-color);
   flex-shrink: 0;
 }
+
+/* ==========================================================================
+   Registration screen
+   ========================================================================== */
+
+.registration-card {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 420px;
+}
+
+.registration-card label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 6px;
+}
+
+.registration-card input {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+.registration-card input:focus { border-color: var(--accent-color); }
+
+/* ==========================================================================
+   Young Learner Zone: subject chooser, assessment, roadmap
+   ========================================================================== */
+
+.young-screen.hidden { display: none; }
+
+.assessment-chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.assessment-chip {
+  background: #ffffff;
+  border: 2px solid var(--card-border);
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary-color);
+  cursor: pointer;
+  min-width: 56px;
+  text-align: center;
+}
+
+.assessment-chip.selected {
+  border-color: var(--accent-color);
+  background: #EAF9F3;
+}
+
+.quiz-option.selected {
+  border-color: var(--accent-color);
+  background: #eefaf6;
+}
+
+.roadmap-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.roadmap-card {
+  background: #ffffff;
+  border: 2px solid var(--card-border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.roadmap-card p {
+  font-size: 13px;
+  color: #555;
+  margin: 8px 0 12px;
+}
+
+.roadmap-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.roadmap-level-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--light-bg);
+  border: 1px solid var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.roadmap-card-header h3 {
+  color: var(--primary-color);
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+.roadmap-mastered { border-color: var(--accent-color); background: #F3FBF7; }
+.roadmap-completed { border-color: var(--status-online); background: #F3FBF7; }
+.roadmap-current { border-color: var(--primary-color); }
+.roadmap-locked { opacity: 0.6; }
+
+/* ==========================================================================
+   Lesson viewer: intro hook animations + activity renderers
+   ========================================================================== */
+
+.lesson-intro-hook {
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.intro-teaser {
+  font-style: italic;
+  color: var(--primary-color);
+  font-size: 15px;
+  text-align: center;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.intro-pop-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.intro-pop-chip {
+  display: inline-block;
+  background: var(--accent-color);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 22px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  animation: popIn 0.4s ease both;
+}
+
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.4) translateY(10px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.letter-card-big {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: #ffffff;
+  border: 2px solid var(--accent-color);
+  border-radius: 10px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary-color);
+  animation: popIn 0.35s ease both;
+}
+
+.blend-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 10px 0 16px;
+}
+
+.blend-item {
+  background: var(--light-bg);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.practice-word-chip {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.word-ladder-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.word-ladder-item {
+  display: flex;
+  gap: 4px;
+}
+
+.word-ladder-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: var(--light-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-transform: lowercase;
+  animation: popIn 0.3s ease both;
+}
+
+.vocab-list {
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vocab-item {
+  background: var(--light-bg);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.reveal-options {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+  font-size: 13px;
+  color: #555;
+}
+
+.reveal-options li { padding: 2px 0; }
+
+.op-problem {
+  background: var(--light-bg);
+  border-left: 4px solid var(--primary-color);
+  padding: 12px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 12px;
+}
+
+.op-step-line {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  font-size: 13px;
+  animation: fadeInUp 0.3s ease both;
+}
+
+.op-practice { margin-top: 16px; }
+
+.op-practice-item {
+  background: var(--light-bg);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+
+.op-practice-item p { font-size: 13px; margin-bottom: 6px; }
+
+.op-answer {
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-top: 6px;
+}
+
+.place-value-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.pv-bars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  max-width: 120px;
+  justify-content: center;
+}
+
+.pv-ten-bar {
+  width: 8px;
+  height: 28px;
+  background: var(--accent-color);
+  border-radius: 2px;
+}
+
+.pv-one-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--status-offline);
+  border-radius: 50%;
+  align-self: flex-end;
+}
+
+.pv-number-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* ==========================================================================
+   Celebration overlay + confetti
+   ========================================================================== */
+
+.celebration-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(13, 59, 46, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  overflow: hidden;
+}
+
+.celebration-overlay.hidden { display: none; }
+
+.confetti-field {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 16px;
+  opacity: 0.9;
+  animation: confettiFall 2.4s ease-in forwards;
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0.8; }
+}
+
+.celebration-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px 28px;
+  text-align: center;
+  max-width: 380px;
+  z-index: 1;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.celebration-card h2 {
+  color: var(--primary-color);
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.celebration-card p {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.celebration-choices.hidden { display: none; }
+
+/* ==========================================================================
+   Teacher gate + roster
+   ========================================================================== */
+
+.teacher-gate .registration-card { margin: 0 auto; }
+
+#teacher-dashboard-content.hidden { display: none; }
